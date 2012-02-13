@@ -1,0 +1,73 @@
+alias du='du -sh'
+alias diff='diff -u'
+alias mk='mkdir -p'
+alias p=popd
+alias o=open
+alias rrm='rm -rf'
+
+alias check=check.py
+alias django='python manage.py'
+
+# ls
+alias lsa='ls++ -a'
+
+# Arch
+alias pac=pacman
+alias y=yaourt
+alias ins='y -S'
+alias rem='y -Rs'
+alias net='sudo netcfg2 -a; sudo netcfg2'
+alias x=startx
+
+# git
+alias g=git
+alias gd='git diff'
+alias gs='git status'
+alias gci='git commit'
+alias gl='git log'
+alias glp='git log -p'
+alias gv='git svn'
+alias gr='git rebase'
+alias gb='git branch'
+
+# nose
+alias nose=nosetests
+alias n=nose
+alias nh='nose -h M'
+
+# Python
+alias py=python
+alias ip=ipython
+alias ipo=ipython
+
+# vim
+alias v=vim
+alias c=v
+alias b=v
+
+# helpers
+alias src='source .ve/bin/activate'
+alias forefile='foreman start -f Procfile'
+alias shellplus='django shell_plus'
+
+# One of @janmoesen’s ProTip™s
+for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+  alias "$method"="lwp-request -m '$method'"
+done
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en1"
+alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+
+# Enhanced WHOIS lookups
+alias whois="whois -h whois-servers.net"
+
+# Flush Directory Service cache
+alias flush="dscacheutil -flushcache"
+
+# Easier navigation: .., ..., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
