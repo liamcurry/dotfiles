@@ -17,6 +17,8 @@
     "mootools"      : false,
     "dojo"          : false,
 
+    "laxcomma"      : true,
+
     "predef"        : [  // Custom globals.
         "requestAnimationFrame",
         "define",

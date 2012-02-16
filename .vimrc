@@ -19,7 +19,7 @@ vnoremap <tab> %                      " Match bracket pairs with <tab>
 " General settings
 set ruler                             " Show line/column numbers
 set nocompatible                      " Use vim, no vi defaults
-set relativenumber                    " Show relative line numbers
+set number                            " Show line numbers
 set hidden                            " Save buffers when a tab is closed
 set showmatch                         " Show matching brackets
 set noerrorbells visualbell t_vb=     " Turn off annoying bells
@@ -27,6 +27,7 @@ set cul                               " Highlight current line
 set autochdir                         " Automatically cd into directory with file
 set laststatus=2                      " Always show the status line
 set t_Co=256                          " Make sure vim knows it's 256 colors
+set tildeop                           " Easily switch caps for line
 
 " Encoding
 set encoding=utf-8                    " Default encoding is UTF-8
@@ -43,8 +44,8 @@ set smarttab                          " Use spaces for tabs
 set list                              " Show hidden characters
 set autoindent                        " Autoindent, obviously
 set backspace=indent,eol,start        " Backspace through everything in insert mode
-au BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif " Remove trailing whitespace
-"hi NonText ctermfg=8 guifg=gray
+au BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif " Remove trailing whitespace
+au BufWrite * | silent! retab " Automatically retab on save
 
 " Folding
 set foldenable                        " Turn on folding
@@ -92,9 +93,11 @@ set cursorline
 
 " Make Python follow PEP-8
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+au FileType html,htmldjango,javascript set softtabstop=2 tabstop=2 shiftwidth=2
 
 " Treat JSON files like Javascript
 au BufNewFile,BufRead *.json set ft=javascript
+au BufNewFile,BufRead *.html set ft=htmldjango
 
 " Use real tabs in make files
 au FileType make set noexpandtab
@@ -112,8 +115,8 @@ let g:syntastic_enable_highlighting = 1
 " CtrlP
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_max_height = 10
-let g:ctrlp_working_path_mode = 1
-let g:ctrlp_custom_ignore = '\.git$\|\.pyc$\|\.svn$\|\.hg$\|\.ve\/.+'
+let g:ctrlp_working_path_mode = 2
+let g:ctrlp_custom_ignore = '\.git$\|\.pyc$\|\.svn$\|\.hg$\|\.ve\|DS_Store\|.sass-cache'
 
 " Nerdtree
 let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o', '\~$']
@@ -123,6 +126,3 @@ au vimenter * wincmd p            " ...and then switch to the right buffer
 
 " Close NERDTree automatically if it is the last buffer
 au bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-" Adjust color
-"hi CursorLine term=none cterm=none ctermbg=16
