@@ -40,3 +40,5 @@ export LC_ALL="en_US.UTF-8"
 
 # Loads other files
 source ~/.aliases
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
