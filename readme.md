@@ -2,7 +2,6 @@ My treasure chest of various dotfiles in my home directory.
 
 Customized for use with:
 
-* [janus](https://github.com/carlhuda/janus)
 * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 * [ls++](https://github.com/trapd00r/ls--)
 
