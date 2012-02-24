@@ -43,3 +43,9 @@
 [submodule ".vim/bundle/vim-javascript"]
 	path = .vim/bundle/vim-javascript
 	url = git://github.com/pangloss/vim-javascript.git
+[submodule "/Users/bcurry/.vim/bundle/nginx.vim"]
+	path = /Users/bcurry/.vim/bundle/nginx.vim
+	url = git://github.com/vim-scripts/nginx.vim.git
+[submodule ".oh-my-zsh"]
+	path = .oh-my-zsh
+	url = git://github.com/robbyrussell/oh-my-zsh.git
