@@ -99,6 +99,9 @@ au FileType html,htmldjango,javascript set softtabstop=2 tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.json set ft=javascript
 au BufNewFile,BufRead *.html set ft=htmldjango
 
+" Nginx
+au BufNewFile,BufRead *.conf set ft=nginx
+
 " Use real tabs in make files
 au FileType make set noexpandtab
 
