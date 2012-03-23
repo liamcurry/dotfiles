@@ -1,0 +1,5 @@
+selectp -t 0              # Select pane 0
+splitw -h -p 35 'cd $PWD; exec $SHELL'
+selectp -t 1              # Select pane 1
+splitw -v -p 50 'cd $PWD; exec $SHELL'
+selectp -t 1              # Select pane 0

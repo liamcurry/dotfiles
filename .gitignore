@@ -30,7 +30,6 @@ local_settings.py
 dist
 eggs
 parts
-bin
 var
 sdist
 develop-eggs

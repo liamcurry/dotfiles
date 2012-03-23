@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="juanghurtado"
+ZSH_THEME="miloshadzic"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -30,15 +30,19 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/local/share/python:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin:/usr/local/nginx/bin/:/usr/local/pgsql/bin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin/
+export PYTHONPATH=$(brew --prefix)/lib/python2.6/site-packages:$PYTHONPATH
 export PGDATA=/usr/local/pgsql/data
-export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/mysql/lib/
+#export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/mysql/lib/
 export DJANGO_COLORS="dark"
 export EDITOR=vim
 export TERM="xterm-256color"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# Development...
+export AUXAL_ENV=dev
 
 # Loads other files
 source ~/.aliases
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

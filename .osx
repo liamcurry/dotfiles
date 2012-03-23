@@ -11,7 +11,7 @@ defaults write com.apple.finder EmptyTrashSecurely -bool true
 
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
+defaults write com.apple.screensaver askForPasswordDelay -int 1800
 
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -69,3 +69,14 @@ defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
+
+# Show hidden files
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Globally enable text substitutions
+defaults write -g WebAutomaticTextReplacementEnabled -bool true
+defaults write -g WebAutomaticDashSubstitutionEnabled -bool true
+defaults write -g WebContinuousSpellCheckingEnabled -bool true
+
+# Enable Finder Quit menu item
+defaults write com.apple.finder QuitMenuItem -bool true

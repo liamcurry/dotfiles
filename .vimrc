@@ -12,6 +12,8 @@ map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
+imap jk <Esc>
+
 nnoremap <leader><space> :noh<cr>     " Clear search highlighting
 nnoremap <tab> %                      " Match bracket pairs with <tab>
 vnoremap <tab> %                      " Match bracket pairs with <tab>
@@ -95,6 +97,9 @@ set cursorline
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 au FileType html,htmldjango,javascript set softtabstop=2 tabstop=2 shiftwidth=2
 
+" Enable spell check for certain files
+au FileType markdown set spell
+
 " Treat JSON files like Javascript
 au BufNewFile,BufRead *.json set ft=javascript
 au BufNewFile,BufRead *.html set ft=htmldjango
@@ -119,10 +124,14 @@ let g:syntastic_enable_highlighting = 1
 let g:ctrlp_map = '<c-t>'
 let g:ctrlp_max_height = 10
 let g:ctrlp_working_path_mode = 2
-let g:ctrlp_custom_ignore = '\.git$\|\.pyc$\|\.svn$\|\.hg$\|\.ve\|DS_Store\|.sass-cache'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|node_modules\|\.sass-cache',
+  \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.DS_Store$',
+  \ 'link': '',
+  \ }
 
 " Nerdtree
-let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o', '\~$']
+let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o', '\~$', 'node_modules']
 let NERDTreeHijackNetrw = 0
 au vimenter * NERDTree            " Always open with NERDTree
 au vimenter * wincmd p            " ...and then switch to the right buffer

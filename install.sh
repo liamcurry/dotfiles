@@ -33,4 +33,5 @@ pip install flake8 virtualenv
 npm install coffee-script uglify-js
 
 # Install Ruby requirements
-gem install rake compass watchr rb-inotify jekyll
+gem install rake compass watchr rb-inotify jekyll lunchy
+
