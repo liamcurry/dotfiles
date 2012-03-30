@@ -46,24 +46,21 @@
 [submodule ".vim/bundle/nginx.vim"]
   path = .vim/bundle/nginx.vim
   url = git://github.com/vim-scripts/nginx.vim.git
-[submodule ".oh-my-zsh"]
-  path = .oh-my-zsh
-  url = git://github.com/robbyrussell/oh-my-zsh.git
 [submodule ".vim/bundle/vim-surround"]
-	path = .vim/bundle/vim-surround
-	url = git://github.com/tpope/vim-surround.git
+  path = .vim/bundle/vim-surround
+  url = git://github.com/tpope/vim-surround.git
 [submodule ".vim/bundle/vim-repeat"]
-	path = .vim/bundle/vim-repeat
-	url = git://github.com/tpope/vim-repeat.git
+  path = .vim/bundle/vim-repeat
+  url = git://github.com/tpope/vim-repeat.git
 [submodule ".vim/bundle/vim-jade"]
-	path = .vim/bundle/vim-jade
-	url = git://github.com/digitaltoad/vim-jade.git
+  path = .vim/bundle/vim-jade
+  url = git://github.com/digitaltoad/vim-jade.git
 [submodule ".vim/bundle/vim-tmux"]
-	path = .vim/bundle/vim-tmux
-	url = git://github.com/acustodioo/vim-tmux.git
+  path = .vim/bundle/vim-tmux
+  url = git://github.com/acustodioo/vim-tmux.git
 [submodule ".vim/bundle/html5.vim"]
-	path = .vim/bundle/html5.vim
-	url = git://github.com/othree/html5.vim.git
+  path = .vim/bundle/html5.vim
+  url = git://github.com/othree/html5.vim.git
 [submodule ".vim/bundle/vim-coffee-script"]
-	path = .vim/bundle/vim-coffee-script
-	url = git://github.com/kchmck/vim-coffee-script.git
+  path = .vim/bundle/vim-coffee-script
+  url = git://github.com/kchmck/vim-coffee-script.git
