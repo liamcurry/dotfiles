@@ -63,7 +63,7 @@ set foldtext=SimpleFoldText()         " Custom font fold function (cleaner)
 set nowrap
 set textwidth=79
 set formatoptions=qrn1
-set colorcolumn=85
+"set colorcolumn=85
 
 " Searching
 set hlsearch showmatch                " Highlight matches
