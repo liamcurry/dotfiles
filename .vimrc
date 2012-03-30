@@ -12,7 +12,7 @@ map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
-imap jk <Esc>
+imap jj <Esc>
 
 nnoremap <leader><space> :noh<cr>     " Clear search highlighting
 nnoremap <tab> %                      " Match bracket pairs with <tab>
