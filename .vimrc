@@ -107,6 +107,9 @@ au BufNewFile,BufRead *.html set ft=htmldjango
 " Nginx
 au BufNewFile,BufRead *.conf set ft=nginx
 
+" CGI
+au BufNewFile,BufRead *.cgi set ft=python
+
 " Use real tabs in make files
 au FileType make set noexpandtab
 
