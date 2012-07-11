@@ -7,9 +7,6 @@
 [submodule ".vim/bundle/zencoding-vim"]
   path = .vim/bundle/zencoding-vim
   url = git://github.com/mattn/zencoding-vim.git
-[submodule ".vim/bundle/delimitMate"]
-  path = .vim/bundle/delimitMate
-  url = git://github.com/Raimondi/delimitMate.git
 [submodule ".vim/bundle/vim-pathogen"]
   path = .vim/bundle/vim-pathogen
   url = git://github.com/tpope/vim-pathogen.git
@@ -25,9 +22,6 @@
 [submodule ".vim/bundle/molokai"]
   path = .vim/bundle/molokai
   url = git://github.com/vim-scripts/molokai.git
-[submodule ".vim/bundle/supertab"]
-  path = .vim/bundle/supertab
-  url = git://github.com/ervandew/supertab.git
 [submodule ".vim/bundle/vim-indent-object"]
   path = .vim/bundle/vim-indent-object
   url = git://github.com/michaeljsmith/vim-indent-object.git
@@ -64,3 +58,18 @@
 [submodule ".vim/bundle/vim-coffee-script"]
   path = .vim/bundle/vim-coffee-script
   url = git://github.com/kchmck/vim-coffee-script.git
+[submodule ".vim/bundle/vim-fugitive"]
+  path = .vim/bundle/vim-fugitive
+  url = git://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/vim-extradite"]
+  path = .vim/bundle/vim-extradite
+  url = git://github.com/int3/vim-extradite.git
+[submodule ".vim/bundle/neocomplcache"]
+  path = .vim/bundle/neocomplcache
+  url = git://github.com/Shougo/neocomplcache.git
+[submodule ".vim/bundle/tagbar"]
+	path = .vim/bundle/tagbar
+	url = git://github.com/majutsushi/tagbar.git
+[submodule ".vim/bundle/gist-vim"]
+	path = .vim/bundle/gist-vim
+	url = git://github.com/mattn/gist-vim.git
