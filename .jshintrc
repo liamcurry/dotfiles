@@ -73,7 +73,7 @@
     "forin": false,
     // Whether immediate invocations must be wrapped in parens, e.g.
     // `( function(){}() );`.
-    "immed": false,
+    "immed": true,
     // Whether use before define should be forbidden.
     "latedef": false,
     // Whether functions should be allowed to be defined within loops.
