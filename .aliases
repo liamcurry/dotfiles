@@ -71,3 +71,6 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
+
+# Fix crontab backups with vim. See .vimrc for more info, or http://goo.gl/LP6X0
+alias crontab="VIM_CRONTAB=true crontab"

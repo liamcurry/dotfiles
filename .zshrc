@@ -42,6 +42,7 @@ export LC_ALL="en_US.UTF-8"
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export NODE_PATH=/usr/local/lib/jsctags/:
 export TMPDIR=/tmp
+export TMP=/private/tmp
 
 # Loads other files
 source ~/.aliases

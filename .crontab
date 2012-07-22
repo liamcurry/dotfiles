@@ -1,0 +1,2 @@
+0 12 * * * make --directory=$HOME update >> /var/log/cron.log
+0 * * * * find $HOME -name '.DS_Store' -or -name '._*' -delete >> /var/log/cron.log

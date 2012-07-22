@@ -35,3 +35,7 @@ npm install coffee-script uglify-js
 # Install Ruby requirements
 gem install rake compass watchr rb-inotify jekyll lunchy
 
+# Remove spotlight from the UI (use quicksilver, fool) and disable it
+sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
+killall -HUP SystemUIServer
+sudo mdutil -a -i off

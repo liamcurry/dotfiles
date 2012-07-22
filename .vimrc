@@ -182,3 +182,9 @@ endfunction
 
 " Start the find and replace command across the entire file
 vmap <C-r> <Esc>:%s/<c-r>=GetVisual()<cr>/
+
+" Some special stuff for crontab
+if $VIM_CRONTAB == "true"
+  set nobackup
+  set nowritebackup
+endif
