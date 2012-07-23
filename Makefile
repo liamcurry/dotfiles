@@ -19,3 +19,4 @@ clean:
 						 -name '.localized' \
 						 -name '.Spotlight-*' \
 						 -delete
+	@rm -Rf $(HOME)/.Trash/.??*
