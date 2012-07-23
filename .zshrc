@@ -29,7 +29,7 @@ plugins=(git github node npm osx pip autojump)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/share/python:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin:/usr/local/nginx/bin/:/usr/local/pgsql/bin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin/:/usr/local/bin
+export PATH=/usr/local/bin:/usr/local/share/python:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin:/usr/local/nginx/bin:/usr/local/pgsql/bin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:/usr/local/bin
 #export PATH=/usr/local/share/python:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/git/bin:/usr/local/nginx/bin/:/usr/local/pgsql/bin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin/:/usr/local/bin
 #export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$PYTHONPATH
 export PGDATA=/usr/local/pgsql/data
