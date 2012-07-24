@@ -11,6 +11,15 @@ update:
 	@echo 'Updating global node modules' && \
 		npm update -g || \
 		growlnotify "Failed to update" -m "There was a problem updating npm packages"
+	@echo 'Updating rvm' && \
+		rvm get stable || \
+		growlnotify "Failed to update" -m "There was a problem updating rvm"
+	@echo 'Updating gems' && \
+		gem update || \
+		growlnotify "Failed to update" -m "There was a problem updating gems"
+	@echo 'Updating Perl modules...' && \
+		cpan update || \
+		growlnotify "Failed to update" -m "There was a problem updating perl modules"
 	@growlnotify "Update completed" -m "Update completed. Check logs if there was an error."
 
 clean:

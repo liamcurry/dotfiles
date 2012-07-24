@@ -56,3 +56,9 @@ pip-log.txt
 
 # Sass
 .sass-cache
+
+# irssi
+sasl.auth
+saved_colors
+*.autosave
+logs
