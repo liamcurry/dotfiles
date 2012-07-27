@@ -2,7 +2,7 @@
 /usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
 
 # Install developer stuff
-brew install nginx dnsmasq python readline ack ffmpeg rabbitmq node mongo mysql libksba
+brew install nginx dnsmasq python readline ack ffmpeg rabbitmq node mongo mysql libksba git
 
 # Install npm
 curl http://npmjs.org/install.sh | sh

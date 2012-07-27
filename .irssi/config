@@ -1,0 +1,179 @@
+# vim:ft=config
+
+servers = (
+  { address = "localhost"; chatnet = "bitlbee"; autoconnect = "yes"; },
+  {
+    address = "irc.freenode.net";
+    chatnet = "freenode";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_verify = "yes";
+    ssl_capath = "/etc/ssl/certs/";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.planetside-universe.com";
+    chatnet = "psu";
+    autoconnect = "no";
+  },
+  {
+    address = "irc.snoonet.com";
+    chatnet = "snoonet";
+    autoconnect = "no";
+  }
+);
+
+chatnets = {
+  freenode = { type = "IRC"; nick = "cygni"; };
+  bitlbee = { type = "IRC"; };
+  psu = { type = "IRC"; };
+  snoonet = { type = "IRC"; };
+};
+
+channels = (
+  { chatnet = "psu"; name = "#ps-universe"; autojoin = "Yes"; },
+  { chatnet = "snoonet"; name = "#breakingbad"; autojoin = "Yes"; },
+  { chatnet = "freenode"; name = "#programming"; autojoin = "No"; },
+  { chatnet = "freenode"; name = "#django"; autojoin = "No"; },
+  { chatnet = "freenode"; name = "#git"; autojoin = "No"; },
+  { chatnet = "freenode"; name = "#javascript"; autojoin = "No"; }
+);
+
+aliases = {
+  J = "join";
+  LEAVE = "part";
+  E = "exec - runz";
+  EO = "exec - -o runz";
+  EXIT = "quit";
+  LL = "lastlog";
+  W = "window";
+  M = "mark";
+  WC = "window close";
+  WK = "window kill";
+  WN = "window new hide";
+  WA = "window goto active";
+  RUN = "SCRIPT LOAD";
+  Q = "QUERY";
+  quit = "echo dont do this at home";
+};
+
+statusbar = {
+  items = {
+    time = "{sb $Z}       ";
+    window = ":: {sb [$winref] $tag $itemname} ";
+    window_empty = ":: {sb [$winref] $tag $itemname} ";
+
+    prompt = "{prompt}";
+    prompt_empty = "{prompt}";
+  };
+
+  default = {
+    window = {
+      type = "window";
+      placement = "top";
+      visible = "active";
+      items = { window = { }; window_empty = { }; typing_notice = { }; };
+    };
+
+    window_inact = {
+      type = "window";
+      placement = "top";
+      visible = "inactive";
+      items = { window = { }; window_empty = { }; };
+    };
+
+    prompt = {
+      type = "root";
+      placement = "bottom";
+      position = "100";
+      visible = "always";
+
+      items = {
+        time = { };
+        user = { };
+        prompt = { priority = "-1"; };
+        prompt_empty = { priority = "-1"; };
+
+        input = { priority = "10"; };
+      };
+    };
+
+    topic = {
+      type = "root";
+      placement = "bottom";
+      position = "1";
+      visible = "always";
+      items = { topic = { }; topic_empty = { }; };
+    };
+
+    awl_0 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+  };
+};
+
+settings = {
+  core = {
+    real_name = "Liam";
+    user_name = "cygni";
+    nick = "cygni";
+    awaylog_file = "/dev/null";
+    recode_autodetect_utf8 = "yes";
+    recode_fallback = "CP1252";
+  };
+
+  "fe-text" = { actlist_sort = "refnum"; };
+
+  "fe-common/core" = {
+    autolog = "yes";
+    autolog_path = "~/.irssi/logs/$tag/$0.log";
+    beep_msg_level = "NOTICE MSGS HILIGHT";
+    bell_beeps = "no";
+    emphasis = "OFF";
+    hilight_nick_matches = "yes";
+    theme = "liamcurry";
+  };
+
+  "perl/core/scripts" = {
+    awl_display_key = "%w$N.$H$C$S ";
+    awl_maxlines = "3";
+    awl_position = "0";
+    awl_sbar_maxlength = "no";
+    bitlbee_send_typing = "yes";
+    hilightwin_showprivmsg = "no";
+    lt_in_queries = "yes";
+    neat_left_actions = "yes";
+    neat_maxlength = "15";
+    screen_away_message = "away";
+    neat_allow_shrinking = "yes";
+  };
+};
+
+ignores = (
+  { level = "JOINS PARTS QUITS NICKS"; },
+  { level = "MODES"; channels = ( "&bitlbee" ); }
+);
+
+hilights = (
+  { text = "cygni"; nick = "no"; word = "yes"; fullword = "yes"; },
+  { text = "liam"; nick = "no"; word = "yes"; fullword = "yes"; }
+);
+
+windows = {
+
+  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+
+  2 = { immortal = "yes"; name = "hilight"; sticky = "yes"; };
+
+};
+
+mainwindows = {
+  1 = { first_line = "12"; lines = "72"; };
+  2 = { first_line = "1"; lines = "11"; };
+};
+
+logs = { };

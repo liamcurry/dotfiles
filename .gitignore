@@ -61,4 +61,5 @@ pip-log.txt
 sasl.auth
 saved_colors
 *.autosave
+*.bkup
 logs
