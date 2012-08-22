@@ -1,3 +1,5 @@
+# Barebones version!
+
 My treasure chest of various dotfiles in my home directory.
 
 Customized for use with:
