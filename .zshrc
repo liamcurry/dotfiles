@@ -1,5 +1,5 @@
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="miloshadzic"
+ZSH_THEME="mortalscumbag"
 COMPLETION_WAITING_DOTS="true"
 plugins=(git github node npm osx pip autojump)
 
