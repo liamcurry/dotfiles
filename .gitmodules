@@ -76,3 +76,6 @@
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git
+[submodule ".vim/bundle/sudo.vim"]
+	path = .vim/bundle/sudo.vim
+	url = git://github.com/vim-scripts/sudo.vim.git
