@@ -79,3 +79,6 @@
 [submodule ".vim/bundle/sudo.vim"]
 	path = .vim/bundle/sudo.vim
 	url = git://github.com/vim-scripts/sudo.vim.git
+[submodule ".vim/bundle/po.vim"]
+	path = .vim/bundle/po.vim
+	url = git://github.com/vim-scripts/po.vim--gray.git
