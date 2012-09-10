@@ -82,3 +82,6 @@
 [submodule ".vim/bundle/po.vim"]
 	path = .vim/bundle/po.vim
 	url = git://github.com/vim-scripts/po.vim--gray.git
+[submodule ".vim/bundle/dustjs.vim"]
+	path = .vim/bundle/dustjs.vim
+	url = git://github.com/jimmyhchan/dustjs.vim.git

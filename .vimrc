@@ -98,6 +98,9 @@ au BufNewFile,BufRead *.cgi setlocal ft=python
 " Django
 au BufNewFile,BufRead *.html setlocal ft=htmldjango
 
+" JS Templates
+au BufNewFile,BufRead *.tmpl setlocal ft=html
+
 " Use real tabs in make files
 au FileType make setlocal noexpandtab
 
