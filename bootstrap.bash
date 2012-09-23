@@ -64,11 +64,7 @@ function please_debug {
 
 function run_or_debug {
   if [[ $debugging ]]; then
-<<<<<<< HEAD
     please_debug "Would have ran: $1"
-=======
-    please_debug "$1"
->>>>>>> Adding ubuntu stuff; removed dumb aliases and added useful ones
   else
     `$1`
   fi
@@ -77,14 +73,11 @@ function run_or_debug {
 please_hr
 please_hr
 please_hr
-<<<<<<< HEAD
 
 please_print "Allowing you to run sudo without a password"
 run_or_debug "sudo echo \"\\n$USER ALL=NOPASSWD: ALL\" >> /etc/sudoers"
 please_done
 
-=======
->>>>>>> Adding ubuntu stuff; removed dumb aliases and added useful ones
 please_print "Installing apt-get packages..."
 cmd_apt="sudo apt-get install -y ${packages_apt[@]}"
 if [[ $debugging ]]; then
@@ -124,11 +117,7 @@ done
 please_print "Adding sources to /etc/apt/sources.list"
 for src in ${packages_apt_alt_srcs[@]}; do
   please_print "Adding $src"
-<<<<<<< HEAD
   run_or_debug "sudo echo \"\\n$src\" >> /etc/apt/sources.list"
-=======
-  run_or_debug "sudo echo \"\n$src\" >> /etc/apt/sources.list"
->>>>>>> Adding ubuntu stuff; removed dumb aliases and added useful ones
 done
 
 
