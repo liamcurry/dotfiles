@@ -25,6 +25,8 @@ packages_apt=(
   virtualbox
   indicator-multiload   # Really nice indicator that shows cpu/network/memory load
   indicator-weather
+  mongodb
+  redis-server
 )
 
 # Any packages not in the default sources
@@ -62,7 +64,7 @@ function please_debug {
 
 function run_or_debug {
   if [[ $debugging ]]; then
-    please_debug "$1"
+    please_debug "Would have ran: $1"
   else
     `$1`
   fi
@@ -71,6 +73,11 @@ function run_or_debug {
 please_hr
 please_hr
 please_hr
+
+please_print "Allowing you to run sudo without a password"
+run_or_debug "sudo echo \"\\n$USER ALL=NOPASSWD: ALL\" >> /etc/sudoers"
+please_done
+
 please_print "Installing apt-get packages..."
 cmd_apt="sudo apt-get install -y ${packages_apt[@]}"
 if [[ $debugging ]]; then
@@ -110,7 +117,7 @@ done
 please_print "Adding sources to /etc/apt/sources.list"
 for src in ${packages_apt_alt_srcs[@]}; do
   please_print "Adding $src"
-  run_or_debug "sudo echo \"\n$src\" >> /etc/apt/sources.list"
+  run_or_debug "sudo echo \"\\n$src\" >> /etc/apt/sources.list"
 done
 
 
