@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
 
-
-
-
-
-
-# Testingg!
-
-
 alias mk='mkdir -p'
 
 # ls
