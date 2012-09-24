@@ -12,8 +12,6 @@ map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
-imap jj <Esc>
-
 nnoremap <leader><space> :noh<cr>     " Clear search highlighting
 nnoremap <tab> %                      " Match bracket pairs with <tab>
 vnoremap <tab> %                      " Match bracket pairs with <tab>
@@ -69,6 +67,8 @@ set wildmode=list:longest
 " Backup and swap directories
 set backupdir=~/.vim/.backup//        " Where to put backup files
 set directory=~/.vim/.temp//          " Where to put swap files
+set undodir=~/.vim/.undo//            " Where to put undo files
+set undofile                          " Enable undo files
 
 " List chars
 set listchars=""                      " Reset the listchars
@@ -99,7 +99,7 @@ au BufNewFile,BufRead *.cgi setlocal ft=python
 au BufNewFile,BufRead *.html setlocal ft=htmldjango
 
 " JS Templates
-au BufNewFile,BufRead *.tmpl setlocal ft=html
+au BufNewFile,BufRead *.tmpl setlocal ft=htmldjango
 
 " Use real tabs in make files
 au FileType make setlocal noexpandtab
