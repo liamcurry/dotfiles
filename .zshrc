@@ -15,5 +15,5 @@ autoload -U compinit; compinit
 export AUTOJUMP_IGNORE_CASE=1
 
 # other env variables
-export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/python:$HOME/.rvm/bin
+export PATH=$HOME/.rvm/bin:/usr/local/share/python:/usr/local/sbin:/usr/local/bin:/usr/X11/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export EDITOR=vim
