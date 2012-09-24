@@ -1,26 +1,13 @@
-alias du='du -sh'
-alias diff='diff -u'
-alias mk='mkdir -p'
-alias p=popd
-alias o=open
-alias rrm='rm -rf'
+#!/usr/bin/env bash
 
-alias check=check.py
-alias django='python manage.py'
+
+alias mk='mkdir -p'
 
 # ls
-alias lsa='ls++ -a'
-
-# Arch
-alias pac=pacman
-alias y=yaourt
-alias ins='y -S'
-alias rem='y -Rs'
-alias net='sudo netcfg2 -a; sudo netcfg2'
-alias x=startx
+alias lsd='ls++ --potsf'
+alias lsa='ls++ --potsf -a'
 
 # git
-alias g=git
 alias gd='git diff'
 alias gs='git status'
 alias gci='git commit'
@@ -30,10 +17,30 @@ alias gv='git svn'
 alias gr='git rebase'
 alias gb='git branch'
 
-# Python
-alias py=python
-alias ip=ipython
-alias ipo=ipython
+command_exists () {
+  type "$1" &> /dev/null ;
+}
+
+if command_exists apt-get ; then
+  alias pkg-search='apt-cache search'
+  alias pkg-install='sudo apt-get install'
+  alias pkg-remove='sudo apt-get remove'
+elif command_exists brew ; then
+  alias pkg-search='brew search'
+  alias pkg-install='brew install'
+  alias pkg-remove='brew remove'
+elif command_exists port ; then
+  alias pkg-search='apt-cache search'
+  alias pkg-install='sudo apt-get install'
+  alias pkg-remove='sudo apt-get remove'
+fi
+
+alias pkgs='pkg-search'
+alias pkgi='pkg-install'
+alias pkgr='pkg-remove'
+
+# helpers
+alias src='source .ve/bin/activate'
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
@@ -59,3 +66,7 @@ alias -- -="cd -"
 
 # Fix crontab backups with vim. See .vimrc for more info, or http://goo.gl/LP6X0
 alias crontab="VIM_CRONTAB=true crontab"
+
+# Fix tmux colors being shitty with vim in ubuntu for some reason
+# http://stackoverflow.com/q/10158508/105428
+alias tmux="tmux -2"
