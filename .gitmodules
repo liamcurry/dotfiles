@@ -68,20 +68,17 @@
   path = .vim/bundle/neocomplcache
   url = git://github.com/Shougo/neocomplcache.git
 [submodule ".vim/bundle/tagbar"]
-	path = .vim/bundle/tagbar
-	url = git://github.com/majutsushi/tagbar.git
+  path = .vim/bundle/tagbar
+  url = git://github.com/majutsushi/tagbar.git
 [submodule ".vim/bundle/gist-vim"]
-	path = .vim/bundle/gist-vim
-	url = git://github.com/mattn/gist-vim.git
+  path = .vim/bundle/gist-vim
+  url = git://github.com/mattn/gist-vim.git
 [submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
-	url = git://github.com/robbyrussell/oh-my-zsh.git
+  path = .oh-my-zsh
+  url = git://github.com/robbyrussell/oh-my-zsh.git
 [submodule ".vim/bundle/sudo.vim"]
-	path = .vim/bundle/sudo.vim
-	url = git://github.com/vim-scripts/sudo.vim.git
+  path = .vim/bundle/sudo.vim
+  url = git://github.com/vim-scripts/sudo.vim.git
 [submodule ".vim/bundle/po.vim"]
-	path = .vim/bundle/po.vim
-	url = git://github.com/vim-scripts/po.vim--gray.git
-[submodule ".vim/bundle/dustjs.vim"]
-	path = .vim/bundle/dustjs.vim
-	url = git://github.com/jimmyhchan/dustjs.vim.git
+  path = .vim/bundle/po.vim
+  url = git://github.com/vim-scripts/po.vim--gray.git
