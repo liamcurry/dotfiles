@@ -83,5 +83,5 @@
   path = .vim/bundle/po.vim
   url = git://github.com/vim-scripts/po.vim--gray.git
 [submodule ".vim/bundle/vim-json"]
-	path = .vim/bundle/vim-json
-	url = git://github.com/elzr/vim-json.git
+  path = .vim/bundle/vim-json
+  url = git://github.com/elzr/vim-json.git
