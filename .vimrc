@@ -14,9 +14,14 @@ map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
-nnoremap <leader><space> :noh<cr>     " Clear search highlighting
-nnoremap <tab> %                      " Match bracket pairs with <tab>
-vnoremap <tab> %                      " Match bracket pairs with <tab>
+" Panel management
+nm <silent> <leader>- :split<cr>
+nm <silent> <leader><leader> :vsplit<cr>
+nm <silent> <leader>q :q<cr>
+
+nm <leader><space> :noh<cr>     " Clear search highlighting
+nm <tab> %                      " Match bracket pairs with <tab>
+vm <tab> %                      " Match bracket pairs with <tab>
 
 " General settings
 set viminfo+=n$HOME/.vim/.temp/viminfo  " Custom location of the .viminfo file

@@ -20,4 +20,4 @@
   interactive = auto
   grep = auto
 [web]
-  browser = chrome
+  browser = open
