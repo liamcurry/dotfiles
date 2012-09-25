@@ -19,20 +19,21 @@ nnoremap <tab> %                      " Match bracket pairs with <tab>
 vnoremap <tab> %                      " Match bracket pairs with <tab>
 
 " General settings
-set ruler                             " Show line/column numbers
-set nocompatible                      " Use vim, no vi defaults
-set number                            " Show line numbers
-set hidden                            " Save buffers when a tab is closed
-set showmatch                         " Show matching brackets
-set noerrorbells visualbell t_vb=     " Turn off annoying bells
-set cul                               " Highlight current line
-set autochdir                         " Automatically cd into directory with file
-set laststatus=2                      " Always show the status line
-set t_Co=256                          " Make sure vim knows it's 256 colors
-set tildeop                           " Easily switch caps for line
-set nospell                           " Turn off spell check
-set modelines=5                       " Turn on modelines (they're off by default on OSX)
-set clipboard=unnamed                 " Have to set this to use *p, *dd, etc.
+set viminfo+=n$HOME/.vim/.temp/viminfo  " Custom location of the .viminfo file
+set ruler                               " Show line/column numbers
+set nocompatible                        " Use vim, no vi defaults
+set number                              " Show line numbers
+set hidden                              " Save buffers when a tab is closed
+set showmatch                           " Show matching brackets
+set noerrorbells visualbell t_vb=       " Turn off annoying bells
+set cul                                 " Highlight current line
+set autochdir                           " Automatically cd into directory with file
+set laststatus=2                        " Always show the status line
+set t_Co=256                            " Make sure vim knows it's 256 colors
+set tildeop                             " Easily switch caps for line
+set nospell                             " Turn off spell check
+set modelines=5                         " Turn on modelines (they're off by default on OSX)
+set clipboard=unnamed                   " Have to set this to use *p, *dd, etc.
 
 " Encoding
 set encoding=utf-8                    " Default encoding is UTF-8

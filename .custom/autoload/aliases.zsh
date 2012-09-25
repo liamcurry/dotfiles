@@ -69,5 +69,3 @@ alias crontab="VIM_CRONTAB=true crontab"
 # Fix tmux colors being shitty with vim in ubuntu for some reason
 # http://stackoverflow.com/q/10158508/105428
 alias tmux="tmux -2"
-
-# Testing

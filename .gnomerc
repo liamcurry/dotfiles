@@ -1,9 +1,7 @@
-#!/usr/bin/env sh
-
-# Allows sharing of X11 and GTK clipboard
+# Share X11 and GTK clipboards
 autocutsel &
 autocutsel -s PRIMARY &
 
-# Swaps caps/ctrl
+# Swap capslock and ctrl
 /usr/bin/setxkbmap -option "ctrl:swapcaps"
 /usr/bin/setxkbmap -option "ctrl:nocaps"

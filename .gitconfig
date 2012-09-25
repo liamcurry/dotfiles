@@ -1,25 +1,23 @@
 [user]
   name = Liam Curry
   email = liam@curry.name
+[github]
+  user = liamcurry
 [core]
   whitespace = fix,space-before-tab,tab-in-indent,trailing-space
   editor = vim
 [apply]
   whitespace = fix
+[help]
+  autocorrect = 10
+[merge]
+  summary = true
 [color]
- branch = auto
- diff = auto
- status = auto
-[color "branch"]
- current = yellow reverse
- local = yellow
- remote = green
-[color "diff"]
- meta = yellow bold
- frag = magenta bold
- old = red
- new = cyan
-[color "status"]
- added = yellow
- changed = green
- untracked = cyan
+  ui = auto
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  grep = auto
+[web]
+  browser = chrome
