@@ -80,7 +80,7 @@ set listchars+=precedes:…             " Character to show when column continue
 set listchars+=eol:¬                  " Character to show when column continues beyond screen
 
 " Highlighting
-set cursorcolumn
+set cc=80                             " Shows cursor column at line 80
 set cursorline
 
 " Enable spell check for certain files
