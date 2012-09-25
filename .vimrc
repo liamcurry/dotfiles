@@ -1,9 +1,11 @@
+" Pathogen
 source ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
-
 call pathogen#infect()
+
 filetype plugin indent on
 syntax on
 
+" Theme
 color molokai
 
 " Movement
@@ -84,17 +86,11 @@ set listchars+=eol:¬                  " Character to show when column continues
 set cc=80                             " Shows cursor column at line 80
 set cursorline
 
-" Enable spell check for certain files
-au FileType markdown setlocal spell
-
 " CGI
 au BufNewFile,BufRead *.cgi setlocal ft=python
 
 " Django
 au BufNewFile,BufRead *.html setlocal ft=htmldjango
-
-" Use real tabs in make files
-au FileType make setlocal noexpandtab
 
 " Some special stuff for crontab
 if $VIM_CRONTAB == "true"
