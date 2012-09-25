@@ -11,7 +11,7 @@ guake_hotkey="<Control>semicolon"
 # Packages to be installed via apt
 packages_apt=(
   curl
-  vim
+  vim-gnome             # vim-gnome lets us use clipboard
   git
   zsh
   xclip                 # Allows copying text to the clipboard
@@ -27,6 +27,8 @@ packages_apt=(
   indicator-weather
   mongodb
   redis-server
+  tidy
+  csstidy
 )
 
 # Any packages not in the default sources
@@ -126,6 +128,11 @@ if [[ $debugging ]]; then
 fi
 
 # Don't really have to debug the rest
+
+# pip
+sudo curl http://python-distribute.org/distribute_setup.py | python
+sudo curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python
+sudo pip install flake8
 
 # Dotfiles
 please_print "Getting dotfiles from $dotfiles_repo (branch: $dotfiles_branch)"
