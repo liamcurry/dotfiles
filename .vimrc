@@ -30,6 +30,7 @@ set t_Co=256                          " Make sure vim knows it's 256 colors
 set tildeop                           " Easily switch caps for line
 set nospell                           " Turn off spell check
 set modelines=5                       " Turn on modelines (they're off by default on OSX)
+set clipboard=unnamed                 " Have to set this to use *p, *dd, etc.
 
 " Encoding
 set encoding=utf-8                    " Default encoding is UTF-8
@@ -86,21 +87,11 @@ set cursorline
 " Enable spell check for certain files
 au FileType markdown setlocal spell
 
-" Treat JSON files like Javascript
-"au BufNewFile,BufRead *.json setlocal ft=javascript
-
-" Nginx
-"au BufNewFile,BufRead *.conf setlocal ft=nginx
-au BufNewFile,BufRead *.conf setlocal ft=apache
-
 " CGI
 au BufNewFile,BufRead *.cgi setlocal ft=python
 
 " Django
 au BufNewFile,BufRead *.html setlocal ft=htmldjango
-
-" JS Templates
-au BufNewFile,BufRead *.tmpl setlocal ft=htmldjango
 
 " Use real tabs in make files
 au FileType make setlocal noexpandtab
