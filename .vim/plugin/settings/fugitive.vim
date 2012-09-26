@@ -1,8 +1,8 @@
 nm <silent> gs :Gstatus<cr>
 nm <silent> gb :Gbrowse<cr>
 nm <silent> gd :call ToggleGdiff()<cr>
-nm gc :Gcommit
-nm gm :Gmove
+nm gc :gcommit
+nm gm :gmove
 
 let g:gdiff_is_loaded = 0
 
