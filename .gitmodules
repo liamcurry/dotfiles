@@ -91,3 +91,6 @@
 [submodule ".vim/bundle/gundo.vim"]
 	path = .vim/bundle/gundo.vim
 	url = git://github.com/sjl/gundo.vim.git
+[submodule "/Users/bcurry/.vim/bundle/tumblr.vim"]
+	path = /Users/bcurry/.vim/bundle/tumblr.vim
+	url = git://github.com/liamcurry/tumblr.vim.git
