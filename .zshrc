@@ -8,7 +8,7 @@ plugins=(git pip autojump)
 source $ZSH/oh-my-zsh.sh
 
 # Will load any files you put in .autoload
-for file in $(find $autoload_dir -depth 1 -type f -or -type l); do
+for file in $(find $autoload_dir -maxdepth 1 -type f -or -type l); do
   source $file
 done
 
