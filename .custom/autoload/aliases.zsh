@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 alias mk='mkdir -p'
 
@@ -16,22 +16,23 @@ alias gv='git svn'
 alias gr='git rebase'
 alias gb='git branch'
 
+# Package management stuff
 command_exists () {
   type "$1" &> /dev/null ;
 }
 
-if command_exists apt-get ; then
+if command_exists apt-get; then
   alias pkg-search='apt-cache search'
   alias pkg-install='sudo apt-get install'
   alias pkg-remove='sudo apt-get remove'
-elif command_exists brew ; then
+elif command_exists brew; then
   alias pkg-search='brew search'
   alias pkg-install='brew install'
   alias pkg-remove='brew remove'
-elif command_exists port ; then
+elif command_exists port; then
   alias pkg-search='apt-cache search'
   alias pkg-install='sudo apt-get install'
-  alias pkg-remove='sudo apt-get remove'
+  alias pkg-remove='sudo apt-get autoremove --purge'
 fi
 
 alias pkgs='pkg-search'
@@ -40,6 +41,12 @@ alias pkgr='pkg-remove'
 
 # helpers
 alias src='source .ve/bin/activate'
+alias server='python -m SimpleHTTPServer'
+alias styl='stylus --watch --use nib'
+
+if command_exists xclip; then
+  alias copy='xclip -sel clip <'
+fi
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
