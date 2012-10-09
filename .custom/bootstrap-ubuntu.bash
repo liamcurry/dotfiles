@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 dotfiles_repo="git://github.com/liamcurry/dotfiles.git"
-dotfiles_branch="barebones"
+dotfiles_branch="master"
 
 dir_current=$PWD
 dir_downloads="~/Downloads"
@@ -47,79 +47,79 @@ packages_tar=(
   "http://nodejs.org/dist/v0.8.9/node-v0.8.9-linux-x64.tar.gz"
 )
 
-function please_print {
+function _pp {
   echo "--- $1"
 }
 
-function please_hr {
+function _pp_hr {
   echo "--------------------------------------"
 }
 
-function please_done {
-  please_print "Done! Moving on..."
-  please_hr
+function _pp_d {
+  _pp "Done! Moving on..."
+  _pp_hr
 }
 
-function please_debug {
-  please_print "*** DEBUGGING: $1"
+function _debug {
+  _pp "*** DEBUGGING: $1"
 }
 
-function run_or_debug {
+function _run {
   if [[ $debugging ]]; then
-    please_debug "Would have ran: $1"
+    _debug "Would have ran: $1"
   else
     `$1`
   fi
 }
 
-please_hr
-please_hr
-please_hr
+_pp_hr
+_pp_hr
+_pp_hr
 
-please_print "Allowing you to run sudo without a password"
-run_or_debug "sudo echo \"\\n$USER ALL=NOPASSWD: ALL\" >> /etc/sudoers"
-please_done
+_pp "Allowing you to run sudo without a password"
+_run "sudo echo \"\\n$USER ALL=NOPASSWD: ALL\" >> /etc/sudoers"
+_pp_d
 
-please_print "Installing apt-get packages..."
+_pp "Installing apt-get packages..."
 cmd_apt="sudo apt-get install -y ${packages_apt[@]}"
 if [[ $debugging ]]; then
-  please_debug "$cmd_apt"
+  _debug "$cmd_apt"
 else
   `$cmd_apt`
 fi
-please_done
+_pp_d
 
-please_print "Downloading debian packages..."
-run_or_debug "mkdir -p $dir_downloads && cd $dir_downloads"
-run_or_debug "wget ${packages_deb[@]} ${packages_tar[@]}"
-please_done
+_pp "Downloading debian packages..."
+_run "mkdir -p $dir_downloads && cd $dir_downloads"
+_run "wget ${packages_deb[@]} ${packages_tar[@]}"
+_pp_d
 
 
-please_print "Installing debian packages..."
+_pp "Installing debian packages..."
 for package in ${packages_deb[@]}; do
-  please_print "Installing $package_filename"
+  _pp "Installing $package_filename"
   package_filename="${package##*/}"
   package_filename="${package_filename%%\?*}"
   sudo dpkg -i "$package_filename"
 done
-please_done
+_pp_d
 
 # Extract and install tar packages
 for package in ${packages_tar[*]}; do
-  please_print "Installing $package_filename"
+  _pp "Installing $package_filename"
   package_filename="${package##*/}"
   package_filename="${package_filename%%\?*}"
   package_basename="${package_filename%*.tar.gz}"
-  run_or_debug "tar -xf $package_filename"
-  run_or_debug "cd $package_basename"
-  run_or_debug "./configure && make && sudo make install"
+  _run "tar -xf $package_filename"
+  _run "cd $package_basename"
+  _run "./configure && make && sudo make install"
 done
 
 # Add sources for the package manager
-please_print "Adding sources to /etc/apt/sources.list"
+_pp "Adding sources to /etc/apt/sources.list"
 for src in ${packages_apt_alt_srcs[@]}; do
-  please_print "Adding $src"
-  run_or_debug "sudo echo \"\\n$src\" >> /etc/apt/sources.list"
+  _pp "Adding $src"
+  _run "sudo echo \"\\n$src\" >> /etc/apt/sources.list"
 done
 
 
@@ -132,24 +132,26 @@ fi
 # pip
 sudo curl http://python-distribute.org/distribute_setup.py | python
 sudo curl https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python
-sudo pip install flake8
+sudo pip install flake8 virtualenv
 
 # Dotfiles
-please_print "Getting dotfiles from $dotfiles_repo (branch: $dotfiles_branch)"
+_pp "Getting dotfiles from $dotfiles_repo (branch: $dotfiles_branch)"
 cd ~
 git init
 git remote add -t $dotfiles_branch -f origin $dotfiles_repo
 git checkout $dotfiles_branch
 
-please_print "Getting submodules from dotfiles repo"
+_pp "Getting submodules from dotfiles repo"
 git submodule update --init --force
 git config status.showuntrackedfiles no
+_pp_d
 
-please_print "Making ZSH the default shell"
+_pp "Making ZSH the default shell"
 chsh -s /bin/zsh
+_pp_d
 
 # http://splatoperator.com/2012/02/dropbox-unable-to-monitor-filesystem/
-please_print "Fixing notification settings for Dropbox"
+_pp "Fixing notification settings for Dropbox"
 echo "fs.inotify.max_user_watches = 99999999999" | sudo tee /etc/sysctl.d/20-dropbox-inotify.conf
 sudo sysctl -p /etc/sysctl.d/20-dropbox-inotify.conf
 
@@ -157,9 +159,9 @@ sudo sysctl -p /etc/sysctl.d/20-dropbox-inotify.conf
 # http://www.spotify.com/us/download/previews/
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
 
-please_print "Setting guake hotkey to $guake_hotkey"
+_pp "Setting guake hotkey to $guake_hotkey"
 gconftool-2 -t string -s /apps/guake/keybindings/global/show_hide "$guake_hotkey"
-please_done
+_pp_d
 
 # I had to do this because tmux was looking for this folder
 if [[ ! -d /private ]]; then
@@ -168,14 +170,14 @@ if [[ ! -d /private ]]; then
 fi
 
 # http://www.nongnu.org/autocutsel/ http://superuser.com/a/177541/147375
-please_print "You can allow sharing of X11 and GTK's clipboard"
-please_print "autocutsel &; autocutsel -s PRIMARY &"
-please_print "An autostart script of this has been added to ~/.config/autostart/"
+_pp "You can allow sharing of X11 and GTK's clipboard"
+_pp "autocutsel &; autocutsel -s PRIMARY &"
+_pp "An autostart script of this has been added to ~/.config/autostart/"
 
 # TODO: add this to startup scripts automatically
 # http://askubuntu.com/a/149972/91891
-please_print "You can switching capslock and ctrl using this command:"
-please_print "/usr/bin/setxkbmap -option \"ctrl:swapcaps\" && /usr/bin/setxkbmap -option \"ctrl:nocaps\""
-please_print "An autostart script of this has been added to ~/.config/autostart/"
+_pp "You can switching capslock and ctrl using this command:"
+_pp "/usr/bin/setxkbmap -option \"ctrl:swapcaps\" && /usr/bin/setxkbmap -option \"ctrl:nocaps\""
+_pp "An autostart script of this has been added to ~/.config/autostart/"
 
 cd $dir_current
