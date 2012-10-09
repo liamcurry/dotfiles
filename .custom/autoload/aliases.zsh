@@ -44,8 +44,11 @@ alias src='source .ve/bin/activate'
 alias server='python -m SimpleHTTPServer'
 alias styl='stylus --watch --use nib'
 
+# Copy/paste from clipboard
 if command_exists xclip; then
   alias copy='xclip -sel clip <'
+elif command_exists pbcopy; then
+  alias copy='pbcopy <'
 fi
 
 # One of @janmoesen’s ProTip™s
