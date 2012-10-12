@@ -98,6 +98,8 @@ au BufNewFile,BufRead *.cgi setlocal ft=python
 " Django
 au BufNewFile,BufRead *.html setlocal ft=htmldjango
 
+"au BufWritePost *.md,*.markdown :silent !cat %:p | curl -X PUT -T - http://localhost:8090/
+
 " Some special stuff for crontab
 if $VIM_CRONTAB == "true"
   set nobackup

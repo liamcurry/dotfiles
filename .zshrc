@@ -29,3 +29,5 @@ $HOME/.rvm/bin:\
 /bin
 
 export EDITOR=vim
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
