@@ -20,6 +20,7 @@ export AUTOJUMP_IGNORE_CASE=1
 export PATH=\
 $HOME/.rvm/bin:\
 /usr/local/share/python:\
+/usr/local/share/npm/bin:\
 /usr/local/sbin:\
 /usr/local/bin:\
 /usr/X11/bin:\
