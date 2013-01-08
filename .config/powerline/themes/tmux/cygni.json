@@ -8,6 +8,10 @@
       {
         "module": "ip",
         "name": "external_ip"
+      },
+      {
+        "module": "uptime",
+        "name": "uptime"
       }
     ],
     "right": [

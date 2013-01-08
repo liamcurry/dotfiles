@@ -82,12 +82,16 @@
 
     "user_name": { "fg": "brightcyan", "bg": "darkblue", "attr": ["bold"] },
     "user_name_root": { "fg": "white", "bg": "brightred", "attr": ["bold"] },
-    "system_load": { "fg": "mediumcyan", "bg": "gray4" },
     "day": { "fg": "mediumorange", "bg": "gray2" },
     "date": { "fg": "mediumorange", "bg": "gray2" },
     "time": { "fg": "mediumorange", "bg": "gray2" },
     "forecast": { "fg": "white", "bg": "darkestcyan" },
-    "external_ip": { "fg": "white", "bg": "darkestcyan" }
+    "external_ip": { "fg": "white", "bg": "darkestcyan" },
+    "system_load": { "fg": "mediumcyan", "bg": "gray4" },
+    "system_load_good": { "fg": "brightgreen", "bg": "gray4" },
+    "system_load_bad": { "fg": "brightorange", "bg": "gray4" },
+    "system_load_ugly": { "fg": "brightred", "bg": "gray4" },
+    "uptime": { "fg": "mediumcyan", "bg": "gray4" }
   },
   "mode_translations": {
     "nc": {
