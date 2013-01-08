@@ -3,10 +3,12 @@ source ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
 filetype plugin indent on
-syntax on
+syntax enable
 
 " Theme
-color molokai
+"color molokai
+"set background=dark
+color zenburn
 
 " Movement
 map <C-k> <C-w><Up>

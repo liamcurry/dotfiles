@@ -1,0 +1,34 @@
+{
+  "common": {
+    "dividers": {
+      "left": {
+        "hard": "",
+        "soft": ""
+      },
+      "right": {
+        "hard": "",
+        "soft": ""
+      }
+    },
+    "paths": [
+      "~/.config/powerline/ext/tmux/segments"
+    ]
+  },
+  "ext": {
+    "terminal": {
+      "colorscheme": "zenburn",
+      "theme": "default"
+    },
+    "tmux": {
+      "colorscheme": "zenburn",
+      "theme": "custom"
+    },
+    "vim": {
+      "colorscheme": "zenburn",
+      "theme": "custom",
+      "local_themes": {
+        "help": "help"
+      }
+    }
+  }
+}

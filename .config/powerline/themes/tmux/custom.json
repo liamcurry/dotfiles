@@ -1,0 +1,19 @@
+{
+  "name": "custom",
+  "segments": {
+    "left": [
+      {
+        "name": "user_name"
+      }
+    ],
+    "right": [
+      {
+        "name": "user_name"
+      },
+      {
+        "name": "system_load",
+        "module": "system_load"
+      }
+    ]
+  }
+}
