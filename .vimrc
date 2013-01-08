@@ -7,8 +7,8 @@ syntax enable
 
 " Theme
 "color molokai
-"set background=dark
-color zenburn
+set background=dark
+color solarized
 
 " Movement
 map <C-k> <C-w><Up>
@@ -94,11 +94,9 @@ set listchars+=eol:¬                  " Character to show when column continues
 set cc=80                             " Shows cursor column at line 80
 set cursorline
 
-" CGI
 au BufNewFile,BufRead *.cgi setlocal ft=python
-
-" Django
 au BufNewFile,BufRead *.html setlocal ft=htmldjango
+au BufNewFile,BufRead *.zsh-theme setlocal ft=zsh
 
 "au BufWritePost *.md,*.markdown :silent !cat %:p | curl -X PUT -T - http://localhost:8090/
 

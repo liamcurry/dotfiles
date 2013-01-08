@@ -3,8 +3,7 @@
 alias mk='mkdir -p'
 
 # ls
-alias lsd='ls++ --potsf'
-alias lsa='ls++ --potsf -a'
+alias lsa='ls -la'
 
 # git
 alias gd='git diff'

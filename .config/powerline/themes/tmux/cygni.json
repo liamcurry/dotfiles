@@ -1,0 +1,36 @@
+{
+  "name": "custom",
+  "segments": {
+    "left": [
+      {
+        "name": "user_name"
+      },
+      {
+        "module": "ip",
+        "name": "external_ip"
+      }
+    ],
+    "right": [
+      {
+        "module": "load",
+        "name": "system_load"
+      },
+      {
+        "module": "weather",
+        "name": "forecast"
+      },
+      {
+        "module": "date",
+        "name": "day"
+      },
+      {
+        "module": "date",
+        "name": "date"
+      },
+      {
+        "module": "date",
+        "name": "time"
+      }
+    ]
+  }
+}

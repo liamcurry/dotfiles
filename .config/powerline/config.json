@@ -16,16 +16,16 @@
   },
   "ext": {
     "terminal": {
-      "colorscheme": "zenburn",
-      "theme": "default"
+      "colorscheme": "cygni",
+      "theme": "cygni"
     },
     "tmux": {
-      "colorscheme": "zenburn",
-      "theme": "custom"
+      "colorscheme": "cygni",
+      "theme": "cygni"
     },
     "vim": {
-      "colorscheme": "zenburn",
-      "theme": "custom",
+      "colorscheme": "cygni",
+      "theme": "cygni",
       "local_themes": {
         "help": "help"
       }

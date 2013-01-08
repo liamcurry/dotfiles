@@ -97,6 +97,7 @@ chatnets = {
     max_whois = "30";
   };
   SILC = { type = "SILC"; };
+  "irc.onroids.com" = { type = "IRC"; };
 };
 
 channels = (

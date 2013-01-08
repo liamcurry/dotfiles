@@ -2,8 +2,10 @@
 *.swp
 *.un~
 Session.vim
-.vim/_backups/*.swp
-.vim/_temp/*.swp
+.vim/.backups/*
+.vim/.temp/*
+.vim/.undo/*
+.vim/.NERDTreeBookmarks
 
 # OSX
 .DS_Store

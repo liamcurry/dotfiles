@@ -12,9 +12,9 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(
 from powerline.core import Powerline
 
 pl = Powerline('tmux')
-left, right = pl.renderer.get_theme().get_segments()
 
-segments = [right]
-if sys.argv[1] == 'left':
-    segments = [left]
-print(pl.renderer.render('n', segments=segments).encode('utf-8'))
+side = sys.argv[1]
+segments_all = pl.renderer.get_theme().get_segments()
+segments_side = [segment for segment in segments_all if segment['side'] == side]
+
+print(pl.renderer.render('n', segments=segments_side).encode('utf-8'))

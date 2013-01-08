@@ -1,6 +1,7 @@
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o', '\~$', 'node_modules']
 let NERDTreeHijackNetrw = 0
 let NERDTreeBookmarksFile = expand("$HOME/.vim/.NERDTreeBookmarks")
+let NERDTreeShowHidden = 1
 
 " Always open with NERDTree
 au vimenter * NERDTree
