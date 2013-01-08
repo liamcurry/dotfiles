@@ -12,6 +12,6 @@ def system_load():
     else:
         gradient = 'system_load_ugly'
     return {
-        'contents': str(averages)[1:-1],
+        'contents': '%.1f, %.1f, %.1f' % averages,
         'highlight': [gradient, 'system_load']
     }

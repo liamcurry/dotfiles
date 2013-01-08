@@ -24,4 +24,12 @@ export PATH=$HOME/.rvm/bin:/usr/local/share/python:/usr/local/share/npm/bin:\
 export EDITOR=vim
 export TERM=xterm-256color
 
-eval `dircolors ~/.dir_colors`
+if command_exists gdircolors; then
+  export PATH=`brew --prefix`/Cellar/coreutils/8.20/libexec/gnubin:$PATH
+fi
+
+if command_exists dircolors; then
+  eval `dircolors ~/.dir_colors`
+else
+  export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+fi

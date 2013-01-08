@@ -1,9 +1,12 @@
 #!/usr/bin/env zsh
+#
+command_exists () {
+  type "$1" &> /dev/null ;
+}
 
 alias mk='mkdir -p'
 
-# ls
-alias lsa='ls -la'
+alias lsa='ls --color=auto -la'
 
 # git
 alias gd='git diff'
@@ -16,27 +19,19 @@ alias gr='git rebase'
 alias gb='git branch'
 
 # Package management stuff
-command_exists () {
-  type "$1" &> /dev/null ;
-}
-
 if command_exists apt-get; then
-  alias pkg-search='apt-cache search'
-  alias pkg-install='sudo apt-get install'
-  alias pkg-remove='sudo apt-get remove'
+  alias pkks='apt-cache search'
+  alias pkgi='sudo apt-get install'
+  alias pkgr='sudo apt-get remove'
 elif command_exists brew; then
-  alias pkg-search='brew search'
-  alias pkg-install='brew install'
-  alias pkg-remove='brew remove'
+  alias pkgs='brew search'
+  alias pkgi='brew install'
+  alias pkgr='brew remove'
 elif command_exists port; then
-  alias pkg-search='apt-cache search'
-  alias pkg-install='sudo apt-get install'
-  alias pkg-remove='sudo apt-get autoremove --purge'
+  alias pkgs='apt-cache search'
+  alias pkgi='sudo apt-get install'
+  alias pkgr='sudo apt-get autoremove --purge'
 fi
-
-alias pkgs='pkg-search'
-alias pkgi='pkg-install'
-alias pkgr='pkg-remove'
 
 # helpers
 alias src='source .ve/bin/activate'
