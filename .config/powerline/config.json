@@ -9,19 +9,16 @@
         "hard": "",
         "soft": ""
       }
-    },
-    "paths": [
-      "~/.config/powerline/ext/tmux/segments"
-    ]
+    }
   },
   "ext": {
     "terminal": {
-      "colorscheme": "cygni",
-      "theme": "cygni"
+      "colorscheme": "default",
+      "theme": "default"
     },
     "tmux": {
-      "colorscheme": "cygni",
-      "theme": "cygni"
+      "colorscheme": "default",
+      "theme": "default"
     },
     "vim": {
       "colorscheme": "cygni",

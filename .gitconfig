@@ -21,3 +21,6 @@
   grep = auto
 [web]
   browser = open
+[alias]
+  tree = log --graph --decorate --pretty=oneline --abbrev-commit
+  update-submodules = submodule foreach git pull origin

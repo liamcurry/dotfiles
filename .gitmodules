@@ -103,9 +103,6 @@
 [submodule ".vim/bundle/Zenburn"]
   path = .vim/bundle/Zenburn
   url = git://github.com/jnurmine/Zenburn
-[submodule ".config/powerline/addons"]
-  path = .config/powerline/addons
-  url = git://github.com/liamcurry/powerline-addons.git
 [submodule ".powerline"]
   path = .powerline
   url = git://github.com/liamcurry/powerline.git
