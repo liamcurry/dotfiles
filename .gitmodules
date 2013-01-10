@@ -100,12 +100,12 @@
 [submodule ".vim/bundle/vim-colors-solarized"]
   path = .vim/bundle/vim-colors-solarized
   url = git://github.com/altercation/vim-colors-solarized.git
-[submodule ".powerline"]
-  path = .powerline
-  url = git://github.com/Lokaltog/powerline.git
 [submodule ".vim/bundle/Zenburn"]
   path = .vim/bundle/Zenburn
-  url = https://github.com/jnurmine/Zenburn
-[submodule "/home/cygni/.config/powerline/addons"]
+  url = git://github.com/jnurmine/Zenburn
+[submodule ".config/powerline/addons"]
   path = .config/powerline/addons
-  url = git@github.com:liamcurry/powerline-addons.git
+  url = git://github.com/liamcurry/powerline-addons.git
+[submodule ".powerline"]
+  path = .powerline
+  url = git://github.com/liamcurry/powerline.git
