@@ -24,9 +24,11 @@ export PATH=$HOME/.rvm/bin:/usr/local/share/python:/usr/local/share/npm/bin:\
 export EDITOR=vim
 export TERM=xterm-256color
 
-export WORKON_HOME=~/.virtualenvs
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-source virtualenvwrapper.sh
+if command_exists virtualenvwrapper.sh; then
+  export WORKON_HOME=~/.virtualenvs
+  export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+  source virtualenvwrapper.sh
+fi
 
 if command_exists gdircolors; then
   export PATH=`brew --prefix`/Cellar/coreutils/8.20/libexec/gnubin:$PATH
