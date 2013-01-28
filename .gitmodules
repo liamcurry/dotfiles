@@ -1,9 +1,6 @@
 [submodule ".vim/bundle/vim-stylus"]
   path = .vim/bundle/vim-stylus
   url = git://github.com/wavded/vim-stylus.git
-[submodule ".vim/bundle/zencoding-vim"]
-  path = .vim/bundle/zencoding-vim
-  url = git://github.com/mattn/zencoding-vim.git
 [submodule ".vim/bundle/vim-pathogen"]
   path = .vim/bundle/vim-pathogen
   url = git://github.com/tpope/vim-pathogen.git
@@ -16,9 +13,6 @@
 [submodule ".vim/bundle/ctrlp"]
   path = .vim/bundle/ctrlp
   url = git://github.com/kien/ctrlp.vim.git
-[submodule ".vim/bundle/molokai"]
-  path = .vim/bundle/molokai
-  url = git://github.com/vim-scripts/molokai.git
 [submodule ".vim/bundle/vim-indent-object"]
   path = .vim/bundle/vim-indent-object
   url = git://github.com/michaeljsmith/vim-indent-object.git
@@ -55,21 +49,6 @@
 [submodule ".vim/bundle/vim-coffee-script"]
   path = .vim/bundle/vim-coffee-script
   url = git://github.com/kchmck/vim-coffee-script.git
-[submodule ".vim/bundle/vim-fugitive"]
-  path = .vim/bundle/vim-fugitive
-  url = git://github.com/tpope/vim-fugitive.git
-[submodule ".vim/bundle/vim-extradite"]
-  path = .vim/bundle/vim-extradite
-  url = git://github.com/int3/vim-extradite.git
-[submodule ".vim/bundle/neocomplcache"]
-  path = .vim/bundle/neocomplcache
-  url = git://github.com/Shougo/neocomplcache.git
-[submodule ".vim/bundle/tagbar"]
-  path = .vim/bundle/tagbar
-  url = git://github.com/majutsushi/tagbar.git
-[submodule ".vim/bundle/gist-vim"]
-  path = .vim/bundle/gist-vim
-  url = git://github.com/mattn/gist-vim.git
 [submodule ".oh-my-zsh"]
   path = .oh-my-zsh
   url = git://github.com/robbyrussell/oh-my-zsh.git
@@ -85,24 +64,18 @@
 [submodule ".vim/bundle/vim-git"]
   path = .vim/bundle/vim-git
   url = git://github.com/tpope/vim-git.git
-[submodule ".vim/bundle/gundo.vim"]
-  path = .vim/bundle/gundo.vim
-  url = git://github.com/sjl/gundo.vim.git
 [submodule ".vim/bundle/tumblr.vim"]
   path = .vim/bundle/tumblr.vim
   url = git://github.com/liamcurry/tumblr.vim.git
 [submodule ".vim/bundle/vim-markdown"]
   path = .vim/bundle/vim-markdown
   url = git://github.com/tpope/vim-markdown.git
-[submodule ".vim/bundle/vim-instant-markdown"]
-  path = .vim/bundle/vim-instant-markdown
-  url = git://github.com/liamcurry/vim-instant-markdown.git
 [submodule ".vim/bundle/vim-colors-solarized"]
   path = .vim/bundle/vim-colors-solarized
   url = git://github.com/altercation/vim-colors-solarized.git
-[submodule ".vim/bundle/Zenburn"]
-  path = .vim/bundle/Zenburn
-  url = git://github.com/jnurmine/Zenburn
 [submodule ".powerline"]
   path = .powerline
   url = git://github.com/liamcurry/powerline.git
+[submodule ".vim/bundle/salt-vim"]
+  path = .vim/bundle/salt-vim
+  url = git://github.com/saltstack/salt-vim.git
