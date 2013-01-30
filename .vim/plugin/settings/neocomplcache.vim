@@ -22,18 +22,18 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 " Plugin key-mappings.
-inoremap <expr><C-g>  neocomplcache#undo_completion()
-inoremap <expr><C-l>  neocomplcache#complete_common_string()
+"inoremap <expr><C-g>  neocomplcache#undo_completion()
+"inoremap <expr><C-l>  neocomplcache#complete_common_string()
 
 " <CR>: close popup and save indent.
-inoremap <expr><CR>   neocomplcache#smart_close_popup() . "\<CR>"
+"inoremap <expr><CR>   neocomplcache#smart_close_popup() . "\<CR>"
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+"inoremap <expr><C-h>  neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-y>  neocomplcache#close_popup()
+"inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 " Enable omni completion.
 au FileType css setlocal omnifunc=csscomplete#CompleteCSS
