@@ -20,7 +20,7 @@ alias gb='git branch'
 
 # Package management stuff
 if command_exists apt-get; then
-  alias pkks='apt-cache search'
+  alias pkgs='apt-cache search'
   alias pkgi='sudo apt-get install'
   alias pkgr='sudo apt-get remove'
 elif command_exists brew; then
