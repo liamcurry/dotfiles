@@ -1,9 +1,6 @@
 [submodule ".vim/bundle/vim-stylus"]
   path = .vim/bundle/vim-stylus
   url = git://github.com/wavded/vim-stylus.git
-[submodule ".vim/bundle/zencoding-vim"]
-  path = .vim/bundle/zencoding-vim
-  url = git://github.com/mattn/zencoding-vim.git
 [submodule ".vim/bundle/vim-pathogen"]
   path = .vim/bundle/vim-pathogen
   url = git://github.com/tpope/vim-pathogen.git
@@ -106,3 +103,6 @@
 [submodule ".powerline"]
   path = .powerline
   url = git://github.com/liamcurry/powerline.git
+[submodule ".vim/bundle/YouCompleteMe"]
+  path = .vim/bundle/YouCompleteMe
+  url = https://github.com/Valloric/YouCompleteMe.git

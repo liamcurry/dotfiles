@@ -23,6 +23,7 @@ export PATH=$HOME/.rvm/bin:/usr/local/share/python:/usr/local/share/npm/bin:\
 
 export EDITOR=vim
 export TERM=xterm-256color
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH  # for pygit2
 
 if command_exists virtualenvwrapper.sh; then
   export WORKON_HOME=~/.virtualenvs
