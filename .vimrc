@@ -109,3 +109,5 @@ if $VIM_CRONTAB == "true"
   set nobackup
   set nowritebackup
 endif
+
+let g:pymode_indent = 0             " Disable pymode indent -- use pep-8 indent instead
