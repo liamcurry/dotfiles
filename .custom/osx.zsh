@@ -11,10 +11,10 @@ while true; do
 done 2>/dev/null &
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "air"
-sudo scutil --set HostName "air"
-sudo scutil --set LocalHostName "air"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "air"
+sudo scutil --set ComputerName "work"
+sudo scutil --set HostName "work"
+sudo scutil --set LocalHostName "work"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "work"
 
 # Enable Safari's debug menu
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true

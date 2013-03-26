@@ -2,9 +2,6 @@
 *.swp
 *.un~
 Session.vim
-.vim/.backups/*
-.vim/.temp/*
-.vim/.undo/*
 .vim/.NERDTreeBookmarks
 
 # OSX
