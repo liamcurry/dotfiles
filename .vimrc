@@ -39,7 +39,7 @@ set showmatch                           " Show matching brackets
 set noerrorbells visualbell t_vb=       " Turn off annoying bells
 set cul                                 " Highlight current line
 set autochdir                           " Automatically cd into directory with file
-set laststatus=2                        " Always show the status line
+set laststatus=0                        " Never show the status line
 set t_Co=256                            " Make sure vim knows it's 256 colors
 set tildeop                             " Easily switch caps for line
 set nospell                             " Turn off spell check
