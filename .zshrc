@@ -5,7 +5,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git pip autojump)
 
 source $ZSH/oh-my-zsh.sh
-source .aliases
+source $HOME/.aliases
 
 # enabling autojump autocomplete
 # https://github.com/joelthelion/autojump/issues/86

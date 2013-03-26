@@ -139,11 +139,9 @@ au bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType 
 
 " Powerline
 " http://lokaltog.github.com/powerline/overview.html#vim-usage
-source ~/.powerline/powerline/ext/vim/source_plugin.vim
-python from powerline.ext.vim import source_plugin; source_plugin()
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_cache_enabled = 1
-
+"set rtp+=$HOME/.powerline/powerline/bindings/vim
+"let g:Powerline_symbols = 'fancy'
+"let g:Powerline_cache_enabled = 1
 
 " Syntastic
 let g:syntastic_check_on_open = 1
