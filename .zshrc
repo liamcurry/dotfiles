@@ -2,7 +2,7 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="cygni"
 COMPLETION_WAITING_DOTS="true"
-plugins=(git pip autojump)
+plugins=(git pip autojump django virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
