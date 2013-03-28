@@ -6,9 +6,27 @@ filetype plugin indent on
 syntax enable
 
 " Theme
-"color molokai
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
 set background=dark
 color solarized
+
+hi SignColumn ctermbg=black
+hi VertSplit ctermbg=black ctermfg=black
+hi GitGutterAdd ctermbg=black
+hi GitGutterChange ctermbg=black
+hi GitGutterDelete ctermbg=black
+hi GitGutterChangeDelete ctermbg=black
+hi StatusLine ctermfg=white ctermbg=black
+hi CursorLine ctermbg=bg
+hi StatusLineNC ctermbg=white ctermfg=black
+hi SyntasticErrorSign ctermbg=black
+hi SyntasticWarningSign ctermbg=black
+hi SyntasticStyleErrorSign ctermbg=black
+hi SyntasticStyleWarningSign ctermbg=black
+hi Error ctermbg=black
+hi Todo ctermbg=black
+
 
 " Movement
 map <C-k> <C-w><Up>
@@ -39,7 +57,7 @@ set showmatch                           " Show matching brackets
 set noerrorbells visualbell t_vb=       " Turn off annoying bells
 set cul                                 " Highlight current line
 set autochdir                           " Automatically cd into directory with file
-set laststatus=0                        " Never show the status line
+set laststatus=2                        " Never show the status line
 set t_Co=256                            " Make sure vim knows it's 256 colors
 set tildeop                             " Easily switch caps for line
 set nospell                             " Turn off spell check
@@ -149,4 +167,10 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 2
 let g:syntastic_quiet_warnings = 0
 let g:syntastic_enable_highlighting = 1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
 "let g:syntastic_python_checker_args = \"--ignore=E128,E501"
+
+
+" gitgutter
+let g:gitgutter_sign_column_always = 1

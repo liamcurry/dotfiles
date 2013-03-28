@@ -37,6 +37,7 @@ fi
 alias src='source .ve/bin/activate'
 alias server='python -m SimpleHTTPServer'
 alias styl='stylus --watch --use nib'
+alias battery="pmset -g batt | egrep \"([0-9]+\\%).*\" -o --colour=auto | cut -f1 -d';'"
 
 # Copy/paste from clipboard
 if command_exists xclip; then
