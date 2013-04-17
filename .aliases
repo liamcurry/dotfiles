@@ -6,7 +6,7 @@ command_exists () {
 
 alias mk='mkdir -p'
 
-alias lsa='ls --color=auto -la'
+alias lsa='ls -la'
 
 # git
 alias gd='git diff'

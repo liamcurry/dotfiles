@@ -34,6 +34,12 @@ map <C-j> <C-w><Down>
 map <C-l> <C-w><Right>
 map <C-h> <C-w><Left>
 
+" Use CTRL-S for saving, also in Insert mode
+nnoremap <C-S> :<C-U>update<CR>
+vnoremap <C-S> :<C-U>update<CR>gv
+cnoremap <C-S> <C-C>:update<CR>
+inoremap <C-S> <C-O>:update<CR>
+
 " Buffers
 map <C-n> :bnext<cr>
 map <C-p> :bprevious<cr>
@@ -169,6 +175,7 @@ let g:syntastic_quiet_warnings = 0
 let g:syntastic_enable_highlighting = 1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
+let g:syntastic_python_checkers=['flake8', 'py3kwarn']
 "let g:syntastic_python_checker_args = \"--ignore=E128,E501"
 
 
