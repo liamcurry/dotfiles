@@ -19,15 +19,16 @@ hi GitGutterChange ctermbg=white ctermfg=3
 hi GitGutterDelete ctermfg=1 ctermbg=15 guifg=White guibg=Red
 hi GitGutterChangeDelete ctermbg=white
 hi CursorLine ctermbg=bg
-hi StatusLine ctermbg=6 ctermfg=7
-hi StatusLineNC ctermbg=7 ctermfg=7
-hi SyntasticErrorSign ctermbg=white
-hi SyntasticWarningSign ctermbg=white
-hi SyntasticStyleErrorSign ctermbg=white
-hi SyntasticStyleWarningSign ctermbg=white
+hi StatusLine ctermbg=1 ctermfg=bg
+hi StatusLineNC ctermbg=12 ctermfg=bg
+hi SyntasticErrorSign ctermbg=1
+hi SyntasticWarningSign ctermbg=3
+hi SyntasticStyleErrorSign ctermbg=1
+hi SyntasticStyleWarningSign ctermbg=3
 hi Error ctermbg=white
 hi Todo ctermbg=white
-
+hi NonText guifg=bg ctermfg=bg
+match ErrorMsg '\%>80v.\+'
 
 " Movement
 map <C-k> <C-w><Up>
@@ -40,6 +41,9 @@ nnoremap <C-S> :<C-U>update<CR>
 vnoremap <C-S> :<C-U>update<CR>gv
 cnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
+
+" autosaving
+set updatetime=1
 
 " Buffers
 map <C-n> :bnext<cr>
@@ -126,9 +130,6 @@ set cursorline
 au BufNewFile,BufRead *.cgi setlocal ft=python
 au BufNewFile,BufRead *.html setlocal ft=htmldjango
 au BufNewFile,BufRead *.zsh-theme setlocal ft=zsh
-match ErrorMsg '\%>80v.\+'
-
-set updatetime=1
 
 "au BufWritePost *.md,*.markdown :silent !cat %:p | curl -X PUT -T - http://localhost:8090/
 
