@@ -9,6 +9,7 @@
 My treasure chest of various dotfiles in my home directory.
 
 ::
+
     $ pkgi tmux autojump zsh
     $ sudo easy_install pip readline
     $ sudo pip install flake8 virtualenvwrapper ipython py3kwarn
