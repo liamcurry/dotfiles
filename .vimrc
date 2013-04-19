@@ -8,24 +8,25 @@ syntax enable
 " Theme
 let g:solarized_contrast="high"
 let g:solarized_visibility="high"
-set background=dark
+set background=light
 color solarized
 
-hi SignColumn ctermbg=black
-hi VertSplit ctermbg=black ctermfg=black
-hi GitGutterAdd ctermbg=black
-hi GitGutterChange ctermbg=black
-hi GitGutterDelete ctermbg=black
-hi GitGutterChangeDelete ctermbg=black
-hi StatusLine ctermfg=white ctermbg=black
+hi SignColumn ctermbg=white
+hi VertSplit ctermbg=white ctermfg=white
+hi LineNr ctermbg=bg ctermfg=7
+hi GitGutterAdd ctermfg=2
+hi GitGutterChange ctermbg=white ctermfg=3
+hi GitGutterDelete ctermfg=1 ctermbg=15 guifg=White guibg=Red
+hi GitGutterChangeDelete ctermbg=white
 hi CursorLine ctermbg=bg
-hi StatusLineNC ctermbg=white ctermfg=black
-hi SyntasticErrorSign ctermbg=black
-hi SyntasticWarningSign ctermbg=black
-hi SyntasticStyleErrorSign ctermbg=black
-hi SyntasticStyleWarningSign ctermbg=black
-hi Error ctermbg=black
-hi Todo ctermbg=black
+hi StatusLine ctermbg=6 ctermfg=7
+hi StatusLineNC ctermbg=7 ctermfg=7
+hi SyntasticErrorSign ctermbg=white
+hi SyntasticWarningSign ctermbg=white
+hi SyntasticStyleErrorSign ctermbg=white
+hi SyntasticStyleWarningSign ctermbg=white
+hi Error ctermbg=white
+hi Todo ctermbg=white
 
 
 " Movement
@@ -119,12 +120,15 @@ set listchars+=precedes:…             " Character to show when column continue
 set listchars+=eol:¬                  " Character to show when column continues beyond screen
 
 " Highlighting
-set cc=80                             " Shows cursor column at line 80
+set cc=0                             " Shows cursor column at line 80
 set cursorline
 
 au BufNewFile,BufRead *.cgi setlocal ft=python
 au BufNewFile,BufRead *.html setlocal ft=htmldjango
 au BufNewFile,BufRead *.zsh-theme setlocal ft=zsh
+match ErrorMsg '\%>80v.\+'
+
+set updatetime=1
 
 "au BufWritePost *.md,*.markdown :silent !cat %:p | curl -X PUT -T - http://localhost:8090/
 
@@ -141,17 +145,22 @@ let g:ctrlp_map = '<C-t>'
 let g:ctrlp_max_height = 10
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|node_modules\|\.sass-cache\|\.ve',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|node_modules\|\.sass-cache\|\.ve|virtualenv',
   \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.DS_Store$',
   \ 'link': '',
   \ }
 
 
 " NERDTree
-let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o', '\~$', 'node_modules']
+let NERDTreeIgnore = [
+  \ '\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o', '\~$',
+  \ 'node_modules', 'virtualenv'
+  \ ]
 let NERDTreeHijackNetrw = 0
 let NERDTreeBookmarksFile = expand("$HOME/.vim/.NERDTreeBookmarks")
 let NERDTreeShowHidden = 1
+let NERDTreeStatusLine = 0
+let NERDTreeMinimalUI = 1
 au vimenter * NERDTree                            " Always open with NERDTree
 au vimenter * if !argc() | NERDTree | endif       " Open even when no files are specified
 au vimenter * wincmd p                            " ...and then switch to the right buffer
