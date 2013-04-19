@@ -152,20 +152,12 @@ let NERDTreeIgnore = ['\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o',
 let NERDTreeHijackNetrw = 0
 let NERDTreeBookmarksFile = expand("$HOME/.vim/.NERDTreeBookmarks")
 let NERDTreeShowHidden = 1
-
 au vimenter * NERDTree                            " Always open with NERDTree
 au vimenter * if !argc() | NERDTree | endif       " Open even when no files are specified
 au vimenter * wincmd p                            " ...and then switch to the right buffer
-
 " Close NERDTree automatically if it is the last buffer
 au bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-
-" Powerline
-" http://lokaltog.github.com/powerline/overview.html#vim-usage
-"set rtp+=$HOME/.powerline/powerline/bindings/vim
-"let g:Powerline_symbols = 'fancy'
-"let g:Powerline_cache_enabled = 1
 
 " Syntastic
 let g:syntastic_check_on_open = 1
@@ -177,7 +169,6 @@ let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_python_checkers=['flake8', 'py3kwarn']
 "let g:syntastic_python_checker_args = \"--ignore=E128,E501"
-
 
 " gitgutter
 let g:gitgutter_sign_column_always = 1
