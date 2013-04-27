@@ -42,9 +42,6 @@ vnoremap <C-S> :<C-U>update<CR>gv
 cnoremap <C-S> <C-C>:update<CR>
 inoremap <C-S> <C-O>:update<CR>
 
-" autosaving
-set updatetime=1
-
 " Buffers
 map <C-n> :bnext<cr>
 map <C-p> :bprevious<cr>
@@ -182,3 +179,37 @@ let g:syntastic_python_checkers=['flake8', 'py3kwarn']
 
 " gitgutter
 let g:gitgutter_sign_column_always = 1
+
+
+" autosave
+let s:save_cpo = &cpo
+let g:auto_save = 0
+
+set cpo&vim
+set updatetime=200
+
+au CursorHold,InsertLeave * call AutoSave()
+
+command! AutoSaveToggle :call AutoSaveToggle()
+
+function! AutoSave()
+  if g:auto_save >= 1
+    let was_modified = &modified
+    silent! wa
+    if was_modified && !&modified
+      echo "(autosaved at " . strftime("%T") . ")"
+    endif
+  endif
+endfunction
+
+function! AutoSaveToggle()
+  if g:auto_save >= 1
+    let g:auto_save = 0
+    echo "AutoSave is OFF"
+  else
+    let g:auto_save = 1
+    echo "AutoSave is ON"
+  endif
+endfunction
+
+let &cpo = s:save_cpo
