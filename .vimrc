@@ -6,29 +6,41 @@ filetype plugin indent on
 syntax enable
 
 " Theme
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
-set background=light
-color solarized
-
-hi SignColumn ctermbg=white
-hi VertSplit ctermbg=white ctermfg=white
-hi LineNr ctermbg=bg ctermfg=7
-hi GitGutterAdd ctermfg=2
-hi GitGutterChange ctermbg=white ctermfg=3
-hi GitGutterDelete ctermfg=1 ctermbg=15 guifg=White guibg=Red
-hi GitGutterChangeDelete ctermbg=white
-hi CursorLine ctermbg=bg
-hi StatusLine ctermbg=1 ctermfg=bg
-hi StatusLineNC ctermbg=12 ctermfg=bg
-hi SyntasticErrorSign ctermbg=1
-hi SyntasticWarningSign ctermbg=3
-hi SyntasticStyleErrorSign ctermbg=1
-hi SyntasticStyleWarningSign ctermbg=3
-hi Error ctermbg=white
-hi Todo ctermbg=white
-hi NonText guifg=bg ctermfg=bg
+"let g:solarized_contrast="high"
+"let g:solarized_visibility="high"
+"set background=light
+"color solarized
+"hi SignColumn ctermbg=white
+"hi VertSplit ctermbg=white ctermfg=white
+"hi LineNr ctermbg=bg ctermfg=7
+"hi GitGutterAdd ctermfg=2
+"hi GitGutterChange ctermbg=white ctermfg=3
+"hi GitGutterDelete ctermfg=1 ctermbg=15 guifg=White guibg=Red
+"hi GitGutterChangeDelete ctermbg=white
+"hi CursorLine ctermbg=bg
+"hi StatusLine ctermbg=1 ctermfg=bg
+"hi StatusLineNC ctermbg=12 ctermfg=bg
+"hi SyntasticErrorSign ctermbg=1
+"hi SyntasticWarningSign ctermbg=3
+"hi SyntasticStyleErrorSign ctermbg=1
+"hi SyntasticStyleWarningSign ctermbg=3
+"hi Error ctermbg=white
+"hi Todo ctermbg=white
+"hi NonText guifg=bg ctermfg=bg
 match ErrorMsg '\%>80v.\+'
+
+set background=dark
+color base16-default
+hi StatusLine ctermbg=bg ctermfg=white
+hi StatusLineNC ctermbg=bg ctermfg=bg
+hi VertSplit ctermbg=bg ctermfg=bg
+hi SignColumn ctermbg=bg
+hi LineNr ctermbg=bg
+hi GitGutterAdd ctermbg=bg
+hi GitGutterChange ctermbg=bg
+hi GitGutterDelete ctermbg=bg
+hi GitGutterChangeDelete ctermbg=bg
+hi CursorLine ctermbg=16
 
 " Movement
 map <C-k> <C-w><Up>
@@ -106,6 +118,11 @@ set wildmenu
 set wildignore=*.dll,*.o,*.pyc,*.jpg,*.png,*.gif
 set wildmode=list:longest
 
+" Disable .swp files for watchdog
+set nowritebackup
+set noswapfile
+set nobackup
+
 " Backup and swap directories
 set backupdir=~/.vim/.backup//        " Where to put backup files
 set directory=~/.vim/.temp//          " Where to put swap files
@@ -143,7 +160,7 @@ let g:ctrlp_map = '<C-t>'
 let g:ctrlp_max_height = 10
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|node_modules\|\.sass-cache\|\.ve|virtualenv',
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|node_modules\|\.sass-cache\|\.ve\|virtualenv\|venv',
   \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.DS_Store$',
   \ 'link': '',
   \ }
@@ -152,7 +169,7 @@ let g:ctrlp_custom_ignore = {
 " NERDTree
 let NERDTreeIgnore = [
   \ '\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o', '\~$',
-  \ 'node_modules', 'virtualenv'
+  \ 'node_modules', 'virtualenv', 'venv'
   \ ]
 let NERDTreeHijackNetrw = 0
 let NERDTreeBookmarksFile = expand("$HOME/.vim/.NERDTreeBookmarks")

@@ -1,6 +1,6 @@
 # oh-my-zsh settings
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="cygni"
+ZSH_THEME="mortalscumbag"
 COMPLETION_WAITING_DOTS="true"
 plugins=(git pip autojump django)
 
