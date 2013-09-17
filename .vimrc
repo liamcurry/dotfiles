@@ -41,6 +41,8 @@ hi GitGutterChange ctermbg=bg
 hi GitGutterDelete ctermbg=bg
 hi GitGutterChangeDelete ctermbg=bg
 hi CursorLine ctermbg=16
+hi SignColumn ctermbg=bg
+hi LineNr ctermbg=bg
 hi Operator ctermfg=3
 
 " Movement
