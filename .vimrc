@@ -127,8 +127,10 @@ set nobackup
 " Backup and swap directories
 set backupdir=~/.vim/.backup//        " Where to put backup files
 set directory=~/.vim/.temp//          " Where to put swap files
-set undodir=~/.vim/.undo//            " Where to put undo files
-set undofile                          " Enable undo files
+if has('undofile')
+  set undodir=~/.vim/.undo//            " Where to put undo files
+  set undofile                          " Enable undo files
+endif
 
 " List chars
 set listchars=""                      " Reset the listchars
@@ -139,7 +141,9 @@ set listchars+=precedes:…             " Character to show when column continue
 set listchars+=eol:¬                  " Character to show when column continues beyond screen
 
 " Highlighting
-set cc=0                             " Shows cursor column at line 80
+if has('cc')
+  set cc=0                             " Shows cursor column at line 80
+endif
 set cursorline
 
 au BufNewFile,BufRead *.cgi setlocal ft=python
