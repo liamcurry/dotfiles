@@ -94,3 +94,6 @@
 [submodule ".vim/bundle/base16-vim"]
   path = .vim/bundle/base16-vim
   url = git://github.com/chriskempson/base16-vim.git
+[submodule ".vim/bundle/minibufexpl.vim"]
+  path = .vim/bundle/minibufexpl.vim
+  url = https://github.com/fholgado/minibufexpl.vim.git

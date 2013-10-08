@@ -1,4 +1,4 @@
-" Pathogen
+"Pathogen
 source ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
@@ -92,10 +92,10 @@ set encoding=utf-8                    " Default encoding is UTF-8
 set fileencodings=ucs-bom,utf-8,latin1
 
 " Whitespace
-set shiftwidth=2                      " Default tab width is 2 spaces
+set shiftwidth=4                      " Default tab width is 2 spaces
 set shiftround                        " Always round indents to multiples of shiftwidth
-set tabstop=2                         " Default tab width is 2 spaces
-set softtabstop=2                     " How many spaces a tab should be
+set tabstop=4                         " Default tab width is 2 spaces
+set softtabstop=4                     " How many spaces a tab should be
 set expandtab                         " Use spaces for tabs
 set smarttab                          " Use spaces for tabs
 set list                              " Show hidden characters
@@ -143,6 +143,7 @@ set listchars+=precedes:…             " Character to show when column continue
 set listchars+=eol:¬                  " Character to show when column continues beyond screen
 
 " Highlighting
+" older versions of vim don't have 'cc'
 if has('cc')
   set cc=0                             " Shows cursor column at line 80
 endif
@@ -183,11 +184,12 @@ let NERDTreeBookmarksFile = expand("$HOME/.vim/.NERDTreeBookmarks")
 let NERDTreeShowHidden = 1
 let NERDTreeStatusLine = 0
 let NERDTreeMinimalUI = 1
-au vimenter * NERDTree                            " Always open with NERDTree
-au vimenter * if !argc() | NERDTree | endif       " Open even when no files are specified
-au vimenter * wincmd p                            " ...and then switch to the right buffer
+"au vimenter * NERDTree                            " Always open with NERDTree
+"au vimenter * if !argc() | NERDTree | endif       " Open even when no files are specified
+"au vimenter * wincmd p                            " ...and then switch to the right buffer
 " Close NERDTree automatically if it is the last buffer
 au bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+map <leader>w :NERDTreeToggle<CR>
 
 
 " Syntastic
@@ -203,7 +205,6 @@ let g:syntastic_python_checkers=['flake8', 'py3kwarn']
 
 " gitgutter
 let g:gitgutter_sign_column_always = 1
-
 
 " autosave
 let s:save_cpo = &cpo
