@@ -2,7 +2,7 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="mortalscumbag"
 COMPLETION_WAITING_DOTS="true"
-plugins=(git pip autojump django)
+plugins=(git pip autojump)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
