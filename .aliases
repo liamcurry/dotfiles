@@ -6,12 +6,12 @@ command_exists () {
 
 alias mk='mkdir -p'
 
-alias lsa='ls -la'
+alias lsa='ls -lah'
 
 # git
 alias gd='git diff'
 alias gs='git status'
-alias gci='git commit'
+alias gc='git commit -am'
 alias gl='git log'
 alias glp='git log -p'
 alias gv='git svn'
