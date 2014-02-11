@@ -16,6 +16,10 @@ export EDITOR=vim
 export TERM=xterm-256color
 #export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH  # for pygit2
 
+# golang
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
 if command_exists virtualenvwrapper.sh; then
   export WORKON_HOME=~/.virtualenvs
   export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'

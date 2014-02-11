@@ -27,7 +27,7 @@ syntax enable
 "hi Error ctermbg=white
 "hi Todo ctermbg=white
 "hi NonText guifg=bg ctermfg=bg
-match ErrorMsg '\%>80v.\+'
+match ErrorMsg '\%>90v.\+'
 
 set background=dark
 color base16-default
@@ -87,7 +87,9 @@ set t_Co=256                            " Make sure vim knows it's 256 colors
 set tildeop                             " Easily switch caps for line
 set nospell                             " Turn off spell check
 set modelines=5                         " Turn on modelines (they're off by default on OSX)
-set clipboard=unnamed                   " Have to set this to use *p, *dd, etc.
+if $TMUX == ''
+    set clipboard=unnamed                   " Have to set this to use *p, *dd, etc.
+endif
 
 " Encoding
 set encoding=utf-8                    " Default encoding is UTF-8
@@ -155,7 +157,9 @@ au BufNewFile,BufRead *.cgi setlocal ft=python
 au BufNewFile,BufRead *.html setlocal ft=htmldjango
 au BufNewFile,BufRead *.zsh-theme setlocal ft=zsh
 
-"au BufWritePost *.md,*.markdown :silent !cat %:p | curl -X PUT -T - http://localhost:8090/
+" golang
+au FileType go autocmd BufWritePre <buffer> Fmt
+au FileType go compiler go
 
 " Some special stuff for crontab
 if $VIM_CRONTAB == "true"
@@ -198,11 +202,11 @@ map <leader>w :NERDTreeToggle<CR>
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_auto_loc_list = 2
-let g:syntastic_quiet_warnings = 0
 let g:syntastic_enable_highlighting = 1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_python_checkers=['flake8', 'py3kwarn']
+let g:syntastic_go_checkers=['gofmt', 'golint', 'govet']
 "let g:syntastic_python_checker_args = \"--ignore=E128,E501"
 
 " gitgutter

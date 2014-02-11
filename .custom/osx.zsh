@@ -96,3 +96,7 @@ defaults write -g WebContinuousSpellCheckingEnabled -bool true
 
 # Enable Finder Quit menu item
 defaults write com.apple.finder QuitMenuItem -bool true
+
+# Disable mouse acceleration
+defaults write .GlobalPreferences com.apple.mouse.scaling -1
+defaults write .GlobalPreferences com.apple.trackpad.scaling -1
