@@ -1,1 +1,2 @@
-/Users/lcurry/dotfiles/.inputrc
+C-h: backward-word
+C-l: forward-word

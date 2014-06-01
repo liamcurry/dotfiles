@@ -1,1 +1,64 @@
-/Users/lcurry/dotfiles/.gitignore
+# Vim
+*.swp
+*.un~
+Session.vim
+.vim/.NERDTreeBookmarks
+
+# OSX
+.DS_Store
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Django
+*.log
+*.pot
+*.pyc
+local_settings.py
+
+# Python
+*.py[co]
+
+# Packages
+*.egg
+*.egg-info
+dist
+eggs
+parts
+var
+sdist
+develop-eggs
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+#Translations
+*.mo
+
+#Mr Developer
+.mr.developer.cfg
+
+# Virtualenvs
+.virtualenvs
+.ve
+
+.ipython
+
+# Sass
+.sass-cache
+
+# irssi
+sasl.auth
+saved_colors
+*.autosave
+*.bkup
+logs
