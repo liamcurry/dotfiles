@@ -1,3 +1,1 @@
-guard :livereload do
-  watch(%r{.+\.(css|js|html|py)$})
-end
+/Users/lcurry/dotfiles/.Guardfile
