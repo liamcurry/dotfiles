@@ -18,7 +18,7 @@ export TERM=xterm-256color
 
 # golang
 export GOPATH=$HOME/.go
-export GOROOT=`brew --prefix`/Cellar/go/1.2.1/libexec
+export GOROOT=`brew --prefix`/Cellar/go/1.3/libexec
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:$GOROOT/bin
 
 if command_exists virtualenvwrapper.sh; then
