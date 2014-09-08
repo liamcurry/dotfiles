@@ -1,29 +1,29 @@
 [user]
-  name = Liam Curry
-  email = liam@curry.name
+	name = Liam Curry
+	email = liam@curry.name
 [github]
-  user = liamcurry
+	user = liamcurry
 [core]
-  whitespace = fix,space-before-tab,tab-in-indent,trailing-space
-  editor = vim
+	whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+	editor = vim
 [apply]
-  whitespace = fix
+	whitespace = fix
 [help]
-  autocorrect = 10
+	autocorrect = 10
 [merge]
-  summary = true
+	summary = true
 [color]
-  ui = auto
-  diff = auto
-  status = auto
-  branch = auto
-  interactive = auto
-  grep = auto
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	grep = auto
 [web]
-  browser = open
+	browser = open
 [alias]
-  tree = log --graph --decorate --pretty=oneline --abbrev-commit
-  update-submodules = submodule foreach git pull origin
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit
+	update-submodules = submodule foreach git pull origin
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
