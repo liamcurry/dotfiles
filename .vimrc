@@ -15,10 +15,10 @@ hi StatusLineNC ctermbg=bg
 hi VertSplit ctermbg=bg ctermfg=bg
 hi SignColumn ctermbg=bg
 hi LineNr ctermbg=bg
-hi GitGutterAdd ctermbg=bg
-hi GitGutterChange ctermbg=bg
-hi GitGutterDelete ctermbg=bg
-hi GitGutterChangeDelete ctermbg=bg
+"hi GitGutterAdd ctermbg=bg
+"hi GitGutterChange ctermbg=bg
+"hi GitGutterDelete ctermbg=bg
+"hi GitGutterChangeDelete ctermbg=bg
 hi CursorLine ctermbg=16
 hi SignColumn ctermbg=bg
 hi LineNr ctermbg=bg
@@ -138,7 +138,10 @@ au BufWrite * | silent! retab
 
 au BufNewFile,BufRead *.cgi setlocal ft=python
 au BufNewFile,BufRead *.html setlocal ft=htmldjango
+au BufNewFile,BufRead *.ejs setlocal filetype=html
 au BufNewFile,BufRead *.zsh-theme setlocal ft=zsh
+
+"au BufWrite *.js silent :%!jsfmt
 
 " Some special stuff for crontab
 if $VIM_CRONTAB == "true"
@@ -165,7 +168,6 @@ let g:gofmt_command="goimports"
 " NERDTree
 let NERDTreeIgnore = [
   \ '\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o', '\~$',
-  \ 'node_modules', 'virtualenv', 'venv'
   \ ]
 let NERDTreeHijackNetrw = 0
 let NERDTreeBookmarksFile = expand("$HOME/.vim/.NERDTreeBookmarks")
@@ -201,3 +203,19 @@ let g:user_emmet_leader_key='<C-Z>'
 
 " vim-json
 let g:vim_json_syntax_conceal = 0
+
+" vim-jsfmt
+let g:js_fmt_autosave = 1
+let g:js_fmt_fail_silently = 1
+
+" dart
+if has('vim_starting')
+  set nocompatible
+  set runtimepath+=~/.vim/bundle/dart-vim-plugin
+endif
+filetype plugin indent on
+
+" vim-jsdoc
+let g:jsdoc_default_mapping = 0
+
+map <silent> <C-d> :JsDoc<CR>

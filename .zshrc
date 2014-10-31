@@ -6,6 +6,7 @@ plugins=(git pip autojump)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
+source $HOME/.nvm/nvm.sh
 
 # enabling autojump autocomplete
 # https://github.com/joelthelion/autojump/issues/86
