@@ -18,9 +18,15 @@ export TERM=xterm-256color
 #export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH  # for pygit2
 
 # golang
-export GOPATH=$HOME/.go
-export GOROOT=`brew --prefix`/Cellar/go/1.3/libexec
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:$GOROOT/bin
+if command_exists brew; then
+	export GOPATH=$HOME/.go
+	export GOROOT=`brew --prefix`/Cellar/go/1.3/libexec
+	export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:$GOROOT/bin
+
+	if command_exists gdircolors; then
+		export PATH=`brew --prefix`/Cellar/coreutils/8.20/libexec/gnubin:$PATH
+	fi
+fi
 
 if command_exists virtualenvwrapper.sh; then
   export WORKON_HOME=~/.virtualenvs
@@ -28,14 +34,10 @@ if command_exists virtualenvwrapper.sh; then
   source virtualenvwrapper.sh
 fi
 
-if command_exists gdircolors; then
-  export PATH=`brew --prefix`/Cellar/coreutils/8.20/libexec/gnubin:$PATH
-fi
-
 if command_exists dircolors; then
-  eval `dircolors ~/.dir_colors`
+	eval `dircolors ~/.dir_colors`
 else
-  export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
+	export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 fi
 
 # ctrl-s for vim
