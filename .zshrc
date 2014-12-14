@@ -20,7 +20,7 @@ export TERM=xterm-256color
 # golang
 if command_exists brew; then
 	export GOPATH=$HOME/.go
-	export GOROOT=`brew --prefix`/Cellar/go/1.3/libexec
+	export GOROOT=`brew --prefix`/Cellar/go/1.4/libexec
 	export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin:$GOROOT/bin
 
 	if command_exists gdircolors; then

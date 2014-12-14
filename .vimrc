@@ -1,6 +1,56 @@
-"Pathogen
-source ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" general plugins
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'kien/kien/ctrlp.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-unimpaired'
+
+" themes
+Plugin 'tomasr/molokai'
+
+" html
+Plugin 'othree/html5.vim'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'vim-scripts/django.vim'
+
+" javascript
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'heavenshell/vim-jsdoc'
+Plugin 'briancollins/vim-jst'
+
+" css
+Plugin 'groenewege/vim-less'
+Plugin 'wavded/vim-stylus'
+
+" git
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'int3/vim-extradite'
+
+" languages
+Plugin 'fatih/vim-go'
+Plugin 'dgryski/vim-godef'
+
+" plain text files
+Plugin 'tpope/vim-markdown'
+
+" config files
+Plugin 'acustodioo/vim-tmux'
+Plugin 'elzr/vim-json'
 
 filetype plugin indent on
 syntax enable
