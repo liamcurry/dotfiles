@@ -48,6 +48,10 @@ elif command_exists pbcopy; then
   alias copy='pbcopy <'
 fi
 
+if command_exists nvim; then
+  alias vim='nvim'
+fi
+
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"

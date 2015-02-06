@@ -8,6 +8,8 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
 source $HOME/.nvm/nvm.sh
 
+export VIMRUNTIME=/usr/local/share/vim/vim74
+
 # enabling autojump autocomplete
 # https://github.com/joelthelion/autojump/issues/86
 autoload -U compinit; compinit
@@ -15,6 +17,7 @@ export AUTOJUMP_IGNORE_CASE=1
 export PATH=$HOME/.rvm/bin:$HOME/.bin:/usr/local/share/python:/usr/local/share/npm/bin:/usr/local/sbin:/usr/local/bin:/usr/X11/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export EDITOR=vim
 export TERM=xterm-256color
+export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
 #export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH  # for pygit2
 
 # golang

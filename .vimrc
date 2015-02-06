@@ -10,17 +10,18 @@ Plugin 'gmarik/Vundle.vim'
 
 " general plugins
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'editorconfig/editorconfig-vim'
 
 " tagbar
-Plugin 'majutsushi/tagbar'
-nmap <F8> :TagbarToggle<CR>
+"Plugin 'majutsushi/tagbar'
+"nmap <F8> :TagbarToggle<CR>
 
 " snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-let g:UltiSnipsExpandTrigger = '<Leader>s'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
+"let g:UltiSnipsExpandTrigger = '<Leader>s'
 
 " NERDTree
 Plugin 'scrooloose/nerdtree'
@@ -66,6 +67,7 @@ let g:syntastic_style_error_symbol='✗'
 let g:syntastic_style_warning_symbol='⚠'
 let g:syntastic_python_checkers=['flake8', 'py3kwarn']
 let g:syntastic_go_checkers=['gofmt', 'golint', 'govet']
+"let g:syntastic_javascript_checkers=['jsxhint']
 "let g:syntastic_python_checker_args = \"--ignore=E128,E501"
 
 " html
@@ -79,6 +81,15 @@ au BufNewFile,BufRead *.ejs setlocal filetype=html
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'briancollins/vim-jst'
+Plugin 'mxw/vim-jsx'
+"Plugin 'leafgarland/typescript-vim'
+
+"Plugin 'facebook/vim-flow'
+"let g:flow#autoclose = 1
+"let g:flow#errjmp = 1
+
+"Plugin 'mephux/vim-jsfmt'
+"let g:js_fmt_autosave = 1
 
 " vim-jsdoc
 Plugin 'heavenshell/vim-jsdoc'
@@ -106,6 +117,7 @@ let g:go_fmt_command="goimports"
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
+au FileType go nmap <Leader>e <Plug>(go-rename)
 
 " python
 au BufNewFile,BufRead *.cgi setlocal ft=python
@@ -125,6 +137,7 @@ au BufNewFile,BufRead *.zsh-theme setlocal ft=zsh
 " vim-json
 Plugin 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
+
 
 " themes
 Plugin 'tomasr/molokai'
@@ -267,3 +280,4 @@ if $VIM_CRONTAB == "true"
   set nobackup
   set nowritebackup
 endif
+let g:jsx_ext_required = 0

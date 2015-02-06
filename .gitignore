@@ -3,6 +3,7 @@
 *.un~
 Session.vim
 .vim/.NERDTreeBookmarks
+.vim/bundle
 
 # OSX
 .DS_Store
