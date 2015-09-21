@@ -153,7 +153,7 @@ match ErrorMsg '\%>90v.\+'
 
 "hi StatusLine ctermbg=bg ctermfg=white
 "hi StatusLineNC ctermbg=bg
-hi VertSplit ctermbg=bg ctermfg=bg
+"hi VertSplit ctermbg=bg ctermfg=bg
 "hi LineNr ctermbg=bg
 "hi GitGutterAdd ctermbg=bg
 "hi GitGutterChange ctermbg=bg
