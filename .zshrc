@@ -8,7 +8,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
 source $HOME/.nvm/nvm.sh
 
-export VIMRUNTIME=/usr/local/share/vim/vim74
+#export VIMRUNTIME=/usr/local/share/vim/vim74
 
 # enabling autojump autocomplete
 # https://github.com/joelthelion/autojump/issues/86
