@@ -1,11 +1,12 @@
 [user]
 	name = Liam Curry
-	email = liam@curry.name
+	email = liam.curry@coxinc.com
 [github]
 	user = liamcurry
 [core]
 	whitespace = fix,space-before-tab,tab-in-indent,trailing-space
 	editor = vim
+	autocrlf = false
 [apply]
 	whitespace = fix
 [help]
