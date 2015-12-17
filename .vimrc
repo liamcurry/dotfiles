@@ -13,6 +13,7 @@ Plugin 'scrooloose/nerdcommenter'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'Chiel92/vim-autoformat'
 
 " tagbar
 "Plugin 'majutsushi/tagbar'
@@ -67,7 +68,7 @@ let g:syntastic_style_error_symbol='✗'
 let g:syntastic_style_warning_symbol='⚠'
 let g:syntastic_python_checkers=['flake8', 'py3kwarn']
 let g:syntastic_go_checkers=['gofmt', 'golint', 'govet']
-"let g:syntastic_javascript_checkers=['jsxhint']
+let g:syntastic_javascript_checkers=[]
 "let g:syntastic_python_checker_args = \"--ignore=E128,E501"
 
 " html
@@ -281,3 +282,5 @@ if $VIM_CRONTAB == "true"
   set nowritebackup
 endif
 let g:jsx_ext_required = 0
+
+au BufWrite * :Autoformat
