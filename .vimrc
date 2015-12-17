@@ -14,6 +14,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'Chiel92/vim-autoformat'
+Plugin 'lambdatoast/elm.vim'
 
 " tagbar
 "Plugin 'majutsushi/tagbar'
