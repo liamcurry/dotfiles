@@ -14,7 +14,9 @@ source $HOME/.aliases
 # https://github.com/joelthelion/autojump/issues/86
 autoload -U compinit; compinit
 export AUTOJUMP_IGNORE_CASE=1
-export PATH=$HOME/.rvm/bin:$HOME/.bin:/usr/local/share/python:/usr/local/share/npm/bin:/usr/local/sbin:/usr/local/bin:/usr/X11/bin:/usr/bin:/usr/sbin:/sbin:/bin
+export PATH=$HOME/.local/bin:$HOME/.cabal/bin:$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$HOME/.rvm/bin:$HOME/.bin:/usr/local/share/python:/usr/local/share/npm/bin:/usr/local/sbin:/usr/local/bin:/usr/X11/bin:/usr/bin:/usr/sbin:/sbin:/bin
+export GOPATH=$HOME/ownCloud/code/gocode
+export PATH=$PATH:$GOPATH/bin
 export EDITOR=vim
 export TERM=xterm-256color
 export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
@@ -48,3 +50,6 @@ stty -ixon
 
 # python brew
 [[ -s $HOME/.pythonbrew/etc/bashrc ]] && source $HOME/.pythonbrew/etc/bashrc
+
+# for docker-compose https://docs.docker.com/compose/completion/
+fpath=(~/.zsh/completion $fpath)

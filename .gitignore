@@ -63,3 +63,4 @@ saved_colors
 *.autosave
 *.bkup
 logs
+.vim/view

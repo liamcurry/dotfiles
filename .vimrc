@@ -14,7 +14,11 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'Chiel92/vim-autoformat'
-Plugin 'lambdatoast/elm.vim'
+Plugin 'ElmCast/elm-vim'
+Plugin 'raichoo/purescript-vim'
+
+" haskell
+"Plugin 'dag/vim2hs'
 
 " tagbar
 "Plugin 'majutsushi/tagbar'
@@ -25,11 +29,14 @@ Plugin 'lambdatoast/elm.vim'
 "Plugin 'honza/vim-snippets'
 "let g:UltiSnipsExpandTrigger = '<Leader>s'
 
+" elixir
+"Plugin 'elixir-lang/vim-elixir'
+
 " NERDTree
 Plugin 'scrooloose/nerdtree'
 let NERDTreeIgnore = [
-  \ '\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o', '\~$',
-  \ ]
+			\ '\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o', '\~$',
+			\ ]
 let NERDTreeHijackNetrw = 0
 let NERDTreeBookmarksFile = expand("$HOME/.vim/.NERDTreeBookmarks")
 let NERDTreeShowHidden = 1
@@ -52,10 +59,10 @@ let g:ctrlp_map = '<C-t>'
 let g:ctrlp_max_height = 10
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|node_modules\|\.sass-cache\|\.ve\|virtualenv\|venv',
-  \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.DS_Store$',
-  \ 'link': '',
-  \ }
+			\ 'dir':  '\.git$\|\.hg$\|\.svn$\|node_modules\|\.sass-cache\|\.ve\|virtualenv\|venv',
+			\ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.DS_Store$',
+			\ 'link': '',
+			\ }
 
 " Syntastic
 Plugin 'scrooloose/syntastic'
@@ -130,7 +137,7 @@ Plugin 'tpope/vim-markdown'
 " tmux
 Plugin 'acustodioo/vim-tmux'
 if $TMUX == ''
-    set clipboard=unnamed                   " Have to set this to use *p, *dd, etc.
+	set clipboard=unnamed                   " Have to set this to use *p, *dd, etc.
 endif
 
 " zsh
@@ -216,12 +223,12 @@ set encoding=utf-8                    " Default encoding is UTF-8
 set fileencodings=ucs-bom,utf-8,latin1
 
 " Whitespace
-set shiftwidth=4                      " Default tab width is 2 spaces
+set shiftwidth=2                      " Default tab width is 2 spaces
 set shiftround                        " Always round indents to multiples of shiftwidth
-set tabstop=4                         " Default tab width is 2 spaces
-set softtabstop=4                     " How many spaces a tab should be
-"set expandtab                         " Use spaces for tabs
-"set smarttab                          " Use spaces for tabs
+set tabstop=2                         " Default tab width is 2 spaces
+set softtabstop=2                     " How many spaces a tab should be
+set expandtab                         " Use spaces for tabs
+set smarttab                          " Use spaces for tabs
 set list                              " Show hidden characters
 "set autoindent                        " Autoindent, obviously
 set backspace=indent,eol,start        " Backspace through everything in insert mode
@@ -252,8 +259,8 @@ set nobackup
 set backupdir=~/.vim/.backup//        " Where to put backup files
 set directory=~/.vim/.temp//          " Where to put swap files
 if has('undofile')
-  set undodir=~/.vim/.undo//            " Where to put undo files
-  set undofile                          " Enable undo files
+	set undodir=~/.vim/.undo//            " Where to put undo files
+	set undofile                          " Enable undo files
 endif
 
 " List chars
@@ -267,7 +274,7 @@ set listchars+=eol:¬                  " Character to show when column continues
 " Highlighting
 " older versions of vim don't have 'cc'
 if has('cc')
-  set cc=0                             " Shows cursor column at line 80
+	set cc=0                             " Shows cursor column at line 80
 endif
 set cursorline
 
@@ -279,9 +286,13 @@ au BufWrite * | silent! retab
 
 " Some special stuff for crontab
 if $VIM_CRONTAB == "true"
-  set nobackup
-  set nowritebackup
+	set nobackup
+	set nowritebackup
 endif
 let g:jsx_ext_required = 0
 
-au BufWrite * :Autoformat
+"au BufWrite * :Autoformat
+
+" Autoformat elm files
+"autocmd BufWritePost *.elm silent execute "!elm-format --yes %" | edit! | set filetype=elm
+let g:elm_format_autosave = 1
