@@ -1,0 +1,18 @@
+"*":
+  core:
+    disabledPackages: [
+      "autocomplete-atom-api"
+      "autocomplete-css"
+      "autocomplete-html"
+      "autocomplete-plus"
+      "autocomplete-snippets"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "gloom"
+    ]
+  "exception-reporting":
+    userId: "ec3facd7-b08b-44a0-be7a-2b5a9920fc22"
+  "linter-tslint":
+    fixOnSave: true

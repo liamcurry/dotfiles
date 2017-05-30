@@ -1,34 +1,3 @@
 [user]
+	email = bill.m.curry@gmail.com
 	name = Liam Curry
-	email = billmcurry@gmail.com
-[github]
-	user = liamcurry
-[core]
-	whitespace = fix,space-before-tab,tab-in-indent,trailing-space
-	editor = vim
-	autocrlf = false
-[apply]
-	whitespace = fix
-[help]
-	autocorrect = 10
-[merge]
-	summary = true
-[color]
-	ui = auto
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
-	grep = auto
-[web]
-	browser = open
-[alias]
-	tree = log --graph --decorate --pretty=oneline --abbrev-commit
-	update-submodules = submodule foreach git pull origin
-[filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
-[credential]
-	helper = osxkeychain
-[push]
-	default = simple

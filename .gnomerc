@@ -1,7 +1,0 @@
-# Share X11 and GTK clipboards
-autocutsel &
-autocutsel -s PRIMARY &
-
-# Swap capslock and ctrl
-/usr/bin/setxkbmap -option "ctrl:swapcaps"
-/usr/bin/setxkbmap -option "ctrl:nocaps"

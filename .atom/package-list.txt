@@ -1,0 +1,13 @@
+atom-typescript@11.0.3
+busy-signal@1.4.1
+elm@0.1.0
+file-icons@2.1.6
+gloom@0.6.4
+intentions@1.1.2
+language-elm@1.5.0
+linter@2.1.4
+linter-elm-make@0.23.2
+linter-eslint@8.2.1
+linter-tslint@1.5.0
+linter-ui-default@1.6.0
+

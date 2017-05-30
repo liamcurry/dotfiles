@@ -10,3 +10,11 @@ for f in .*; do
         echo "~/$f already exists, skipping..."
     fi
 done
+
+command_exists () {
+  type "$1" &> /dev/null ;
+}
+
+if command_exists apm; then
+  apm install --packages-file ~/.atom/package-list.txt
+fi

@@ -15,11 +15,10 @@ source $HOME/.aliases
 autoload -U compinit; compinit
 export AUTOJUMP_IGNORE_CASE=1
 export PATH=$HOME/.local/bin:$HOME/.cabal/bin:$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$HOME/.rvm/bin:$HOME/.bin:/usr/local/share/python:/usr/local/share/npm/bin:/usr/local/sbin:/usr/local/bin:/usr/X11/bin:/usr/bin:/usr/sbin:/sbin:/bin
-export GOPATH=$HOME/ownCloud/code/gocode
 export PATH=$PATH:$GOPATH/bin
 export EDITOR=vim
 export TERM=xterm-256color
-export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
+export NODE_PATH=$NODE_PATH:$(npm root -g --quiet):/usr/local/lib/node_modules
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH  # for pygit2
 
 # golang
@@ -39,6 +38,12 @@ if command_exists virtualenvwrapper.sh; then
   source virtualenvwrapper.sh
 fi
 
+if command_exists xmodmap; then
+	xmodmap -e 'keycode 66 = Control_L'
+	xmodmap -e 'clear Lock'
+	xmodmap -e 'add Control = Control_L'
+fi
+
 if command_exists dircolors; then
 	eval `dircolors ~/.dir_colors`
 else
@@ -53,3 +58,16 @@ stty -ixon
 
 # for docker-compose https://docs.docker.com/compose/completion/
 fpath=(~/.zsh/completion $fpath)
+
+# added by Anaconda3 4.0.0 installer
+export PATH="$HOME/anaconda3/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /Users/lcurry/Downloads/google-cloud-sdk/path.zsh.inc ]; then
+  source '/Users/lcurry/Downloads/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/lcurry/Downloads/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/Users/lcurry/Downloads/google-cloud-sdk/completion.zsh.inc'
+fi
