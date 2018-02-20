@@ -1,3 +1,5 @@
 [user]
 	email = bill.m.curry@gmail.com
 	name = Liam Curry
+[core]
+	fileMode = false
