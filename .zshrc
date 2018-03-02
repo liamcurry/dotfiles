@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.npm-global/bin:$PATH
 export PATH=$HOME/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -88,3 +87,11 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source $HOME/.aliases
+
+if command_exists npm; then
+    export PATH=`npm bin -g`:$PATH
+fi
+
+if command_exists yarn; then
+    export PATH=`yarn global bin`:$PATH
+fi

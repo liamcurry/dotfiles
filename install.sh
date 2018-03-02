@@ -8,11 +8,10 @@ ln -fs $DIR/.gitconfig $HOME
 ln -fs $DIR/.tmux.conf $HOME
 ln -fs $DIR/.vimrc $HOME
 ln -fs $DIR/.Xmodmap $HOME
+ln -fs $DIR/.yarnrc $HOME
 ln -fs $DIR/.zshrc $HOME
 
-command_exists () {
-  type "$1" &> /dev/null ;
-}
+source $HOME/.aliases
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
