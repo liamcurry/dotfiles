@@ -1,6 +1,17 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/bin:$PATH
+if [ -d "$HOME/bin" ]; then
+    export PATH=$HOME/bin:$PATH
+fi
+
+# Rust
+if [ -d "$HOME/.cargo/bin" ]; then
+    export PATH=$HOME/.cargo/bin:$PATH
+fi
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -53,7 +64,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git autojump)
-plugins=()
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,3 +106,7 @@ fi
 if command_exists yarn; then
     export PATH=`yarn global bin`:$PATH
 fi
+
+. /home/sagan/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+opam switch 4.02.3+buckle-master
+eval `opam config env`

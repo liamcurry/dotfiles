@@ -33,6 +33,10 @@ elif command_exists port; then
   alias pkgs='apt-cache search'
   alias pkgi='sudo apt-get install'
   alias pkgr='sudo apt-get autoremove --purge'
+elif command_exists pacman; then
+  alias pkgs='pacman -Ss'
+  alias pkgi='sudo pacman -S'
+  alias pkgr='sudo pacman -R'
 fi
 
 # helpers

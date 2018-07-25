@@ -2,6 +2,7 @@
 
 DIR=`pwd`
 
+echo 'copying over dotfiles'
 ln -fs $DIR/.aliases $HOME
 ln -fs $DIR/.dir_colors $HOME
 ln -fs $DIR/.gitconfig $HOME
@@ -13,7 +14,13 @@ ln -fs $DIR/.zshrc $HOME
 
 source $HOME/.aliases
 
+echo 'installing oh-my-zsh'
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+if command_exists npm; then
+    echo 'installing yarn'
+    npm install -g yarn
+fi
 
 if command_exists yarn; then
     echo "Yarn installed, adding globals"
@@ -46,6 +53,14 @@ if command_exists code; then
     code --install-extension mikestead.dotenv
     code --install-extension teabyii.ayu
     code --install-extension cssho.vscode-svgviewer
+    code --install-extension vscodevim.vim
+    # Rust
+    code --install-extension rust-lang.rust
+    code --install-extension bungcip.better-toml
+    code --install-extension karunamurti.tera
 fi
+
+mkdir -p ~/.config
+cp -R .config/nvim ~/.config
 
 echo "Done"
