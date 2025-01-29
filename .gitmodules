@@ -1,35 +1,5 @@
-[submodule ".oh-my-zsh"]
-	path = .oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule ".vim/bundle/Vundle.vim"]
-	path = .vim/bundle/Vundle.vim
-	url = https://github.com/gmarik/Vundle.vim
-[submodule ".vim/pack/vendor/start/nerdcommenter"]
-	path = .vim/pack/vendor/start/nerdcommenter
-	url = https://github.com/preservim/nerdcommenter.git
-[submodule ".vim/pack/vendor/start/nerdtree"]
-	path = .vim/pack/vendor/start/nerdtree
-	url = https://github.com/preservim/nerdtree.git
-[submodule ".vim/pack/vendor/start/ale"]
-	path = .vim/pack/vendor/start/ale
-	url = https://github.com/dense-analysis/ale.git
-[submodule ".vim/pack/vendor/start/lightline.vim"]
-	path = .vim/pack/vendor/start/lightline.vim
-	url = https://github.com/itchyny/lightline.vim
-[submodule ".vim/pack/vendor/start/vim-fugitive"]
-	path = .vim/pack/vendor/start/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule ".vim/pack/vendor/start/vim-signify"]
-	path = .vim/pack/vendor/start/vim-signify
-	url = https://github.com/mhinz/vim-signify.git
-[submodule ".vim/pack/vendor/start/gruvbox"]
-	path = .vim/pack/vendor/start/gruvbox
-	url = https://github.com/morhetz/gruvbox.git
 [submodule ".config/nvim/pack/nvim/start/nvim-lspconfig"]
 	path = .config/nvim/pack/nvim/start/nvim-lspconfig
-	url = https://github.com/neovim/nvim-lspconfig
-[submodule ".config/nvim/pack/vendor/start/nvim-lspconfig"]
-	path = .config/nvim/pack/vendor/start/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig
 [submodule ".config/nvim/pack/vendor/start/telescope.nvim"]
 	path = .config/nvim/pack/vendor/start/telescope.nvim
@@ -55,3 +25,6 @@
 [submodule ".config/nvim/pack/vendor/start/nvim-web-devicons"]
 	path = .config/nvim/pack/vendor/start/nvim-web-devicons
 	url = https://github.com/nvim-tree/nvim-web-devicons.git
+[submodule ".config/nvim/pack/vendor/start/tinted-vim"]
+	path = .config/nvim/pack/vendor/start/tinted-vim
+	url = https://github.com/tinted-theming/tinted-vim.git

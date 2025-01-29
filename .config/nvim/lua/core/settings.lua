@@ -10,7 +10,6 @@ opt.shiftwidth = 4               -- Spaces for auto-indent
 opt.expandtab = true             -- Convert tabs to spaces
 opt.smartindent = true           -- Enable smart indentation
 opt.clipboard = "unnamedplus"    -- Use system clipboard
-opt.termguicolors = true         -- Enable true color
 opt.updatetime = 300             -- Faster UI updates
 opt.incsearch = true             -- Incremental search
 opt.ignorecase = true            -- Ignore case when searching
@@ -19,6 +18,11 @@ opt.hlsearch = true              -- Highlight search matches
 opt.cursorline = true            -- Highlight the current line
 opt.splitright = true            -- Open vertical splits to the right
 opt.splitbelow = true            -- Open horizontal splits below
+
+-- Colorscheme
+opt.termguicolors = true              -- Enable true color
+opt.background = "dark"               -- Dark background
+vim.cmd.colorscheme("base24-chalk")   -- Set colorscheme
 
 -- Whitespace characters
 opt.list = true
@@ -32,3 +36,6 @@ opt.swapfile = false
 -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Open-At-Startup#netrw-hijacking
 vim.g.loaded_netrw       = 1
 vim.g.loaded_netrwPlugin = 1
+
+
+

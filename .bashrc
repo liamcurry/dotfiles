@@ -19,11 +19,6 @@ fi
 # Format: [username@hostname:cwd] (git-branch) $
 PS1='\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]$(__git_ps1 " (%s)") \$ '
 
-# === Aliases ===
-alias ..='cd ..'                # Move up one directory
-alias ...='cd ../..'            # Move up two directories
-alias grep='grep --color=auto'  # Highlight search results
-
 # === History Improvements ===
 HISTSIZE=10000                  # Number of commands to save in memory
 HISTFILESIZE=20000              # Number of commands to save in history file
@@ -40,6 +35,21 @@ bind 'set bell-style none'            # Disable bell sound on errors
 # === Colorized Output ===
 export LS_COLORS="di=1;34:ln=36:so=1;32:pi=1;33:ex=1;35:bd=1;33;40:cd=1;33;40"
 export CLICOLOR=1  # Enable colors for commands like `ls`
+
+
+
+# === Better Terminal Behavior ===
+shopt -s checkwinsize  # Auto-adjust terminal size after resize
+shopt -s globstar      # Enable recursive globbing (e.g., `**/*.txt`)
+
+# === Path Enhancements ===
+# Add custom directories to PATH
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+# Rust
+if [ -d "$HOME/.cargo/bin" ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
 
 # === Quality-of-Life Functions ===
 # Extract various archive types
@@ -62,18 +72,36 @@ extract() {
     echo "'$1' is not a valid file"
   fi
 }
-alias e=extract
 
-# === Better Terminal Behavior ===
-shopt -s checkwinsize  # Auto-adjust terminal size after resize
-shopt -s globstar      # Enable recursive globbing (e.g., `**/*.txt`)
+command_exists () {
+  type "$1" &> /dev/null ;
+}
 
-# === Path Enhancements ===
-# Add custom directories to PATH
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+# === Aliases ===
+alias ..='cd ..'                # Move up one directory
+alias ...='cd ../..'            # Move up two directories
+alias e=extract                 # Extract archives
+alias grep='grep --color=auto'  # Highlight search results
+alias gs='git status'
+alias lsa='ls -lah'
 
-# Rust
-if [ -d "$HOME/.cargo/bin" ]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
+# Package management
+if command_exists apt-get; then
+  alias pkgs='apt-cache search'
+  alias pkgi='sudo apt-get install'
+  alias pkgr='sudo apt-get remove'
+elif command_exists brew; then
+  alias pkgs='brew search'
+  alias pkgi='brew install'
+  alias pkgr='brew remove'
+elif command_exists port; then
+  alias pkgs='apt-cache search'
+  alias pkgi='sudo apt-get install'
+  alias pkgr='sudo apt-get autoremove --purge'
+elif command_exists pacman; then
+  alias pkgs='pacman -Ss'
+  alias pkgi='sudo pacman -S'
+  alias pkgr='sudo pacman -R'
 fi
+
 
