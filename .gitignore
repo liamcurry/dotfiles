@@ -64,3 +64,5 @@ saved_colors
 *.bkup
 logs
 .vim/view
+.gitconfig
+.secrets

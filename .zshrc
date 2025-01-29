@@ -10,16 +10,16 @@ if [ -d "$HOME/.cargo/bin" ]; then
 fi
 
 # NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+#export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="mortalscumbag"
+#ZSH_THEME="mortalscumbag"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -44,7 +44,7 @@ ZSH_THEME="mortalscumbag"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+#COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -64,9 +64,9 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git autojump)
-plugins=(git)
+#plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -99,14 +99,14 @@ source $ZSH/oh-my-zsh.sh
 
 source $HOME/.aliases
 
-if command_exists npm; then
-    export PATH=`npm bin -g`:$PATH
-fi
+#if command_exists npm; then
+#    export PATH=`npm bin -g`:$PATH
+#fi
 
-if command_exists yarn; then
-    export PATH=`yarn global bin`:$PATH
-fi
+#if command_exists yarn; then
+#    export PATH=`yarn global bin`:$PATH
+#fi
 
-. /home/sagan/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-opam switch 4.02.3+buckle-master
-eval `opam config env`
+export LIBRARY_PATH=$LIBRARY_PATH:/opt/homebrew/opt/mcrypt/lib/
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
