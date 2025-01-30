@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DIR=`pwd`
+DIR=$(pwd)
 
 echo 'copying over dotfiles'
 ln -fs $DIR/.aliases $HOME

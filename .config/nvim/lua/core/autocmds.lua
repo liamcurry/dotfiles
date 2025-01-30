@@ -2,35 +2,37 @@
 local api = vim.api
 
 -- Highlight yanked text
-api.nvim_create_autocmd("TextYankPost", {
-  group = api.nvim_create_augroup("HighlightYank", {}),
-  callback = function() vim.highlight.on_yank({ timeout = 200 }) end,
+api.nvim_create_autocmd('TextYankPost', {
+  group = api.nvim_create_augroup('HighlightYank', {}),
+  callback = function()
+    vim.highlight.on_yank({ timeout = 200 })
+  end,
 })
 
 -- Automatically remove trailing whitespace on save
-api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*",
+api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*',
   command = [[%s/\s\+$//e]],
 })
 
 -- Automatically open nvim-tree on startup
 local function open_nvim_tree()
-  require("nvim-tree.api").tree.open()
+  require('nvim-tree.api').tree.open()
 end
-api.nvim_create_autocmd("VimEnter", {
-  callback = open_nvim_tree
+api.nvim_create_autocmd('VimEnter', {
+  callback = open_nvim_tree,
 })
 
 -- Automatically close nvim-tree when it's the last window
 -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Auto-Close#marvinth01
-api.nvim_create_autocmd("QuitPre", {
+api.nvim_create_autocmd('QuitPre', {
   callback = function()
     local tree_wins = {}
     local floating_wins = {}
     local wins = vim.api.nvim_list_wins()
     for _, w in ipairs(wins) do
       local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
-      if bufname:match("NvimTree_") ~= nil then
+      if bufname:match('NvimTree_') ~= nil then
         table.insert(tree_wins, w)
       end
       if vim.api.nvim_win_get_config(w).relative ~= '' then
@@ -43,5 +45,5 @@ api.nvim_create_autocmd("QuitPre", {
         vim.api.nvim_win_close(w, true)
       end
     end
-  end
+  end,
 })

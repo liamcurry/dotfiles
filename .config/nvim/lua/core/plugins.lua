@@ -1,68 +1,72 @@
 -- Treesitter
-require("nvim-treesitter.configs").setup {
-    ensure_installed = "all", -- Install all supported languages
-    highlight = { enable = true },
+require('nvim-treesitter.configs').setup {
+  ensure_installed = 'all', -- Install all supported languages
+  highlight = { enable = true },
 }
 
 -- Telescope
-require("telescope").setup {}
+require('telescope').setup {}
 
 -- Git Signs
-require("gitsigns").setup {}
+require('gitsigns').setup {}
 
 -- File Explorer
-require("nvim-tree").setup {}
+require('nvim-tree').setup {}
 
 -- Statusline
-require("lualine").setup {
-    options = { theme = "auto" }
+require('lualine').setup {
+  options = { theme = 'auto' },
 }
 
--- LSP Configuration
-local lspconfig = require("lspconfig")
-lspconfig.rust_analyzer.setup {}
+-- require('codecompanion').setup {
+--   settings = {
+--     strategies = {
+--       chat = {
+--         adapter = 'ollama',
+--       },
+--       inline = {
+--         adapter = 'ollama',
+--       },
+--     },
+--   },
+-- }
 
--- Function to format on save
-local default_on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/inlayHint") then
-        -- this isn't working
-        vim.defer_fn(function()
-            vim.lsp.inlay_hint.enable(true)
-        end, 100)  -- Delay by 100ms to ensure LSP is fully ready
-    end
-    if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            callback = function()
-                vim.lsp.buf.format { async = false }
-            end,
-        })
-    end
-end
+-- Setup for nvim-cmp and LuaSnip
+local cmp = require('cmp')
+local luasnip = require('luasnip')
 
--- Rust (via rust-analyzer)
-lspconfig.rust_analyzer.setup {
-    on_attach = default_on_attach,
-}
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  mapping = {
+    -- Trigger completion menu with Ctrl+Space
+    ['<C-Space>'] = cmp.mapping.complete(),
 
--- YAML (via yamlls)
-lspconfig.yamlls.setup {
-    -- :h
-    on_attach = default_on_attach,
-    settings = { yaml = { format = { enable = true } } }
-}
+    -- Confirm selection with Enter
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
 
--- TOML (via Taplo)
-lspconfig.taplo.setup { on_attach = default_on_attach }
+    -- Navigate through suggestions
+    ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 
--- JSON
-lspconfig.jsonls.setup { on_attach = default_on_attach }
+    -- Scroll documentation in completion window
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+    { name = 'path' },
+    { name = 'luasnip' },
+  },
+  performance = {
+    fetching_timeout = 200,
+  },
+  completion = {
+    completeopt = 'menu,menuone,noselect',
+  },
+})
 
--- Lua (via stylua)
-lspconfig.lua_ls.setup {
-    on_attach = default_on_attach,
-    settings = { Lua = { format = { enable = true } } }
-}
-
--- Markdown (via prettier)
-lspconfig.marksman.setup { on_attach = default_on_attach }
