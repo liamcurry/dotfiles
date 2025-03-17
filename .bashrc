@@ -3,7 +3,7 @@
 # ---------------------------------------------
 
 # === Git Prompt Support ===
-if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
+if     [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
     source /usr/share/git-core/contrib/completion/git-prompt.sh
 elif [ -f /etc/bash_completion.d/git-prompt ]; then
     source /etc/bash_completion.d/git-prompt
@@ -54,6 +54,10 @@ fi
 # pipx (Python) and others
 if [ -d "$HOME/.local/bin" ]; then
     export PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "/opt/nvim-linux-x86_64/bin" ]; then
+    export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 fi
 
 # === Quality-of-Life Functions ===
@@ -133,7 +137,17 @@ tinty_source_shell_theme() {
 }
 
 if [ -n "$(command -v 'tinty')" ]; then
-    tinty_source_shell_theme "init" >/dev/null
+    # Commented out because it is causing slowdowns with Kitty.
+    # Run tinty manually to sync
+    #tinty_source_shell_theme "init" >/dev/null
 
     alias tinty=tinty_source_shell_theme
 fi
+
+if [ -f ~/.linuxbrew_env ]; then
+    # Caching linuxbrew environment variables for faster shell startup
+    # Regenerate with this command:
+    #eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    source ~/.linuxbrew_env
+fi
+
