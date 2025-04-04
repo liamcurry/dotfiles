@@ -3,7 +3,7 @@
 # ---------------------------------------------
 
 # === Git Prompt Support ===
-if     [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
+if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
     source /usr/share/git-core/contrib/completion/git-prompt.sh
 elif [ -f /etc/bash_completion.d/git-prompt ]; then
     source /etc/bash_completion.d/git-prompt
@@ -151,3 +151,6 @@ if [ -f ~/.linuxbrew_env ]; then
     source ~/.linuxbrew_env
 fi
 
+if [ -f ~/.secrets ]; then
+    source ~/.secrets
+fi
