@@ -28,9 +28,9 @@ export HISTCONTROL=ignoredups:erasedups      # Remove duplicates in history
 export HISTIGNORE="&:ls:[bf]g:exit:cd:clear" # Ignore trivial commands
 
 # === Tab Completion Improvements ===
-bind 'set completion-ignore-case on' # Case-insensitive tab completion
-bind 'set show-all-if-ambiguous on'  # Show all matches immediately
-bind 'set bell-style none'           # Disable bell sound on errors
+# bind 'set completion-ignore-case on' # Case-insensitive tab completion
+# bind 'set show-all-if-ambiguous on'  # Show all matches immediately
+# bind 'set bell-style none'           # Disable bell sound on errors
 
 # === Colorized Output ===
 #export LS_COLORS="di=1;34:ln=36:so=1;32:pi=1;33:ex=1;35:bd=1;33;40:cd=1;33;40"
