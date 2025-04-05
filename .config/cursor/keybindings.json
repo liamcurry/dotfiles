@@ -1,13 +1,12 @@
-// Place your key bindings in this file to override the defaults
 [
-	{
-		"key": "ctrl+h",
-		"command": "workbench.action.focusActiveEditorGroup",
-		"when": "!editorTextFocus"
-	},
-	{
-		"key": "ctrl+l",
-		"command": "workbench.action.focusActiveEditorGroup",
-		"when": "!editorTextFocus"
-	}
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "!editorTextFocus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "!editorTextFocus"
+    }
 ]

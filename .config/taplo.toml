@@ -1,0 +1,14 @@
+[formatting]
+align_comments        = true
+align_entries         = true
+array_auto_collapse   = true
+array_auto_expand     = true
+array_trailing_comma  = true
+column_width          = 80
+compact_arrays        = false
+compact_entries       = false
+compact_inline_tables = false
+indent_string         = "  "
+indent_tables         = false
+reorder_keys          = true
+trailing_newline      = true

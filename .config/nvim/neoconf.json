@@ -8,6 +8,7 @@
             ]
         }
     },
+
     "neoconf": {
         "plugins": {
             "lua_ls": {
