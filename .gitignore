@@ -66,3 +66,7 @@ logs
 .vim/view
 .gitconfig
 .secrets
+
+# Claude directory - ignore all except whitelisted files
+.claude/*
+!.claude/CLAUDE.md
