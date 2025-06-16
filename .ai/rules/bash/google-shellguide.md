@@ -28,7 +28,7 @@ consistency, maintainability, and reliability across the codebase.
 
 ### Script Classification Pattern
 
-```
+```text
 TYPE := UTILITY | WRAPPER | AUTOMATION | DEPLOYMENT
 SCOPE := SIMPLE (<100 lines) | COMPLEX (>100 lines, requires refactor)
 LANGUAGE := BASH_ONLY | REWRITE_TO_STRUCTURED

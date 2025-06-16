@@ -1,3 +1,10 @@
+# Dotfiles
+
+Personal dotfiles repository for managing development environment configurations
+across Unix-like systems.
+
+## Dependencies
+
 - alacritty
 - tinty
 - ripgrep

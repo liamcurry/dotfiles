@@ -1,15 +1,18 @@
 ---
-description: 
+description:
 globs: *.md,*.mmd
 alwaysApply: false
 ---
+
 # Mermaid Diagram Standards & Best Practices
 
-Generate professional, well-structured diagrams using Mermaid's text-based syntax. Apply when creating documentation, visualizing system architecture, workflows, or data relationships.
+Generate professional, well-structured diagrams using Mermaid's text-based
+syntax. Apply when creating documentation, visualizing system architecture,
+workflows, or data relationships.
 
 ## Diagram Classification System
 
-```
+```text
 DIAGRAM_TYPE := FLOWCHART | SEQUENCE | GANTT | CLASS | STATE | ENTITY_RELATIONSHIP | USER_JOURNEY | GITGRAPH | MINDMAP | TIMELINE | SANKEY | QUADRANT
 COMPLEXITY := SIMPLE | MODERATE | COMPLEX
 PURPOSE := DOCUMENTATION | ARCHITECTURE | PROCESS | ANALYSIS | PRESENTATION
@@ -19,18 +22,22 @@ AUDIENCE := TECHNICAL | BUSINESS | MIXED
 ## Core Principles
 
 ### 1. Clarity & Readability
+
 - **Descriptive labels**: Use clear, concise node labels that explain purpose
-- **Logical flow**: Arrange elements in intuitive reading order (top-to-bottom, left-to-right)
+- **Logical flow**: Arrange elements in intuitive reading order (top-to-bottom,
+  left-to-right)
 - **Consistent styling**: Apply uniform formatting within each diagram type
 - **Appropriate complexity**: Keep diagrams focused on single concepts
 
 ### 2. Syntax Precision
+
 - **Valid identifiers**: Use alphanumeric characters, underscores for node IDs
 - **Proper escaping**: Escape special characters in labels using quotes
 - **Consistent indentation**: Use 2-4 spaces for nested elements
 - **Semantic naming**: Choose ID names that reflect actual meaning
 
 ### 3. Maintainability
+
 - **Modular design**: Break complex diagrams into smaller, focused components
 - **Version-friendly**: Structure for easy diff viewing in version control
 - **Comment usage**: Add comments to explain complex logic or assumptions
@@ -38,9 +45,11 @@ AUDIENCE := TECHNICAL | BUSINESS | MIXED
 ## Diagram Type Templates
 
 ### Flowchart - Process & Decision Flow
+
 **Use for**: Process documentation, decision trees, system workflows
 
 **Structure Pattern**:
+
 ```mermaid
 flowchart TD
     Start([Start Process]) --> Input[/Input Data/]
@@ -64,6 +73,7 @@ flowchart TD
 ```
 
 **Node Types**:
+
 - `[]` Rectangle (process/action)
 - `()` Rounded rectangle (start/end)
 - `{}` Diamond (decision)
@@ -71,9 +81,11 @@ flowchart TD
 - `[()]` Stadium (subprocess)
 
 ### Sequence Diagram - Interaction Flow
+
 **Use for**: API interactions, user workflows, system communication
 
 **Structure Pattern**:
+
 ```mermaid
 sequenceDiagram
     participant User as 👤 User
@@ -99,15 +111,18 @@ sequenceDiagram
 ```
 
 **Best Practices**:
+
 - Use `+`/`-` for activation/deactivation
 - Add meaningful participant aliases
 - Include alt/opt/loop for complex flows
 - Use notes for important context
 
 ### Class Diagram - Structure & Relationships
+
 **Use for**: Software architecture, data models, system design
 
 **Structure Pattern**:
+
 ```mermaid
 classDiagram
     class User {
@@ -140,9 +155,11 @@ classDiagram
 ```
 
 ### State Diagram - Status & Transitions
+
 **Use for**: State machines, workflow states, system status
 
 **Structure Pattern**:
+
 ```mermaid
 stateDiagram-v2
     [*] --> Draft
@@ -166,7 +183,8 @@ stateDiagram-v2
 ## Decision Framework
 
 ### Diagram Type Selection
-```
+
+```text
 IF showing_process_flow THEN flowchart
 ELSE IF showing_interactions THEN sequence
 ELSE IF showing_data_structure THEN class
@@ -176,12 +194,14 @@ ELSE IF showing_relationships THEN entity_relationship
 ```
 
 ### Complexity Management
+
 - **Simple** (≤10 nodes): Single diagram, minimal styling
 - **Moderate** (11-25 nodes): Multiple sections, basic styling
 - **Complex** (>25 nodes): Break into multiple diagrams, extensive styling
 
 ### Layout Optimization
-```
+
+```text
 LAYOUT_DIRECTION := TD | TB | BT | RL | LR
 CHOOSE_BY := 
   - Content flow (TD for processes, LR for timelines)
@@ -192,18 +212,21 @@ CHOOSE_BY :=
 ## Quality Validation Checklist
 
 ### Syntax Validation
+
 - [ ] **Valid Mermaid syntax**: No syntax errors when rendered
 - [ ] **Proper node IDs**: Alphanumeric characters, meaningful names
 - [ ] **Correct relationships**: Valid arrow types and directions
 - [ ] **Escaped special characters**: Quotes around labels with special chars
 
 ### Design Quality
+
 - [ ] **Clear purpose**: Diagram serves specific documentation goal
 - [ ] **Appropriate complexity**: Not overwhelming, focused scope
 - [ ] **Logical flow**: Natural reading order, minimal line crossings
 - [ ] **Consistent styling**: Uniform colors, fonts, and spacing
 
 ### Content Quality
+
 - [ ] **Descriptive labels**: Clear, concise, meaningful text
 - [ ] **Complete coverage**: All relevant elements included
 - [ ] **Accurate relationships**: Connections reflect actual relationships
@@ -212,6 +235,7 @@ CHOOSE_BY :=
 ## Common Patterns & Anti-Patterns
 
 ### ✅ Best Practices
+
 ```mermaid
 flowchart TD
     subgraph "Authentication Flow"
@@ -231,6 +255,7 @@ flowchart TD
 ```
 
 ### ❌ Anti-Patterns to Avoid
+
 - **Too many nodes**: >30 nodes in single diagram
 - **Unclear labels**: "Process 1", "Step A", generic names
 - **Missing relationships**: Disconnected nodes without clear flow
@@ -240,6 +265,7 @@ flowchart TD
 ## Styling Guidelines
 
 ### Color Scheme (Semantic)
+
 ```mermaid
 %%{init: {
   'theme': 'base',
@@ -255,7 +281,8 @@ flowchart TD
 ```
 
 ### Class Definitions
-```
+
+```css
 classDef success fill:#d4edda,stroke:#155724,color:#155724
 classDef error fill:#f8d7da,stroke:#721c24,color:#721c24
 classDef warning fill:#fff3cd,stroke:#856404,color:#856404
@@ -265,6 +292,7 @@ classDef process fill:#e3f2fd,stroke:#1565c0,color:#1565c0
 ## Advanced Techniques
 
 ### Subgraphs for Organization
+
 ```mermaid
 graph TB
     subgraph "Frontend"
@@ -280,6 +308,7 @@ graph TB
 ```
 
 ### Interactive Elements
+
 ```mermaid
 flowchart TD
     A[User Action] --> B[Process]
@@ -288,6 +317,7 @@ flowchart TD
 ```
 
 ### Dynamic Styling
+
 ```mermaid
 graph LR
     A[Start] --> B[Process]
@@ -301,18 +331,21 @@ graph LR
 ## Integration Best Practices
 
 ### Documentation Integration
+
 - Place diagrams near related text content
 - Use descriptive titles and captions
 - Provide context for complex diagrams
 - Keep diagrams up-to-date with code changes
 
 ### Version Control
+
 - Use meaningful commit messages for diagram changes
 - Consider diagram-specific branches for major revisions
 - Include diagram source in code reviews
 - Maintain diagram changelog for significant updates
 
 ### Accessibility
+
 - Use high contrast colors
 - Provide alternative text descriptions
 - Ensure diagrams work at different zoom levels
@@ -321,6 +354,7 @@ graph LR
 ## Quality Assurance Commands
 
 ### Validation Scripts
+
 ```bash
 # Mermaid CLI validation
 mermaid -i diagram.mmd -o output.png
@@ -333,6 +367,7 @@ mermaid --validate docs/**/*.mmd
 ```
 
 ### Testing Checklist
+
 - [ ] Renders correctly in target environments
 - [ ] Maintains readability at different sizes
 - [ ] Works with project's theme/branding
@@ -340,14 +375,15 @@ mermaid --validate docs/**/*.mmd
 
 ## References & Resources
 
-- **Official Documentation**: https://mermaid.js.org/
-- **Live Editor**: https://mermaid.live/
-- **Syntax Guide**: https://mermaid.js.org/intro/syntax-reference.html
-- **Community Examples**: https://github.com/mermaid-js/mermaid/tree/develop/docs
+- **Official Documentation**: [Mermaid.js](https://mermaid.js.org/)
+- **Live Editor**: [Mermaid Live](https://mermaid.live/)
+- **Syntax Guide**: [Mermaid Syntax Reference](https://mermaid.js.org/intro/syntax-reference.html)
+- **Community Examples**: [Mermaid Documentation Examples](https://github.com/mermaid-js/mermaid/tree/develop/docs)
 
 ---
 
-**Integration Notes**: 
+**Integration Notes**:
+
 - Works with @cursor-rules.mdc meta-framework
 - Follows @git-commit-message.mdc for version control
 - Aligns with project documentation standards

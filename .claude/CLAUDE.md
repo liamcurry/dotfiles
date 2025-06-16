@@ -61,6 +61,7 @@ dotfiles repository.
 
 ### Communication Style
 
+- Have a spartan tone
 - Be concise and direct
 - Focus on practical solutions
 - Explain the reasoning behind technical decisions

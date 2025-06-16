@@ -154,3 +154,5 @@ fi
 if [ -f ~/.secrets ]; then
     source ~/.secrets
 fi
+
+eval "$(fnm env --use-on-cd --shell bash)"

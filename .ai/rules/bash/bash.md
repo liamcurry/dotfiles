@@ -1,17 +1,20 @@
 ---
-description: 
+description:
 globs: *.sh,.bashrc
 alwaysApply: false
 ---
+
 # Modern Bash Scripting Rules
 
-When writing bash scripts, follow these modern practices for robustness, security, and maintainability.
+When writing bash scripts, follow these modern practices for robustness,
+security, and maintainability.
 
 ## Grug-Approved Quick Start
 
-**"grug want script that work, not break"**
+> "grug want script that work, not break"
 
 ### Copy-Paste Template (Grug Tested)
+
 ```bash
 #!/bin/bash
 set -euo pipefail
@@ -37,6 +40,7 @@ main "$@"
 ```
 
 ### Five Rules Grug Never Forget
+
 1. **Always quote variables**: `"$var"` (prevents word splitting)
 2. **Check commands work**: `cmd || exit 1` (fail fast)
 3. **Use `local` in functions**: `local var="$1"` (no global mess)
@@ -44,6 +48,7 @@ main "$@"
 5. **Use shellcheck**: `shellcheck script.sh` (catches grug mistakes)
 
 ### Common Grug Mistakes (And Fixes)
+
 ```bash
 # BAD - grug forget quotes
 cp $file $dest
@@ -79,16 +84,19 @@ process_file() {
 ## When to Apply
 
 Use this rule when:
+
 - Creating or modifying shell scripts (`.sh`, `.bash` files)
 - Working with system automation scripts
 - Building deployment or CI/CD pipeline scripts
 - Writing utility or wrapper scripts
 
-**Cross-reference with**: @google-shellguide.mdc for enterprise-grade standards, @git-commit-message.mdc for version control practices.
+**Cross-reference with**: @google-shellguide.mdc for enterprise-grade standards,
+@git-commit-message.mdc for version control practices.
 
 ## Quick Start Essentials
 
 ### Mandatory Script Header
+
 ```bash
 #!/bin/bash
 set -euo pipefail
@@ -98,6 +106,7 @@ set -euo pipefail
 ```
 
 ### Core Safety Pattern
+
 ```bash
 # Validation template
 if [[ $# -lt 1 ]]; then
@@ -115,6 +124,7 @@ command_that_might_fail || {
 ## Script Structure & Safety
 
 ### Essential Safety Settings
+
 - **ALWAYS** start scripts with: `#!/bin/bash`
 - **ALWAYS** use strict mode: `set -euo pipefail`
   - `-e`: Exit on any command failure
@@ -123,6 +133,7 @@ command_that_might_fail || {
 - Add `set -x` for debugging when needed
 
 ### Script Template
+
 ```bash
 #!/bin/bash
 set -euo pipefail
@@ -148,12 +159,14 @@ main "$@"
 ## Error Handling & Validation
 
 ### Robust Error Handling
+
 - Check return values of all commands
 - Use `|| { echo "Error message" >&2; exit 1; }` for critical commands
 - Implement cleanup functions with `trap`
 - Validate all inputs and arguments
 
 ### Example Error Handling
+
 ```bash
 cleanup() {
     rm -f "${temp_file:-}"
@@ -175,6 +188,7 @@ temp_file="$(mktemp)" || {
 ## Variable and Function Best Practices
 
 ### Variable Handling
+
 - Use `local` for all function variables
 - Always quote variables: `"${var}"` not `$var`
 - Use `readonly` for constants
@@ -182,6 +196,7 @@ temp_file="$(mktemp)" || {
 - Use parameter expansion for defaults: `${var:-default}`
 
 ### Function Guidelines
+
 - Keep functions small and focused (≤ 20 lines)
 - Use descriptive names with underscores: `check_dependencies`
 - Return meaningful exit codes (0 for success, 1-255 for errors)
@@ -190,6 +205,7 @@ temp_file="$(mktemp)" || {
 ## Security Best Practices
 
 ### Critical Security Rules
+
 - **NEVER** use `eval` - find alternatives
 - **NEVER** use `source` on untrusted files
 - Validate and sanitize all user inputs
@@ -198,6 +214,7 @@ temp_file="$(mktemp)" || {
 - Set restrictive permissions: `umask 077`
 
 ### Input Validation Example
+
 ```bash
 validate_input() {
     local input="$1"
@@ -221,6 +238,7 @@ validate_input() {
 ## Modern Bash Features
 
 ### Use Modern Constructs
+
 - Prefer `[[ ]]` over `[ ]` for conditionals
 - Use `$(command)` instead of backticks
 - Use `{1..10}` for ranges instead of `seq`
@@ -228,6 +246,7 @@ validate_input() {
 - Use `mapfile` or `readarray` for reading files into arrays
 
 ### String Operations
+
 ```bash
 # Modern string handling
 string="hello world"
@@ -240,12 +259,14 @@ echo "${string: -5}"     # Last 5 characters
 ## Documentation & Comments
 
 ### Documentation Standards
+
 - Include header comment with purpose, usage, and author
 - Comment complex logic and regex patterns
 - Use `#` for comments, `##` for section headers
 - Document all function parameters and return values
 
 ### Example Documentation
+
 ```bash
 ##
 # Process log files and extract error patterns
@@ -267,6 +288,7 @@ process_logs() {
 ## Testing & Validation
 
 ### Testing Guidelines
+
 - Use `shellcheck` for static analysis
 - Test with different inputs and edge cases
 - Use `bash -n script.sh` to check syntax
@@ -274,6 +296,7 @@ process_logs() {
 - Use temporary directories for testing: `mktemp -d`
 
 ### Example Test Function
+
 ```bash
 run_tests() {
     local test_dir
@@ -302,6 +325,7 @@ run_tests() {
 ## Advanced Patterns
 
 ### Performance & Efficiency
+
 - Avoid unnecessary subshells
 - Use built-in commands over external tools when possible
 - Process large files with `while read` loops
@@ -309,6 +333,7 @@ run_tests() {
 - Minimize I/O operations in loops
 
 ### Cross-Platform Considerations
+
 - Use `/bin/bash` not `/bin/sh` for bash-specific features
 - Avoid GNU-specific options (use portable alternatives)
 - Test on different systems when possible
@@ -318,6 +343,7 @@ run_tests() {
 ### Common Patterns
 
 #### Argument Parsing
+
 ```bash
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -342,6 +368,7 @@ done
 ```
 
 #### Configuration File Handling
+
 ```bash
 load_config() {
     local config_file="${1:-${HOME}/.config/myapp/config}"
@@ -359,18 +386,22 @@ load_config() {
 ## Quality Assurance
 
 ### Validation Commands
+
 - `shellcheck script.sh` - Static analysis
 - `bash -n script.sh` - Syntax check
 - `bash -x script.sh` - Debug mode
 
 ### Common Pitfalls
+
 - **Unquoted variables**: Always use `"${var}"` not `$var`
 - **Missing error handling**: Check return values of all commands
 - **Unsafe temp files**: Use `mktemp` and cleanup with `trap`
 - **Path assumptions**: Use absolute paths or validate relative ones
 
-Remember: When in doubt, prioritize security and clarity over cleverness. Write scripts that are easy to understand, maintain, and debug.
+Remember: When in doubt, prioritize security and clarity over cleverness. Write
+scripts that are easy to understand, maintain, and debug.
 
 **See also:**
+
 - @google-shellguide.mdc for enterprise shell scripting standards
 - @git-commit-message.mdc for version control best practices

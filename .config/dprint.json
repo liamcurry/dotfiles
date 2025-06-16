@@ -12,5 +12,8 @@
     "json": {
         "indentWidth": 4,
         "useTabs": false
+    },
+    "markdown": {
+        "textWrap": "always"
     }
 }

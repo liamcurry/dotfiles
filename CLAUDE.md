@@ -134,4 +134,3 @@ This project uses Claude Code memory management with:
 
 Memory files are automatically loaded when Claude Code launches and support
 recursive imports (max 5 hops) using `@path/to/import` syntax.
-

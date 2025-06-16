@@ -1,16 +1,20 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: true
 ---
+
 # Twelve-Factor App Development Standards
 
-Modern implementation of twelve-factor principles for cloud-native applications, emphasizing developer productivity, operational excellence, and platform portability.
+Modern implementation of twelve-factor principles for cloud-native applications,
+emphasizing developer productivity, operational excellence, and platform
+portability.
 
 ## Core Principles Framework
 
 ### Factor Classification System
-```
+
+```text
 FACTOR_TYPE := CODEBASE | DEPENDENCIES | CONFIG | BACKING_SERVICES | BUILD_RELEASE_RUN | PROCESSES | PORT_BINDING | CONCURRENCY | DISPOSABILITY | DEV_PROD_PARITY | LOGS | ADMIN_PROCESSES
 SCOPE := APPLICATION | PLATFORM | DEPLOYMENT
 IMPLEMENTATION := CONTAINER_NATIVE | KUBERNETES_READY | CLOUD_AGNOSTIC
@@ -19,9 +23,12 @@ IMPLEMENTATION := CONTAINER_NATIVE | KUBERNETES_READY | CLOUD_AGNOSTIC
 ## Implementation Guidelines
 
 ### I. Codebase - One Codebase, Multiple Deploys
+
 **Pattern**: Single repository with environment-specific deployments
+
 - **Structure**: Monorepo with clear service boundaries OR microrepo per service
-- **Branching**: `main` for production, environment promotion via deployment configs
+- **Branching**: `main` for production, environment promotion via deployment
+  configs
 - **Deployment tracking**: Version tags, commit SHAs in deployment metadata
 
 ```dockerfile
@@ -40,14 +47,17 @@ CMD ["npm", "start"]
 ```
 
 ### II. Dependencies - Explicitly Declare and Isolate
+
 **Pattern**: Lock files + containerization + dependency scanning
+
 - **Lock files**: Always commit `package-lock.json`, `Cargo.lock`, `poetry.lock`
-- **Isolation**: Use containers, virtual environments, or language-specific isolation
+- **Isolation**: Use containers, virtual environments, or language-specific
+  isolation
 - **Security**: Regular dependency scanning and updates
 
 ```yaml
 # docker-compose.yml - Development parity
-version: '3.8'
+version: "3.8"
 services:
   app:
     build: .
@@ -59,28 +69,34 @@ services:
 ```
 
 ### III. Config - Store Config in Environment
+
 **Pattern**: Environment variables + secrets management + validation
+
 - **Never commit**: API keys, passwords, database URLs
 - **Validation**: Schema validation for all config at startup
 - **Hierarchy**: Environment variables > config files > defaults
 
 ```javascript
 // config/index.js - Validated configuration
-const { z } = require('zod');
+const { z } = require("zod");
 
 const configSchema = z.object({
   PORT: z.coerce.number().default(3000),
   DATABASE_URL: z.string().url(),
   JWT_SECRET: z.string().min(32),
-  NODE_ENV: z.enum(['development', 'staging', 'production']).default('development'),
-  LOG_LEVEL: z.enum(['debug', 'info', 'warn', 'error']).default('info')
+  NODE_ENV: z.enum(["development", "staging", "production"]).default(
+    "development",
+  ),
+  LOG_LEVEL: z.enum(["debug", "info", "warn", "error"]).default("info"),
 });
 
 module.exports = configSchema.parse(process.env);
 ```
 
 ### IV. Backing Services - Treat as Attached Resources
+
 **Pattern**: Service discovery + connection pooling + circuit breakers
+
 - **Abstraction**: Database, cache, message queues via environment config
 - **Resilience**: Connection pooling, retries, circuit breakers
 - **Local development**: Docker Compose for service dependencies
@@ -96,7 +112,7 @@ services:
       POSTGRES_PASSWORD: dev
     ports:
       - "5432:5432"
-  
+
   redis:
     image: redis:7-alpine
     ports:
@@ -104,7 +120,9 @@ services:
 ```
 
 ### V. Build, Release, Run - Strictly Separate Stages
+
 **Pattern**: CI/CD pipeline with immutable artifacts
+
 - **Build**: Create deployment artifact (container image, compiled binary)
 - **Release**: Combine build with config for specific environment
 - **Run**: Execute release in target environment
@@ -130,7 +148,7 @@ jobs:
           tags: |
             ghcr.io/myorg/myapp:${{ github.sha }}
             ghcr.io/myorg/myapp:latest
-  
+
   release:
     needs: build
     runs-on: ubuntu-latest
@@ -143,47 +161,55 @@ jobs:
 ```
 
 ### VI. Processes - Execute as Stateless Processes
+
 **Pattern**: Shared-nothing architecture + external state storage
+
 - **Stateless**: No sticky sessions, no local file storage
 - **State management**: Use Redis, database, or external storage for persistence
 - **Process isolation**: Each process handles requests independently
 
 ```javascript
 // Stateless request handler
-app.get('/api/data', async (req, res) => {
+app.get("/api/data", async (req, res) => {
   // Get state from external store, not local memory
   const sessionData = await redis.get(`session:${req.sessionId}`);
-  const userData = await db.query('SELECT * FROM users WHERE id = ?', [req.userId]);
-  
+  const userData = await db.query("SELECT * FROM users WHERE id = ?", [
+    req.userId,
+  ]);
+
   res.json({ sessionData, userData });
 });
 ```
 
 ### VII. Port Binding - Export Services via Port Binding
+
 **Pattern**: Self-contained service + reverse proxy + service mesh
+
 - **Self-contained**: App includes web server, not deployed into container
 - **Port configuration**: Environment-driven port binding
 - **Service discovery**: Health checks and service registration
 
 ```javascript
 // Self-contained HTTP server
-const express = require('express');
-const config = require('./config');
+const express = require("express");
+const config = require("./config");
 
 const app = express();
 
 // Health check endpoint
-app.get('/health', (req, res) => {
-  res.json({ status: 'healthy', timestamp: new Date().toISOString() });
+app.get("/health", (req, res) => {
+  res.json({ status: "healthy", timestamp: new Date().toISOString() });
 });
 
-app.listen(config.PORT, '0.0.0.0', () => {
+app.listen(config.PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${config.PORT}`);
 });
 ```
 
 ### VIII. Concurrency - Scale Out via Process Model
+
 **Pattern**: Horizontal scaling + load balancing + async processing
+
 - **Process types**: Web servers, background workers, schedulers
 - **Scaling**: Independent scaling per process type
 - **Load distribution**: Round-robin, least connections, or session affinity
@@ -202,18 +228,18 @@ spec:
   template:
     spec:
       containers:
-      - name: web
-        image: myapp:latest
-        env:
-        - name: PROCESS_TYPE
-          value: "web"
-        resources:
-          requests:
-            memory: "128Mi"
-            cpu: "100m"
-          limits:
-            memory: "256Mi"
-            cpu: "200m"
+        - name: web
+          image: myapp:latest
+          env:
+            - name: PROCESS_TYPE
+              value: "web"
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -227,15 +253,17 @@ spec:
   template:
     spec:
       containers:
-      - name: worker
-        image: myapp:latest
-        env:
-        - name: PROCESS_TYPE
-          value: "worker"
+        - name: worker
+          image: myapp:latest
+          env:
+            - name: PROCESS_TYPE
+              value: "worker"
 ```
 
 ### IX. Disposability - Fast Startup and Graceful Shutdown
+
 **Pattern**: Signal handling + graceful shutdown + health checks
+
 - **Fast startup**: Minimize boot time, lazy loading where appropriate
 - **Graceful shutdown**: Handle SIGTERM for clean shutdown
 - **Health checks**: Readiness and liveness probes
@@ -244,41 +272,43 @@ spec:
 // Graceful shutdown handler
 const gracefulShutdown = (signal) => {
   console.log(`Received ${signal}. Starting graceful shutdown...`);
-  
+
   server.close((err) => {
     if (err) {
-      console.error('Error during server shutdown:', err);
+      console.error("Error during server shutdown:", err);
       process.exit(1);
     }
-    
+
     // Close database connections, finish pending tasks
     Promise.all([
       db.close(),
       redis.disconnect(),
-      messageQueue.close()
+      messageQueue.close(),
     ]).then(() => {
-      console.log('Graceful shutdown completed');
+      console.log("Graceful shutdown completed");
       process.exit(0);
     }).catch((err) => {
-      console.error('Error during graceful shutdown:', err);
+      console.error("Error during graceful shutdown:", err);
       process.exit(1);
     });
   });
 };
 
-process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
-process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
+process.on("SIGINT", () => gracefulShutdown("SIGINT"));
 ```
 
 ### X. Dev/Prod Parity - Keep Development and Production Similar
+
 **Pattern**: Containerization + infrastructure as code + feature flags
+
 - **Time gap**: Continuous deployment, short release cycles
 - **Personnel gap**: Developers involved in deployment and monitoring
 - **Tools gap**: Same backing services in dev and prod
 
 ```yaml
 # docker-compose.override.yml - Development environment
-version: '3.8'
+version: "3.8"
 services:
   app:
     volumes:
@@ -288,7 +318,7 @@ services:
       - NODE_ENV=development
       - DATABASE_URL=postgresql://dev:dev@postgres:5432/myapp_dev
     command: npm run dev
-  
+
   postgres:
     environment:
       POSTGRES_DB: myapp_dev
@@ -297,45 +327,49 @@ services:
 ```
 
 ### XI. Logs - Treat Logs as Event Streams
+
 **Pattern**: Structured logging + centralized collection + observability
+
 - **Format**: JSON structured logs with correlation IDs
 - **Output**: stdout/stderr only, no log files
 - **Collection**: Log aggregation system (ELK, Fluentd, etc.)
 
 ```javascript
 // Structured logging with correlation
-const winston = require('winston');
-const { v4: uuidv4 } = require('uuid');
+const winston = require("winston");
+const { v4: uuidv4 } = require("uuid");
 
 const logger = winston.createLogger({
   format: winston.format.combine(
     winston.format.timestamp(),
-    winston.format.json()
+    winston.format.json(),
   ),
   transports: [
-    new winston.transports.Console()
-  ]
+    new winston.transports.Console(),
+  ],
 });
 
 // Request correlation middleware
 app.use((req, res, next) => {
-  req.correlationId = req.headers['x-correlation-id'] || uuidv4();
-  res.setHeader('X-Correlation-ID', req.correlationId);
-  
-  logger.info('Request started', {
+  req.correlationId = req.headers["x-correlation-id"] || uuidv4();
+  res.setHeader("X-Correlation-ID", req.correlationId);
+
+  logger.info("Request started", {
     correlationId: req.correlationId,
     method: req.method,
     url: req.url,
-    userAgent: req.headers['user-agent']
+    userAgent: req.headers["user-agent"],
   });
-  
+
   next();
 });
 ```
 
 ### XII. Admin Processes - Run Admin Tasks as One-off Processes
+
 **Pattern**: CLI tools + database migrations + maintenance scripts
-- **Environment**: Same environment as regular app processes  
+
+- **Environment**: Same environment as regular app processes
 - **Execution**: One-time scripts, database migrations, data imports
 - **Access**: Same codebase and dependencies as the app
 
@@ -374,9 +408,11 @@ program.parse();
 ## Modern Cloud-Native Extensions
 
 ### XIII. Identity & Security (Proposed Factor)
+
 **Pattern**: Zero-trust security + identity management + secrets rotation
+
 - **Authentication**: OAuth2/OIDC integration
-- **Authorization**: RBAC with principle of least privilege  
+- **Authorization**: RBAC with principle of least privilege
 - **Secrets**: External secret management (Vault, cloud KMS)
 
 ```yaml
@@ -397,20 +433,24 @@ spec:
 ```
 
 ### XIV. Observability & Telemetry
+
 **Pattern**: OpenTelemetry + metrics + tracing + alerting
+
 - **Metrics**: Application and business metrics
 - **Tracing**: Distributed tracing across services
 - **Alerting**: SLI/SLO-based monitoring
 
 ```javascript
 // OpenTelemetry instrumentation
-const { NodeSDK } = require('@opentelemetry/sdk-node');
-const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumentations-node');
+const { NodeSDK } = require("@opentelemetry/sdk-node");
+const { getNodeAutoInstrumentations } = require(
+  "@opentelemetry/auto-instrumentations-node",
+);
 
 const sdk = new NodeSDK({
   instrumentations: [getNodeAutoInstrumentations()],
-  serviceName: 'myapp',
-  serviceVersion: process.env.APP_VERSION || 'unknown'
+  serviceName: "myapp",
+  serviceVersion: process.env.APP_VERSION || "unknown",
 });
 
 sdk.start();
@@ -419,8 +459,9 @@ sdk.start();
 ## Quality Gates & Validation
 
 ### Implementation Checklist
+
 - [ ] **Codebase**: Single repo, version-controlled deployments
-- [ ] **Dependencies**: Lock files committed, container isolation  
+- [ ] **Dependencies**: Lock files committed, container isolation
 - [ ] **Config**: Environment variables, secrets management
 - [ ] **Backing Services**: Service discovery, connection pooling
 - [ ] **Build/Release/Run**: CI/CD pipeline, immutable artifacts
@@ -433,6 +474,7 @@ sdk.start();
 - [ ] **Admin Processes**: CLI tools, migration scripts
 
 ### Validation Commands
+
 ```bash
 # Verify twelve-factor compliance
 docker build -t myapp .
@@ -449,15 +491,18 @@ trivy image myapp:latest
 ## Common Anti-Patterns & Recovery
 
 ### Frequent Violations
+
 - **Config in code**: Hardcoded URLs, API keys → Use environment variables
-- **Sticky sessions**: Server-side session storage → Use Redis/external store  
+- **Sticky sessions**: Server-side session storage → Use Redis/external store
 - **Local file storage**: Writing to container filesystem → Use object storage
 - **Tight coupling**: Direct service calls → Use service discovery
 - **Mixed environments**: Different tools dev vs prod → Containerize everything
 
 ### Migration Strategy
+
 ```markdown
 ## Twelve-Factor Migration Roadmap
+
 1. **Assessment**: Audit current app against twelve factors
 2. **Config extraction**: Move hardcoded config to environment variables
 3. **State externalization**: Move session/cache to external services
@@ -470,14 +515,15 @@ trivy image myapp:latest
 ## Framework Integration Examples
 
 ### Express.js Twelve-Factor Starter
+
 ```javascript
 // app.js - Complete twelve-factor Express app
-const express = require('express');
-const helmet = require('helmet');
-const cors = require('cors');
-const config = require('./config');
-const logger = require('./lib/logger');
-const db = require('./lib/database');
+const express = require("express");
+const helmet = require("helmet");
+const cors = require("cors");
+const config = require("./config");
+const logger = require("./lib/logger");
+const db = require("./lib/database");
 
 const app = express();
 
@@ -487,22 +533,23 @@ app.use(cors());
 app.use(express.json());
 
 // Health check (Factor VII - Port Binding)
-app.get('/health', (req, res) => {
-  res.json({ 
-    status: 'healthy', 
-    version: process.env.APP_VERSION || 'unknown',
-    timestamp: new Date().toISOString()
+app.get("/health", (req, res) => {
+  res.json({
+    status: "healthy",
+    version: process.env.APP_VERSION || "unknown",
+    timestamp: new Date().toISOString(),
   });
 });
 
 // Graceful shutdown (Factor IX - Disposability)
-process.on('SIGTERM', gracefulShutdown);
-process.on('SIGINT', gracefulShutdown);
+process.on("SIGTERM", gracefulShutdown);
+process.on("SIGINT", gracefulShutdown);
 
 module.exports = app;
 ```
 
 ### Docker Twelve-Factor Template
+
 ```dockerfile
 # Multi-stage build (Factor V - Build/Release/Run)
 FROM node:18-alpine AS builder
@@ -545,4 +592,6 @@ CMD ["node", "server.js"]
 
 ---
 
-**Remember**: Twelve-factor principles are guidelines, not rigid rules. Adapt them to your specific use case while maintaining the core philosophy of build portability, deployment simplicity, and operational excellence.
+**Remember**: Twelve-factor principles are guidelines, not rigid rules. Adapt
+them to your specific use case while maintaining the core philosophy of build
+portability, deployment simplicity, and operational excellence.

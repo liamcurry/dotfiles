@@ -47,7 +47,7 @@ return {
               return { 'fmt', '--stdin', '$FILENAME' }
             else
               -- Fall back to global config
-              return { 'fmt', '--config', vim.fn.expand('~/.config/dprint.json'), '--stdin', '$FILENAME' }
+              return { 'fmt', '--config', vim.fn.expand('~/.config/dprint.json'), '$FILENAME' }
             end
           end,
         },

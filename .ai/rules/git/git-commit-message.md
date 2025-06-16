@@ -1,68 +1,83 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: true
 ---
+
 # Cursor Rules for Beautiful, Consistent Git Commit Messages
 
 ## (Linux/Linus Style – Not Conventional Commits)
 
-Use these rules in Cursor to ensure your commit messages follow the traditional, well-regarded Linux kernel and open source conventions—not Conventional Commits.
+Use these rules in Cursor to ensure your commit messages follow the traditional,
+well-regarded Linux kernel and open source conventions—not Conventional Commits.
 
 ## When to Apply
 
 ### Universal Application
-This rule applies to **all commits** in any project, ensuring consistent version control history across:
+
+This rule applies to **all commits** in any project, ensuring consistent version
+control history across:
+
 - Solo projects and team collaborations
-- Open source and proprietary codebases  
+- Open source and proprietary codebases
 - Any programming language or framework
 
 ### Context-Specific Adaptations
+
 - **Team projects**: Include reviewer references and issue numbers
 - **Open source**: Consider `Signed-off-by` for contribution tracking
 - **Enterprise**: May require additional metadata per organization policy
 
-**Integrates with**: @bash.mdc and @google-shellguide.mdc for script commit practices
+**Integrates with**: @bash.mdc and @google-shellguide.mdc for script commit
+practices
 
 ---
 
 ## Rules for Commit Messages
 
 ### Subject Line
-- Write a concise summary of the change in the **imperative mood**  
+
+- Write a concise summary of the change in the **imperative mood**\
   (e.g., "Fix bug," not "Fixed bug" or "Fixes bug").
 - **Capitalize** the first letter of the subject line.
 - **Do not** end the subject line with a period.
-- Keep the subject line to **50 characters or less** if possible; never exceed 72 characters.
-- The subject line should be able to complete the sentence:  
+- Keep the subject line to **50 characters or less** if possible; never exceed
+  72 characters.
+- The subject line should be able to complete the sentence:\
   "If applied, this commit will…".
-- Optionally, append an issue or ticket number at the end  
+- Optionally, append an issue or ticket number at the end\
   (e.g., "Remove unused imports #123").
 
 ### Blank Line
+
 - Always separate the subject from the body with a **single blank line**.
 
 ### Body
-- Use the body to explain **what** and **why** the change was made;  
+
+- Use the body to explain **what** and **why** the change was made;\
   avoid describing **how** (the code diff shows that).
 - **Wrap** the body at **72 characters** per line.
-- Use bullet points or paragraphs as needed; bullets should start with a hyphen or asterisk followed by a space.
-- Reference related issues, tickets, or reviewers in the body as needed  
+- Use bullet points or paragraphs as needed; bullets should start with a hyphen
+  or asterisk followed by a space.
+- Reference related issues, tickets, or reviewers in the body as needed\
   (e.g., "Fixes #123").
-- If applicable, include  
-  `Signed-off-by: Name <email>`  
+- If applicable, include\
+  `Signed-off-by: Name <email>`\
   at the end, preceded by a blank line.
 
 ### General Style
+
 - Avoid unnecessary metadata in the subject line; keep it focused on the change.
 - Be **clear, descriptive, and succinct**.
 - **Never mix unrelated changes** in a single commit.
+- **Never reference AI assistance** in commit messages or signatures.
+- **Do not use AI-related Co-Authored-By tags** or similar attribution.
 
 ---
 
 ## Example Commit Message
 
-```
+```text
 Fix race condition in user session handler
 
 A rare race condition could corrupt session state when multiple
@@ -80,12 +95,17 @@ Signed-off-by: Jane Doe <jane@example.com>
 ## Common Pitfalls & Recovery
 
 ### Frequent Mistakes
-- **Vague subjects**: "Fix issue" → "Fix database connection timeout in user auth"
-- **Wrong mood**: "Fixed bug" → "Fix bug"  
-- **Too long subject**: "Fix the really annoying bug that happens when users try to..." → "Fix user authentication timeout"
-- **Missing context**: "Update code" → "Update API rate limiting to handle peak traffic"
+
+- **Vague subjects**: "Fix issue" → "Fix database connection timeout in user
+  auth"
+- **Wrong mood**: "Fixed bug" → "Fix bug"
+- **Too long subject**: "Fix the really annoying bug that happens when users try
+  to..." → "Fix user authentication timeout"
+- **Missing context**: "Update code" → "Update API rate limiting to handle peak
+  traffic"
 
 ### Recovery Strategies
+
 ```bash
 # Fix last commit message
 git commit --amend
@@ -98,7 +118,8 @@ git config commit.template ~/.gitmessage
 ```
 
 ### Subject Line Templates
-```
+
+```text
 [ACTION] [COMPONENT]: [BRIEF_DESCRIPTION]
 
 Examples:
@@ -111,6 +132,7 @@ Examples:
 ## Validation & Quality Assurance
 
 ### Validation Commands
+
 ```bash
 # Check commit message format
 git log --oneline -n 10
@@ -129,7 +151,15 @@ echo "# Subject (50 chars max)
 git config --global commit.template ~/.gitmessage
 ```
 
+### Authorship Guidelines
+
+- **Use your real name and email** for all commits
+- **Never attribute commits to AI tools** or assistant services
+- **Maintain consistent authorship** across all commits in a project
+- **Sign-off commits** represent your responsibility for the changes
+
 ### Pre-commit Hook Example
+
 ```bash
 #!/bin/bash
 # .git/hooks/commit-msg
@@ -145,21 +175,25 @@ fi
 ## Context-Specific Guidelines
 
 ### Solo Projects
+
 - Focus on clarity for future self
 - Omit issue references unless using issue tracking
 - Prioritize describing the "why" behind changes
 
-### Team Collaboration  
+### Team Collaboration
+
 - Always include issue/ticket references
 - Consider reviewer mentions in body
 - Use consistent terminology across team
 
 ### Open Source Contributions
+
 - Include `Signed-off-by` for legal compliance
 - Reference maintainer guidelines
 - Be extra clear for external reviewers
 
 ### Emergency Fixes
+
 ```bash
 # For critical hotfixes
 git commit -m "Hotfix: patch security vulnerability in auth
@@ -177,36 +211,41 @@ Reviewed-by: Security Team <security@company.com>"
 
 ## Summary Table
 
-| Section      | Rule                                                                                     |
-|--------------|------------------------------------------------------------------------------------------|
-| Subject      | Imperative mood, capitalized, ≤50 chars, no period, blank line after, may add #issue     |
-| Body         | Explain what/why, wrap at 72 chars, bullets ok, references ok, blank line before signoff |
-| Style        | No unrelated changes, be clear and succinct, avoid metadata in subject                   |
+| Section | Rule                                                                                     |
+| ------- | ---------------------------------------------------------------------------------------- |
+| Subject | Imperative mood, capitalized, ≤50 chars, no period, blank line after, may add #issue     |
+| Body    | Explain what/why, wrap at 72 chars, bullets ok, references ok, blank line before signoff |
+| Style   | No unrelated changes, be clear and succinct, avoid metadata in subject                   |
 
 ---
 
 ## Integration with Development Workflow
 
 ### Code Review Process
+
 - Commit messages become part of code review
 - Good messages help reviewers understand intent
 - Consider squashing related commits before merge
 
 ### Release Management
+
 - Clear commit history aids in generating changelogs
 - Issue references enable automated release notes
 - Consistent format supports git log filtering
 
 ### Debugging & Maintenance
+
 - Descriptive commits help with `git blame` and `git bisect`
 - Clear history reduces time spent understanding changes
 - Good messages become documentation over time
 
 ## References
 
-- Linus Torvalds, Linux kernel documentation, and widely adopted open source practices.
+- Linus Torvalds, Linux kernel documentation, and widely adopted open source
+  practices.
 
 **See also:**
+
 - @bash.mdc for shell script commit practices
-- @google-shellguide.mdc for enterprise development standards  
+- @google-shellguide.mdc for enterprise development standards
 - @cursor-rules.mdc for rule authoring and maintenance

@@ -1,27 +1,32 @@
 ---
-description: 
+description:
 globs: Dockerfile,*.dockerfile,.dockerignore,*.Dockerfile
 alwaysApply: false
 ---
+
 # Dockerfile Development Standards
 
-Comprehensive rules for creating secure, efficient, and maintainable Docker images following industry best practices and Docker's official guidelines.
+Comprehensive rules for creating secure, efficient, and maintainable Docker
+images following industry best practices and Docker's official guidelines.
 
 ## When to Apply
 
 Use this rule when:
+
 - Writing or modifying Dockerfiles
 - Optimizing container build performance
 - Implementing multi-stage builds
 - Working with Docker Compose configurations
 - Implementing CI/CD with containerized applications
 
-**Integrates with**: @12factor.mdc for cloud-native principles, @bash.mdc for shell scripts in containers, @grugbed.mdc for simplicity
+**Integrates with**: @12factor.mdc for cloud-native principles, @bash.mdc for
+shell scripts in containers, @grugbed.mdc for simplicity
 
 ## Core Principles Framework
 
 ### Build Optimization Classification
-```
+
+```text
 BUILD_TYPE := DEVELOPMENT | PRODUCTION | CI_CD
 OPTIMIZATION_GOAL := SPEED | SIZE | SECURITY | RELIABILITY
 COMPLEXITY := SIMPLE | MULTI_STAGE | MICRO_SERVICE
@@ -29,7 +34,8 @@ DEPLOYMENT_TARGET := LOCAL | CLOUD | EDGE | HYBRID
 ```
 
 ### Quality Decision Matrix
-```
+
+```text
 DOCKERFILE_SCORE = (
   SECURITY × 0.30 +          // Vulnerability resistance
   BUILD_EFFICIENCY × 0.25 +  // Cache utilization, build speed
@@ -42,6 +48,7 @@ DOCKERFILE_SCORE = (
 ## Essential Dockerfile Patterns
 
 ### Minimal Base Template (Generic)
+
 ```dockerfile
 # syntax=docker/dockerfile:1
 FROM alpine:3.19
@@ -82,6 +89,7 @@ CMD ["./app"]
 ```
 
 ### Multi-Stage Build Pattern (Generic)
+
 ```dockerfile
 # syntax=docker/dockerfile:1
 
@@ -112,6 +120,7 @@ CMD ["./app"]
 ## Build Optimization Strategies
 
 ### 1. Cache Layer Optimization
+
 **Principle**: Order instructions from least to most frequently changing
 
 ```dockerfile
@@ -130,6 +139,7 @@ RUN make build
 ```
 
 ### 2. Specific COPY Instructions
+
 **Principle**: Copy only what's needed to minimize cache invalidation
 
 ```dockerfile
@@ -144,7 +154,9 @@ COPY Makefile requirements.txt ./
 ```
 
 ### 3. Combined RUN Instructions
-**Principle**: Group related operations to minimize layers and cache package indices
+
+**Principle**: Group related operations to minimize layers and cache package
+indices
 
 ```dockerfile
 # ❌ Separate RUN instructions create unnecessary layers
@@ -164,6 +176,7 @@ RUN apk update && \
 ## Security Best Practices
 
 ### 1. Non-Root User Pattern
+
 ```dockerfile
 # Alpine Linux
 RUN addgroup -g 1001 -S appuser && \
@@ -179,6 +192,7 @@ USER 1001:1001
 ```
 
 ### 2. Minimal Base Images
+
 ```dockerfile
 # ✅ Minimal base images (ordered by size)
 FROM scratch                    # Empty image - for static binaries only
@@ -193,6 +207,7 @@ FROM centos:latest             # Large enterprise distribution
 ```
 
 ### 3. Secret Management
+
 ```dockerfile
 # ❌ Never embed secrets in images
 ENV API_KEY=secret123
@@ -208,6 +223,7 @@ ENV API_KEY=""
 ```
 
 ### 4. Security Scanning Integration
+
 ```dockerfile
 # Add security scanning labels for automation
 LABEL org.opencontainers.image.source="https://github.com/org/repo"
@@ -221,6 +237,7 @@ FROM alpine:3.19.1
 ## Language-Specific Patterns
 
 ### Go Applications
+
 ```dockerfile
 # Multi-stage Go build
 FROM golang:1.21-alpine AS builder
@@ -238,6 +255,7 @@ CMD ["/app"]
 ```
 
 ### Python Applications
+
 ```dockerfile
 FROM python:3.11-alpine AS builder
 WORKDIR /app
@@ -255,6 +273,7 @@ CMD ["python", "app.py"]
 ```
 
 ### Rust Applications
+
 ```dockerfile
 FROM rust:1.75-alpine AS builder
 RUN apk add --no-cache musl-dev
@@ -272,6 +291,7 @@ CMD ["app"]
 ```
 
 ### Node.js Applications (when needed)
+
 ```dockerfile
 FROM node:20-alpine AS dependencies
 WORKDIR /app
@@ -290,6 +310,7 @@ CMD ["node", "server.js"]
 ## Image Size Optimization
 
 ### 1. Package Management Best Practices
+
 ```dockerfile
 # ✅ Alpine package management
 RUN apk update && \
@@ -314,6 +335,7 @@ RUN apk add --no-cache --virtual .build-deps \
 ```
 
 ### 2. Build Artifact Cleanup
+
 ```dockerfile
 # ✅ Clean up build artifacts in same layer
 RUN make build && \
@@ -332,6 +354,7 @@ COPY --from=builder /src/dist/app ./app
 ```
 
 ### 3. Universal .dockerignore
+
 ```dockerignore
 # Version control
 .git
@@ -393,6 +416,7 @@ go.sum     # sometimes
 ## Advanced Patterns
 
 ### 1. Universal Health Check Patterns
+
 ```dockerfile
 # HTTP service health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
@@ -414,6 +438,7 @@ HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
 ```
 
 ### 2. Signal Handling and Graceful Shutdown
+
 ```dockerfile
 # Install and use dumb-init (Alpine)
 RUN apk add --no-cache dumb-init
@@ -429,6 +454,7 @@ CMD ["./app"]
 ```
 
 ### 3. Build Arguments and Environment Variables
+
 ```dockerfile
 # Build-time arguments with defaults
 ARG BUILD_ENV=production
@@ -455,8 +481,9 @@ LABEL org.opencontainers.image.url="https://github.com/org/repo"
 ## Docker Compose Integration
 
 ### Generic Production-Ready Compose Pattern
+
 ```yaml
-version: '3.8'
+version: "3.8"
 
 services:
   app:
@@ -476,7 +503,14 @@ services:
     ports:
       - "8080:8080"
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health"]
+      test: [
+        "CMD",
+        "wget",
+        "--no-verbose",
+        "--tries=1",
+        "--spider",
+        "http://localhost:8080/health",
+      ]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -494,10 +528,10 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '1.0'
+          cpus: "1.0"
           memory: 512M
         reservations:
-          cpus: '0.5'
+          cpus: "0.5"
           memory: 256M
 
   database:
@@ -510,7 +544,10 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-myapp}"]
+      test: [
+        "CMD-SHELL",
+        "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-myapp}",
+      ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -528,6 +565,7 @@ networks:
 ## Validation and Quality Gates
 
 ### Build Checks Integration
+
 ```bash
 # Docker build with checks
 docker build --check .
@@ -554,6 +592,7 @@ validate_dockerfile() {
 ### Common Anti-Patterns to Avoid
 
 #### ❌ Security Anti-Patterns
+
 ```dockerfile
 # Running as root
 USER root
@@ -572,6 +611,7 @@ RUN chmod 777 /app
 ```
 
 #### ❌ Performance Anti-Patterns
+
 ```dockerfile
 # Cache-busting order
 COPY . .
@@ -588,6 +628,7 @@ RUN apk add --no-cache build-base && \
 ```
 
 #### ❌ Maintainability Anti-Patterns
+
 ```dockerfile
 # No comments or documentation
 FROM alpine:3.19
@@ -604,6 +645,7 @@ ENV MAX_CONNECTIONS=50
 ## Integration with Development Workflow
 
 ### CI/CD Pipeline Integration
+
 ```yaml
 # GitHub Actions example
 name: Docker Build and Deploy
@@ -616,16 +658,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-        
+
       - name: Build and validate
         run: |
           docker build --check .
           docker build -t myapp:${{ github.sha }} .
           docker scout cves myapp:${{ github.sha }}
-          
+
       - name: Push to registry
         if: github.ref == 'refs/heads/main'
         run: |
@@ -634,6 +676,7 @@ jobs:
 ```
 
 ### Local Development Optimization
+
 ```dockerfile
 # Development-specific Dockerfile
 FROM alpine:3.19
@@ -656,6 +699,7 @@ CMD ["make", "dev"]
 ## Performance Monitoring
 
 ### Build Time Analysis
+
 ```bash
 # Build with timing
 time docker build -t myapp .
@@ -672,6 +716,7 @@ docker builder du
 ```
 
 ### Runtime Performance
+
 ```dockerfile
 # Add monitoring labels
 LABEL monitoring.enabled="true"
@@ -693,12 +738,14 @@ services:
 ## References and Tools
 
 ### Essential Tools
+
 - **hadolint**: Dockerfile linter for best practices
 - **docker scout**: Security vulnerability scanning
 - **dive**: Analyzing and optimizing image layers
 - **trivy**: Comprehensive security scanner
 
 ### Validation Commands
+
 ```bash
 # Comprehensive validation suite
 dockerfile_validate() {
@@ -729,6 +776,7 @@ dockerfile_validate() {
 ## Quality Checklist
 
 ### Pre-Commit Validation
+
 - [ ] **Security**: No hardcoded secrets, non-root user, minimal base image
 - [ ] **Build Optimization**: Proper layer caching, specific COPY operations
 - [ ] **Size Optimization**: Multi-stage builds, package cleanup, .dockerignore
@@ -737,6 +785,7 @@ dockerfile_validate() {
 - [ ] **Compliance**: Follows twelve-factor principles, reproducible builds
 
 ### Production Readiness
+
 - [ ] **Monitoring**: Health checks, logging configuration, metrics labels
 - [ ] **Security**: Vulnerability scanning passed, secrets externalized
 - [ ] **Performance**: Build time optimized, image size minimized
@@ -745,10 +794,14 @@ dockerfile_validate() {
 
 ---
 
-**Remember**: Container images are immutable infrastructure. Invest time in getting the Dockerfile right once rather than repeatedly patching production issues. Every optimization compounds across development velocity, deployment speed, and runtime efficiency.
+**Remember**: Container images are immutable infrastructure. Invest time in
+getting the Dockerfile right once rather than repeatedly patching production
+issues. Every optimization compounds across development velocity, deployment
+speed, and runtime efficiency.
 
 **Cross-references:**
+
 - @12factor.mdc for cloud-native application principles
-- @bash.mdc for shell scripts used in containers  
+- @bash.mdc for shell scripts used in containers
 - @grugbed.mdc for simplicity in container architecture
 - @meta.mdc for decision-making frameworks
