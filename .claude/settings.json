@@ -1,0 +1,27 @@
+{
+    "permissions": {
+        "allow": [
+            "Bash(find:*)",
+            "Bash(mkdir:*)",
+            "Bash(mv:*)",
+            "WebFetch(domain:docs.anthropic.com)",
+            "Bash(git add:*)",
+            "Bash(shellcheck:*)",
+            "WebFetch(domain:github.com)",
+            "Bash(marksman:*)",
+            "Bash(markdownlint:*)",
+            "Bash(dprint:*)",
+            "Bash(grep:*)",
+            "Bash(awk:*)",
+            "Bash(rg:*)",
+            "Bash(sed:*)",
+            "WebFetch(domain:www.anthropic.com)"
+        ],
+        "deny": []
+    },
+    "includeCoAuthoredBy": false,
+    "env": {
+        "DISABLE_TELEMETRY": "1"
+    }
+}
+

@@ -1,15 +1,22 @@
+#!/bin/bash
+set -euo pipefail
+
 # ---------------------------------------------
 # Bash Configuration
 # ---------------------------------------------
 
 # === Git Prompt Support ===
 if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
+    # shellcheck source=/dev/null
     source /usr/share/git-core/contrib/completion/git-prompt.sh
 elif [ -f /etc/bash_completion.d/git-prompt ]; then
+    # shellcheck source=/dev/null
     source /etc/bash_completion.d/git-prompt
 elif [ -f ~/.git-prompt.sh ]; then
+    # shellcheck source=/dev/null
     source ~/.git-prompt.sh
 elif [ -f /opt/homebrew/etc/bash_completion.d/git-prompt.sh ]; then
+    # shellcheck source=/dev/null
     source /opt/homebrew/etc/bash_completion.d/git-prompt.sh
 else
     echo "git-prompt.sh not found"
@@ -42,48 +49,65 @@ shopt -s globstar     # Enable recursive globbing (e.g., `**/*.txt`)
 
 # === Path Enhancements ===
 # Rust
-if [ -d "$HOME/.cargo/bin" ]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
+if [ -d "${HOME}/.cargo/bin" ]; then
+    export PATH="${HOME}/.cargo/bin:${PATH}"
 fi
 
 # Go
-if [ -d "$HOME/go/bin" ]; then
-    export PATH="$HOME/go/bin:$PATH"
+if [ -d "${HOME}/go/bin" ]; then
+    export PATH="${HOME}/go/bin:${PATH}"
 fi
 
 # pipx (Python) and others
-if [ -d "$HOME/.local/bin" ]; then
-    export PATH="$HOME/.local/bin:$PATH"
+if [ -d "${HOME}/.local/bin" ]; then
+    export PATH="${HOME}/.local/bin:${PATH}"
 fi
 
 if [ -d "/opt/nvim-linux-x86_64/bin" ]; then
-    export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+    export PATH="${PATH}:/opt/nvim-linux-x86_64/bin"
 fi
 
 # === Quality-of-Life Functions ===
 # Extract various archive types
 extract() {
-    if [ -f "$1" ]; then
-        case "$1" in
-        *.tar.bz2) tar xjf "$1" ;;
-        *.tar.gz) tar xzf "$1" ;;
-        *.bz2) bunzip2 "$1" ;;
-        *.rar) unrar x "$1" ;;
-        *.gz) gunzip "$1" ;;
-        *.tar) tar xf "$1" ;;
-        *.tbz2) tar xjf "$1" ;;
-        *.tgz) tar xzf "$1" ;;
-        *.zip) unzip "$1" ;;
-        *.7z) 7z x "$1" ;;
-        *) echo "Cannot extract '$1': unsupported archive format" ;;
-        esac
-    else
-        echo "'$1' is not a valid file"
+    local file="${1:-}"
+    
+    if [[ -z "${file}" ]]; then
+        echo "Usage: extract <file>" >&2
+        return 1
     fi
+    
+    if [[ ! -f "${file}" ]]; then
+        echo "Error: '${file}' is not a valid file" >&2
+        return 1
+    fi
+    
+    case "${file}" in
+    *.tar.bz2) tar xjf "${file}" ;;
+    *.tar.gz) tar xzf "${file}" ;;
+    *.bz2) bunzip2 "${file}" ;;
+    *.rar) unrar x "${file}" ;;
+    *.gz) gunzip "${file}" ;;
+    *.tar) tar xf "${file}" ;;
+    *.tbz2) tar xjf "${file}" ;;
+    *.tgz) tar xzf "${file}" ;;
+    *.zip) unzip "${file}" ;;
+    *.7z) 7z x "${file}" ;;
+    *) 
+        echo "Error: Cannot extract '${file}': unsupported archive format" >&2
+        return 1
+        ;;
+    esac
 }
 
 command_exists() {
-    type "$1" &>/dev/null
+    local cmd="${1:-}"
+    
+    if [[ -z "${cmd}" ]]; then
+        return 1
+    fi
+    
+    type "${cmd}" &>/dev/null
 }
 
 # === Aliases ===
@@ -117,23 +141,35 @@ fi
 # the way shell sub-processes work. This is a work around by running
 # Tinty through a function and then executing the shell scripts.
 tinty_source_shell_theme() {
-    newer_file=$(mktemp)
-    tinty $@
-    subcommand="$1"
-
-    if [ "$subcommand" = "apply" ] || [ "$subcommand" = "init" ]; then
-        tinty_data_dir="${XDG_DATA_HOME:-$HOME/.local/share}/tinted-theming/tinty"
-
-        while read -r script; do
-
-            # shellcheck disable=SC1090
-            . "$script"
-        done < <(find "$tinty_data_dir" -maxdepth 1 -type f -name "*.sh" -newer "$newer_file")
-
-        unset tinty_data_dir
+    local newer_file subcommand tinty_data_dir script
+    
+    newer_file=$(mktemp) || {
+        echo "Error: Failed to create temporary file" >&2
+        return 1
+    }
+    
+    if ! tinty "$@"; then
+        echo "Error: tinty command failed" >&2
+        rm -f "${newer_file}"
+        return 1
     fi
+    
+    subcommand="${1:-}"
 
-    unset subcommand
+    if [[ "${subcommand}" = "apply" ]] || [[ "${subcommand}" = "init" ]]; then
+        tinty_data_dir="${XDG_DATA_HOME:-${HOME}/.local/share}/tinted-theming/tinty"
+
+        if [[ -d "${tinty_data_dir}" ]]; then
+            while IFS= read -r script; do
+                if [[ -f "${script}" ]]; then
+                    # shellcheck disable=SC1090
+                    . "${script}"
+                fi
+            done < <(find "${tinty_data_dir}" -maxdepth 1 -type f -name "*.sh" -newer "${newer_file}" 2>/dev/null)
+        fi
+    fi
+    
+    rm -f "${newer_file}"
 }
 
 if [ -n "$(command -v 'tinty')" ]; then
@@ -148,10 +184,12 @@ if [ -f ~/.linuxbrew_env ]; then
     # Caching linuxbrew environment variables for faster shell startup
     # Regenerate with this command:
     #eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    # shellcheck source=/dev/null
     source ~/.linuxbrew_env
 fi
 
 if [ -f ~/.secrets ]; then
+    # shellcheck source=/dev/null
     source ~/.secrets
 fi
 

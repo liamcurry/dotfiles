@@ -1,31 +1,27 @@
 return {
-    "neovim/nvim-lspconfig",
-    ------@modulejjjj
-    ------@type PluginLspConfigOpts
-    ---opts = {
-    ---    -- Automatically format on save
-    ---    autoformat = true,
-    ---    -- Automatically format on save
-    ---    autoformat_on_save = {
-    ---        enabled = true,
-    ---        allow_filetypes = { "lua" },
-    ---        ignore_filetypes = { "markdown" },
-    ---    },
-    ---    -- Configure lua language server for neovim
-    ---    servers = {
-    ---        lua_ls = {
-    ---            settings = {
-    ---                Lua = {
-    ---                    diagnostics = {
-    ---                        globals = { "vim" },
-    ---                    },
-    ---                    workspace = {
-    ---                        library = vim.api.nvim_get_runtime_file("", true),
-    ---                        checkThirdParty = false,
-    ---                    },
-    ---                },
-    ---            },
-    ---        },
-    ---    },
-    ---},
+  'neovim/nvim-lspconfig',
+  ---@type PluginLspConfigOpts
+  opts = {
+    -- Automatically format on save
+    autoformat = true,
+    -- Configure lua language server for neovim
+    servers = {
+      lua_ls = {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' },
+            },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file('', true),
+              checkThirdParty = false,
+            },
+            telemetry = {
+              enable = false,
+            },
+          },
+        },
+      },
+    },
+  },
 }

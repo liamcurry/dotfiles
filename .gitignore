@@ -69,4 +69,15 @@ logs
 
 # Claude directory - ignore all except whitelisted files
 .claude/*
+!.claude/commands
 !.claude/CLAUDE.md
+!.claude/settings.json
+!.claude/settings.local.json
+
+# Direnv
+.direnv/
+.envrc.local
+
+# Nix
+result
+result-*

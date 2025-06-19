@@ -1,6 +1,7 @@
 -- Leader key
 vim.g.mapleader = '\\'
 
+-- Cache vim.opt for better performance
 local opt = vim.opt
 
 -- General settings
@@ -25,7 +26,13 @@ opt.wrap = false -- Disable line wrap
 
 -- Whitespace characters
 opt.list = true
-opt.listchars = { tab = '→ ', trail = '·', eol = '¬', extends = '…', precedes = '…' }
+opt.listchars = {
+  tab = '→ ',
+  trail = '·',
+  eol = '¬',
+  extends = '…',
+  precedes = '…',
+}
 
 -- Undo and backup
 opt.undofile = true -- Save undo history

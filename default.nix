@@ -1,103 +1,158 @@
 # Development environment for my setup
+# 
+# NOTE: This file is maintained for backward compatibility.
+# For the latest features, use the flake.nix configuration:
+#   nix develop              # Development environment
+#   nix develop .#personal   # Personal desktop environment
 #
-# Usage:
+# Legacy usage:
 #   nix-shell                                  # Basic setup
-#   nix-shell --arg withSpotify true          # Include Spotify
-#   nix-shell --arg withSteam true            # Include Steam
+#   nix-shell --arg withPersonal true         # Include personal apps
 #
 # Requirements:
 #   - Nix package manager
 #   - Optional: .fonts directory for custom fonts
 
 { pkgs ? import <nixpkgs> {},
-  withSpotify ? false,
-  withSteam ? false
+  withPersonal ? false
 }:
 
 let
-  cargoPackages = {
-    dprint = {
-      version = "0.49.1";
-      hash = "sha256-BDqSKFxvvuGRA5liSPVWY1DFyQrgI4qPZSWw1ZaADrE=";
-    };
-    ripgrep = {
-      version = "14.1.1";
-      hash = "sha256-/LDTtXqVD7WEV7rqQVhEAkR1+CQGYGHvI8dxNBUYYDE=";
-    };
-  };
-
-  # Font handling through Nix
-  customFonts = pkgs.symlinkJoin {
-    name = "custom-fonts";
-    paths = [ ./fonts ];
-  };
+  # Personal desktop applications
+  personalApps = with pkgs; [
+    # Creative tools
+    blender
+    krita
+    inkscape
+    
+    # Media
+    spotify
+    vlc
+    
+    # Gaming
+    steam
+    
+    # Communication
+    discord
+    
+    # Productivity
+    obsidian
+    
+    # File transfer
+    filezilla
+  ];
 in
 pkgs.mkShell {
   buildInputs = with pkgs; [
-    # Development shell features
+    # Version control
+    git
+    git-lfs
+    gh  # GitHub CLI
+    delta  # Better git diff
+    
+    # Editors and terminals
+    neovim
+    alacritty
+    tmux
+    
+    # Shell integration
     direnv
     nix-direnv
     
-    # Terminal and shell tools
-    kitty
-    neovim
-    tmux
-    git
-    git-lfs
-    
-    # Browsers and applications
-    firefox
-    _1password
-    docker
-    vlc
-    
-    # Optional applications
-    (if withSpotify then spotify else null)
-    (if withSteam then steam else null)
-    
-    # Development tools
+    # Languages and runtimes
     rustup
-    lua51
-    (if stdenv.isDarwin 
-     then homebrew 
-     else if stdenv.isLinux 
-          then linuxbrew 
-          else throw "Unsupported system")
+    lua5_1  # Neovim-compatible Lua
+    nodejs  # For fnm to manage
+    python3  # For conda to manage
     
-    # Cargo packages
-    (cargo.installFromCargoCratesIo {
-      pname = "dprint";
-      inherit (cargoPackages.dprint) version hash;
-    })
-    (cargo.installFromCargoCratesIo {
-      pname = "ripgrep";
-      inherit (cargoPackages.ripgrep) version hash;
-    })
-    
-    # Other development dependencies
-    tinty
-    shellcheck
-    yaml-language-server
-    clang-tools
+    # Language servers and tools
     lua-language-server
+    bash-language-server
+    yaml-language-server
+    marksman  # Markdown LSP
+    harper-ls  # Grammar checking LSP
+    clang-tools
+    markdownlint-cli
+    shellcheck
     buf
-    nodePackages.bash-language-server
-    marksman
+    stylua
     
-    # Additional tools
+    # Build tools
+    gnumake
+    cmake
+    pkg-config
+    
+    # Search and file tools
     fzf
     fd
+    ripgrep
     bat
-    delta
-
-    # Fonts
-    customFonts
-  ];
+    eza
+    tree
+    
+    # Network tools
+    curl
+    wget
+    httpie
+    
+    # Data processing
+    jq  # JSON processor
+    
+    # Formatting and themes
+    dprint
+    tinty  # Terminal theme manager
+    
+    # Container tools
+    docker
+    docker-compose
+    
+    # Nix tools
+    nix
+    nixpkgs-fmt
+    nil  # Nix language server
+    
+    # Node version manager
+    fnm
+    
+    # Password manager
+    _1password
+    _1password-gui
+    
+    # Browser for development
+    google-chrome
+    
+    # Media (always included now)
+    vlc
+  ] ++ (if withPersonal then personalApps else [])
+    ++ lib.optionals stdenv.isLinux [ appimage-run ];
 
   # Environment variables set directly in the shell
   EDITOR = "nvim";
-  TERMINAL = "kitty";
-  RUST_BACKTRACE = "1";
-  DPRINT_CONFIG = "$PWD/.dprint.json";
+  TERMINAL = "alacritty";
+  DOCKER_BUILDKIT = "1";
+  
+  shellHook = ''
+    echo "Legacy nix-shell environment loaded"
+    echo ""
+    echo "NOTE: Consider using the new flake-based configuration:"
+    echo "  nix develop              # Development environment"
+    echo "  nix develop .#personal   # Personal desktop environment"
+    echo ""
+    echo "Available tools:"
+    echo "  - Editors: neovim, alacritty"
+    echo "  - Languages: rust (via rustup), lua, node (via fnm), python"
+    echo "  - Tools: git, docker, shellcheck, dprint, fzf, ripgrep"
+    echo ""
+    if [ "$withPersonal" = "true" ]; then
+      echo "Personal apps included: Blender, Krita, Steam, Spotify, Discord, etc."
+    else
+      echo "Use 'nix-shell --arg withPersonal true' to include personal apps"
+    fi
+    
+    # Initialize fnm if installed
+    if command -v fnm &> /dev/null; then
+      eval "$(fnm env --use-on-cd)"
+    fi
+  '';
 }
 
